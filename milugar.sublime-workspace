@@ -1,0 +1,1354 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"a",
+				"access"
+			],
+			[
+				"ob",
+				"obj_agrupado"
+			],
+			[
+				"s",
+				"script"
+			],
+			[
+				"impo",
+				"importe2"
+			],
+			[
+				"cp_",
+				"cp_cheques_transferred"
+			],
+			[
+				"arr",
+				"arrmes"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"strlo",
+				"strtolower"
+			],
+			[
+				"spl_",
+				"spl_autoload_register"
+			],
+			[
+				"action",
+				"actionbar"
+			],
+			[
+				"fecha",
+				"fecha_fin"
+			],
+			[
+				"float",
+				"floatval"
+			],
+			[
+				"fecha_",
+				"fecha_ini"
+			],
+			[
+				"vare",
+				"varemail"
+			],
+			[
+				"desc_",
+				"desc_socio"
+			],
+			[
+				"utf",
+				"utf8_decode"
+			],
+			[
+				"Ob",
+				"ObjCampo"
+			],
+			[
+				"list",
+				"listCheques"
+			],
+			[
+				"str",
+				"strrpos"
+			],
+			[
+				"par",
+				"parseFloat"
+			],
+			[
+				"idc",
+				"idcliente"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"border-r",
+				"border-right"
+			],
+			[
+				"bot",
+				"border-bottom"
+			],
+			[
+				"gananc",
+				"ganancia_neta"
+			],
+			[
+				"inte",
+				"interes_capital"
+			],
+			[
+				"ganan",
+				"ganancias_totales"
+			],
+			[
+				"importe",
+				"importe_total"
+			],
+			[
+				"lis",
+				"listCheques"
+			],
+			[
+				"inre",
+				"interes_dia"
+			],
+			[
+				"int",
+				"interes_capital"
+			],
+			[
+				"intere",
+				"interes_ac_porcentaje"
+			],
+			[
+				"interes",
+				"interes_dia"
+			],
+			[
+				"for",
+				"for	for …"
+			],
+			[
+				"id",
+				"idcliente"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"border-rad",
+				"border-bottom-right-radius"
+			],
+			[
+				"Che",
+				"cheques"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"BASE_",
+				"base_url"
+			],
+			[
+				"www",
+				"wwwroot"
+			],
+			[
+				"co",
+				"cookie"
+			],
+			[
+				"fl",
+				"floor"
+			],
+			[
+				"q",
+				"qry"
+			],
+			[
+				"import",
+				"importe5"
+			],
+			[
+				"n",
+				"nuevo"
+			],
+			[
+				"st",
+				"style"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"html",
+				"html_entity_decode"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"us",
+				"user_profile"
+			],
+			[
+				"ht",
+				"htmlentities"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"new",
+				"newShape"
+			],
+			[
+				"ne",
+				"newShape"
+			],
+			[
+				"ut",
+				"utf8_encode"
+			],
+			[
+				"categ",
+				"category_name"
+			],
+			[
+				"ca",
+				"category_name"
+			],
+			[
+				"cate",
+				"category"
+			],
+			[
+				"li",
+				"listCategory"
+			],
+			[
+				"w",
+				"where"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"get_",
+				"get_class"
+			],
+			[
+				"htmle",
+				"htmlspecialchars"
+			],
+			[
+				"MA",
+				"margin-bottom"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"de",
+				"description"
+			],
+			[
+				"sp",
+				"sprintf"
+			],
+			[
+				"page",
+				"page_login"
+			],
+			[
+				"strto",
+				"strtolower"
+			],
+			[
+				"htm",
+				"htmlspecialchars"
+			],
+			[
+				"fo",
+				"foreach	foreach …"
+			],
+			[
+				"fe",
+				"fetch_assoc"
+			],
+			[
+				"data",
+				"database"
+			],
+			[
+				"desc",
+				"description_short"
+			],
+			[
+				"or",
+				"order_by"
+			],
+			[
+				"t",
+				"transparent"
+			],
+			[
+				"pos",
+				"background-position"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"i",
+				"important"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"fot",
+				"font-family"
+			],
+			[
+				"row",
+				"rows"
+			],
+			[
+				"R",
+				"REQUEST_URI"
+			],
+			[
+				"my",
+				"mysql_fetch_object"
+			],
+			[
+				"file_",
+				"file_name"
+			],
+			[
+				"base",
+				"base64_decode"
+			],
+			[
+				"base64",
+				"base64_encode"
+			],
+			[
+				"compa",
+				"company_name"
+			],
+			[
+				"o",
+				"oFunctions"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
+				"che",
+				"f_checkPassUser"
+			],
+			[
+				"mysq_n",
+				"mysql_num_rows"
+			],
+			[
+				"mysq",
+				"mysql_num_rows"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"bo",
+				"border-radius"
+			],
+			[
+				"nam",
+				"name_file"
+			],
+			[
+				"cle",
+				"clear"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"id_",
+				"id_category"
+			],
+			[
+				"error",
+				"error_reporting"
+			],
+			[
+				"im",
+				"important_news"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"base_",
+				"base_url"
+			],
+			[
+				"ar",
+				"arrPost2"
+			],
+			[
+				"amo",
+				"admonished"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"event",
+				"event_title"
+			],
+			[
+				"image_",
+				"image_hidden"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"idca",
+				"idcategoria"
+			],
+			[
+				"cat",
+				"category_name"
+			],
+			[
+				"glob",
+				"globals	$GLOBALS['…']"
+			],
+			[
+				"ite",
+				"itemId"
+			],
+			[
+				"link",
+				"link2"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"pare",
+				"parent_cat"
+			],
+			[
+				"categor",
+				"category_name"
+			],
+			[
+				"mysql_fech",
+				"mysql_fetch_object"
+			],
+			[
+				"tbl",
+				"tbl2"
+			],
+			[
+				"noticia",
+				"noticias_tecnicas"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "appweb/resources/inc/admin_login.php",
+			"settings":
+			{
+				"buffer_size": 2540,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "appweb/sources/js/admin_login.js",
+			"settings":
+			{
+				"buffer_size": 2137,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "appweb/resources/inc/function.php",
+			"settings":
+			{
+				"buffer_size": 1306,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "appweb/resources/class/access.class.php",
+			"settings":
+			{
+				"buffer_size": 918,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "appweb/resources/class/function.class.php",
+			"settings":
+			{
+				"buffer_size": 1565,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "appweb/resources/class/database.class.conf.php",
+			"settings":
+			{
+				"buffer_size": 1413,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ssp",
+				"Set Syntax: PHP"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"htm",
+				"Snippet: html"
+			],
+			[
+				"for",
+				"Snippet: form"
+			],
+			[
+				"fo",
+				"Snippet: form"
+			],
+			[
+				"sni",
+				"Snippet: html"
+			],
+			[
+				"form",
+				"Snippet: form"
+			],
+			[
+				"SNI",
+				"Snippet: <?php else: ?>"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"snippe",
+				"Snippet: form"
+			],
+			[
+				"Snippet: ",
+				"Snippet: form"
+			],
+			[
+				"snipe",
+				"Snippet: form"
+			],
+			[
+				"snip",
+				"Snippet: form"
+			],
+			[
+				"snipp",
+				"Snippet: form"
+			],
+			[
+				"snippet",
+				"Snippet: html"
+			],
+			[
+				"Snip",
+				"Snippet: mysqlconnect"
+			],
+			[
+				"Snipo",
+				"Snippet: form"
+			],
+			[
+				"e",
+				"Emmet: Select Next Item"
+			],
+			[
+				"XML",
+				"Set Syntax: XML"
+			],
+			[
+				"Snipe",
+				"Snippet: html"
+			],
+			[
+				"Sni",
+				"Snippet: form"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"crea",
+				"Preferences: Browse Packages"
+			],
+			[
+				"Snippet:",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"htn",
+				"Set Syntax: HTML (Erlang)"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/cesar/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/var/www/html/milugar/index.php",
+		"/var/www/html/milugar/appweb/resources/template/admin_header.php",
+		"/var/www/html/milugar/appweb/resources/template/404.php",
+		"/var/www/html/milugar/appweb/resources/class/functions.class.php",
+		"/var/www/html/milugar/appweb/sources/css/admin_login.css",
+		"/var/www/html/milugar/appweb/resources/template/admin_footer.php",
+		"/var/www/html/milugar/appweb/sources/lib/validator.js",
+		"/var/www/html/milugar/appweb/sources/css/backend/login.css",
+		"/var/www/html/milugar/appweb/sources/js/backend/login.js",
+		"/var/www/html/milugar/appweb/resources/inc/login.php",
+		"/var/www/html/milugar/appweb/resources/inc/backend/login.php",
+		"/var/www/html/milugar/appweb/resources/inc/backend/index.php",
+		"/var/www/html/milugar/appweb/resources/class/database.class.conf.php",
+		"/var/www/html/milugar/appweb/resources/class/access.class.php",
+		"/var/www/html/milugar/appweb/sources/js/login.js",
+		"/var/www/html/milugar/appweb/sources/css/login.css",
+		"/var/www/html/milugar/appweb/resources/inc/index.php",
+		"/var/www/html/wwwroot/angularjs/proy/app/app.js",
+		"/var/www/html/wwwroot/angularjs/proy/partials/task.html",
+		"/var/www/html/wwwroot/angularjs/proy/index.html",
+		"/var/www/html/wwwroot/angularjs/proy/tasks.sql",
+		"/var/www/html/wwwroot/angularjs/proy/includes/db.php",
+		"/tmp/fz3temp-1/cp_clientes.php",
+		"/var/www/html/wwwroot/cheques/admin/cp_cheques.php",
+		"/var/www/html/wwwroot/cheques/admin/cp_clientes.php",
+		"/var/www/html/TPGmap/js/functions.js",
+		"/var/www/html/TPGmap/css/style.css",
+		"/var/www/html/TPGmap/index.php",
+		"/var/www/html/TPGmap/bower_components/angular/package.json",
+		"/var/www/html/TPGmap/bower_components/angular/index.js",
+		"/var/www/html/prueba/index.php",
+		"/home/cesar/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/var/www/html/wwwroot/inmo/sistema/clases/Alquileres.class.php",
+		"/var/www/html/wwwroot/inmo/sistema/alquiler_view.php",
+		"/var/www/html/wwwroot/inmo/sistema/alquiler_add.php",
+		"/home/cesar/.config/sublime-text-2/Packages/User/Distraction Free.sublime-settings",
+		"/var/www/html/wwwroot/inmo/sistema/tarea_vencimiento_contrato.php",
+		"/var/www/html/_php/cheques/admin/class/cheque.class.php",
+		"/var/www/html/_php/cheques/admin/data/js/functions.js",
+		"/var/www/html/_php/cheques/admin/ajax_cheques_transferred_agrupacion.php",
+		"/var/www/html/_php/cheques/admin/cp_cheques_transferred.php",
+		"/var/www/html/_php/cheques/admin/cp_cheques_transferred_agrupacion.php",
+		"/var/www/html/_php/prueba/funciones.php",
+		"/var/www/html/_php/prueba/js.js",
+		"/var/www/html/_php/prueba/lista.php",
+		"/var/www/html/_php/prueba/index.php",
+		"/var/www/html/_php/cheques/admin/excel_cheques_transferred.php",
+		"/var/www/html/_php/cheques/admin/excel_cheques.php",
+		"/var/www/html/_php/cheques/admin/cp_cheque_edit.php",
+		"/var/www/html/_php/cheques/admin/class/movimiento.class.php",
+		"/var/www/html/_php/cheques/admin/cp_cheques.php",
+		"/var/www/html/_php/cheques/admin/data/css/style.css",
+		"/var/www/html/_php/cheques/admin/cp_movimiento_edit.php",
+		"/var/www/html/_php/cheques/admin/cp_cambiar_cliente_transferido.php",
+		"/var/www/html/_php/cheques/admin/class/database.class.conf.php",
+		"/var/www/html/_php/inmo/sistema/reportes.php",
+		"/var/www/html/_php/inmo/sistema/cajas_reportes.php",
+		"/var/www/html/_php/inmo/sistema/cajas.php",
+		"/var/www/html/_php/inmo/sistema/login.php",
+		"/var/www/html/_php/inmo/sistema/clases/Cajas.class.php",
+		"/var/www/html/_php/inmo/sistema/clases/Usuarios.class.php",
+		"/var/www/html/_php/inmo/sistema/login.htm",
+		"/var/www/html/_php/inmo/sistema/index.php",
+		"/tmp/fz3temp-1/carrito_excel.php",
+		"/var/www/html/_php/ejemplos/ej_this_self/Clases/Clase.php",
+		"/var/www/html/_php/ejemplos/ej_this_self/index.php",
+		"/var/www/html/_php/ejemplos/ej_this_self/Clases/clase.php",
+		"/var/www/html/_php/ejemplos/ej_this_self/clase.php",
+		"/var/www/html/_php/autoload/index.php",
+		"/var/www/html/_php/autoload/libs/Empresa.php",
+		"/var/www/html/_php/autoload/libs/Usuario.php",
+		"/var/www/html/_php/autoload/prueba/index.php",
+		"/var/www/html/_php/autoload/prueba/Libs/Autoloader.php",
+		"/var/www/html/_php/autoload/prueba/Libs/Usuario.php",
+		"/var/www/html/_php/autoload/prueba/Libs/Db/Conn.php",
+		"/var/www/html/_php/autoload/class/Empresa.php",
+		"/var/www/html/_php/autoload/class/Usuario.php",
+		"/var/www/html/_php/jsXML2/lista.xml",
+		"/var/www/html/_php/jsXML2/index.html",
+		"/tmp/fz3temp-1/conector_database.class.php",
+		"/var/www/html/_php/prueba/index.html",
+		"/var/www/html/_php/prueba/lista.xml",
+		"/var/www/html/_php/prueba/prueba.xml",
+		"/tmp/fz3temp-1/fckeditor_php4.php",
+		"/tmp/fz3temp-1/fckeditor_php5.php",
+		"/tmp/fz3temp-1/fckeditor.php",
+		"/var/www/html/_php/cheques/admin/data/js/jquery.dataTables.min.js",
+		"/var/www/html/_php/cheques/admin/cp_cheque_transferir.php",
+		"/var/www/html/_php/cheques/admin/cp_calcular_importe_cheque.php",
+		"/var/www/html/_php/cheques/admin/excel_cheques_transferred2.php",
+		"/var/www/html/_php/cheques/admin/excel_cheques2.php",
+		"/var/www/html/_php/cheques/admin/cp_movimiento_delete.php",
+		"/var/www/html/_php/cheques/admin/cp_cheque_delete.php",
+		"/var/www/html/_php/cheques/admin/class/cliente.class.php",
+		"/var/www/html/_php/cheques/admin/data/js/js.js",
+		"/tmp/fz3temp-1/home.php",
+		"/tmp/fz3temp-1/voluntario_edit.php",
+		"/tmp/fz3temp-1/voluntario.php",
+		"/tmp/fz3temp-1/voluntario 2.php",
+		"/tmp/fz3temp-1/admin.js",
+		"/tmp/fz3temp-1/functions.js",
+		"/tmp/fz3temp-1/class_bajitos.php",
+		"/tmp/fz3temp-1/eliminar_voluntario.php",
+		"/tmp/fz3temp-1/guardar_form.php",
+		"/tmp/fz3temp-1/traer_datos.php",
+		"/tmp/fz3temp-1/class_bajitos 2.php",
+		"/tmp/fz3temp-1/model.php",
+		"/tmp/fz3temp-1/guardar_form1.php",
+		"/tmp/fz3temp-1/config.php",
+		"/tmp/fz3temp-1/footer.php",
+		"/tmp/fz3temp-1/header.php",
+		"/tmp/fz3temp-1/login.php",
+		"/tmp/fz3temp-1/enviar_formulario_voluntario.php",
+		"/tmp/fz3temp-1/ingresa_contacto_bajitos.php",
+		"/tmp/fz3temp-1/ingresa_contacto_bajitos_formulario.php",
+		"/tmp/fz3temp-1/funciones.js",
+		"/tmp/fz3temp-1/sendMail.php",
+		"/var/www/html/_php/cheques/admin/cp_cliente_edit.php",
+		"/var/www/html/_php/cheques/admin/cp_cheque_view.php",
+		"/var/www/html/_php/cheques/admin/cp_movimiento_view.php",
+		"/home/cesar/.config/sublime-text-2/Packages/Alignment/Default (Linux).sublime-keymap",
+		"/home/cesar/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/cesar/.config/sublime-text-2/Packages/User/PHP.sublime-settings",
+		"/var/www/html/_php/cheques/admin/cp_movimientos.php",
+		"/var/www/html/_php/cheques/admin/cp_cliente_view.php",
+		"/tmp/fz3temp-1/ajax_validar_ingreso.php",
+		"/tmp/fz3temp-1/validar2.php"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"password",
+			"username",
+			"FnRecuperarPw",
+			"FnGetMsg",
+			"campo",
+			"px",
+			"parseInt",
+			"50",
+			"px",
+			"taskInput",
+			"Task",
+			"filterTask",
+			"ffin_a",
+			"darFechasUltimoPagos",
+			"\";\n",
+			"vencimientoi",
+			"idcliente_transferido_agrupado",
+			"agrupacion",
+			"transferencia",
+			"fSearch",
+			"accUpdate",
+			"loadQuery",
+			"fvencimiento_d",
+			"idc",
+			"menu",
+			"perfil",
+			"tomarPerfil",
+			"darReporteCajas",
+			"xmlDoc",
+			"action",
+			"cambiar_cliente_transferido",
+			"checked",
+			"sSortableDesc",
+			"sSortableAsc",
+			"sorting_asc",
+			"sorting_desc",
+			"getAllTransferred",
+			"strcheques",
+			"transferir_cheque_todos",
+			"transferir_cheque",
+			"importe_total",
+			"importe",
+			"(\"$#.##\");",
+			"include",
+			"cantCheques",
+			"totCheques",
+			"cantCheques\ncantCheques",
+			"cantCheques",
+			"importe_total",
+			"'-'",
+			"datepi",
+			"restafechas",
+			"restaFechas",
+			"cp_cheque_edit",
+			"validarDatos",
+			"totCheques",
+			"cambiar_cliente",
+			"cambiar_cliente_transferido",
+			"flecha_contenido_transferencia",
+			"strcheques",
+			"ada",
+			" +",
+			"getAll",
+			"td",
+			"getAllTransferred",
+			"fv_d",
+			"ordering",
+			"data-table",
+			"desc",
+			"DESC",
+			"ASC",
+			"DELETE",
+			"Guardar",
+			"readonly",
+			"readonlu",
+			"checked",
+			"$voluntario->",
+			"listado",
+			"query",
+			"fetch_object",
+			"fValidarForm1",
+			"fEnviarForm1",
+			"fRecuperarCamposForm1",
+			"idc",
+			"toFixed(2)",
+			".toFixed(2)",
+			"ROUND",
+			"importe",
+			"2",
+			"resultado_intereses, 2",
+			", 2",
+			", 2);",
+			"ROUND",
+			"ROUND(",
+			"ROUND",
+			"Banco",
+			"listCheques",
+			"cheque",
+			"listCheques",
+			"cheque",
+			"idcliente_transferido",
+			"label",
+			"cq",
+			"Cheque",
+			"idcliente_transferido",
+			"$listCheques->idcliente_transferido",
+			".table-wrap tr td",
+			"listCheques",
+			"Cheque",
+			"cheque",
+			"row",
+			"($",
+			"null",
+			"fecha",
+			"INNER",
+			"getAllById",
+			"getAll",
+			"form",
+			"descripcion_transferido",
+			"descr",
+			"getChequesTransferredByClienteId",
+			"cantCheques",
+			"listCheques",
+			"cheque",
+			"listCheques",
+			"descripcion",
+			"listCheques",
+			"cheque"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"email",
+			"",
+			"number_format(",
+			"listMovimientos",
+			"movimiento",
+			"listMovimientos",
+			"movimiento",
+			"mv",
+			"Movimiento",
+			"listMovimientos",
+			"Movimiento",
+			"movimiento",
+			"fecha_alta",
+			"LEFT",
+			"listClientes",
+			"cliente",
+			"listClientes",
+			"nombre",
+			"listClientes",
+			"cliente",
+			"nombre",
+			"descripcion",
+			"ClienteTransferido",
+			"cliente",
+			"listClientes",
+			"cp_cliente",
+			"listCheques",
+			"idcliente",
+			"`ClienteTransferido`",
+			"idcliente_transferido",
+			"descripcion_transferido",
+			"ClienteTransferido",
+			"descripcion",
+			"cp_cheque_edit",
+			"cp_cheque",
+			"anod",
+			"n",
+			"&ntilde;",
+			"poll",
+			"Poll",
+			"'",
+			"PHPfunction::parseString(",
+			"PHPfunction",
+			"Function",
+			"590",
+			"\\\"\".BASE_URL",
+			"execute",
+			"query",
+			"$data->placeholder;",
+			"$data->placeholder",
+			"execute",
+			"query",
+			"(isset($data->list))?",
+			"$data->list",
+			"url_helper",
+			"helper_url",
+			"helperUrl",
+			"data_inactive",
+			"data_active",
+			"info_active",
+			"info_inactive",
+			"page_inactive",
+			"page_active",
+			"page_inactive",
+			"data_inactive",
+			"data_active",
+			"query",
+			"execute",
+			"assets",
+			"static",
+			"110px",
+			"193px",
+			"logout",
+			"#E20026",
+			"twitter",
+			"430px",
+			"items-slider",
+			"960px",
+			"#E20026",
+			"opinion5",
+			"opinion4",
+			"opinion3",
+			"opinion2",
+			"opinion1",
+			"getImagen",
+			"aranceles-congreso-micologia.html",
+			"contacto.php",
+			"congreso-micologia.php",
+			"<?=base_url()?>",
+			"#CBC37B",
+			"palegoldenrod",
+			"#F6F3DB",
+			"#E9E2A8",
+			"181c21",
+			"dot_gris",
+			"dot_blanco",
+			"Statistics",
+			"statistics",
+			"Statistics",
+			"statistics",
+			"Statistics",
+			"Stadistics",
+			"stadistics",
+			"Stadistics",
+			"stadistics",
+			"Stadistics",
+			"stadistics",
+			"172px",
+			"174px",
+			".wachin",
+			"ejecucion",
+			"aplicaciones",
+			"logos2",
+			"logos1",
+			"cursos",
+			"img_productos_nuevos",
+			"productos_nuevos",
+			"descripcion",
+			"noticias_tecnicas",
+			"img_notiaea",
+			"",
+			"img_notiaea",
+			"images/"
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "appweb/resources/inc/admin_login.php",
+					"settings":
+					{
+						"buffer_size": 2540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								295,
+								295
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 102.0,
+						"translation.y": 126.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "appweb/sources/js/admin_login.js",
+					"settings":
+					{
+						"buffer_size": 2137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								531,
+								531
+							]
+						],
+						"settings":
+						{
+							"spell_check": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "appweb/resources/inc/function.php",
+					"settings":
+					{
+						"buffer_size": 1306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1153,
+								1153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 730.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "appweb/resources/class/access.class.php",
+					"settings":
+					{
+						"buffer_size": 918,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								228,
+								228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "appweb/resources/class/function.class.php",
+					"settings":
+					{
+						"buffer_size": 1565,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								281,
+								281
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "appweb/resources/class/database.class.conf.php",
+					"settings":
+					{
+						"buffer_size": 1413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								653,
+								653
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/var/www/html/_php/autoload/class/Empresa.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 270.0,
+	"status_bar_visible": false
+}
