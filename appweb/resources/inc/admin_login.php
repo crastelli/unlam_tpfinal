@@ -1,7 +1,7 @@
 <?php
 require "../class/access.class.php";
 require "../class/function.class.php";
-$title_page="Login";
+$ArrInfoPage = [ "page-title" => "Login", "menu-class" => "" ];
 
 Fn::FnCheckAccess(0);
 ?>  
@@ -70,3 +70,11 @@ Fn::FnCheckAccess(0);
 </div>
 
 <?php require "../template/admin_footer.php"; ?>
+
+
+<!-- Custom styles for this template -->
+<link href="../../sources/css/admin_login.css" rel="stylesheet">
+<!-- Animacion js login -->
+<script src="../../sources/lib/TweenLite.min.js"></script>
+<script src="../../sources/lib/validator.js"></script>
+<script src="../../sources/js/admin_login.js"></script>

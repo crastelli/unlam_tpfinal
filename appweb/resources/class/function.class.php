@@ -6,7 +6,7 @@ Abstract Class Fn
 	static $page_home_panel = 'admin_home.php';
 
 	//access => 0 (PAGINA DE LOGEO)
-	//access => 1 (PAGINAS INTERNAS DE LA APP)
+	//access => 1 (PAGINAS INTERNAS DE LA APP - TODO EL RESTO QUE NO SEA LOGIN)
 	static function FnCheckAccess($access=0)
 	{
 		if(!isset($_SESSION["usuario"]))
@@ -15,18 +15,17 @@ Abstract Class Fn
 		}else{
 			if($access == 0) header("Location: " . Fn::$page_home_panel);
 		}
-	}	
+	}
+	//Incluir este metodo en las paginas restringidas por los usuarios comunes ( no root )	
 	static function FnCheckAccessAdmin()
 	{
 		if(!isset($_SESSION["usuario"]))
 		{
 			header("Location: " . Fn::$page_login);
 		}else{
-			if($_SESSION["usuario"]->root == 1)
+			if($_SESSION["usuario"]["root"] == 0)
 			{
 				header("Location: " . Fn::$page_home_panel);
-			}else{
-				header("Location: " . Fn::$page_login);
 			}
 		}
 	}

@@ -9,15 +9,17 @@
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title><?php echo $title_page; ?></title>
+    <title><?php echo $ArrInfoPage["page-title"]; ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../sources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../sources/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../../sources/css/admin_login.css" rel="stylesheet">
     
+    <!-- Styles Panel -->
+    <link href="../../sources/lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
+    <link href="../../sources/lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
+    <link href="../../sources/lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+         
   </head>
-
-  <body>
+  
+<body class="bootstrap-admin-with-small-navbar">
