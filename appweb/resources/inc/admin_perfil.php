@@ -1,7 +1,7 @@
 <?php
 require "../class/access.class.php";
 require "../class/function.class.php";
-$ArrInfoPage = [ "page-title" => "Perfil", "menu-class" => "page-perfil" ];
+$ArrInfoPage = [ "page-title" => "Mi Perfíl", "menu-class" => "page-perfil" ];
 
 Fn::FnCheckAccess(1);
 
@@ -9,7 +9,6 @@ Fn::FnCheckAccess(1);
 
 <?php require "../template/admin_header.php"; ?>
 <?php require "../template/admin_menu.php"; ?>
-
 
 
 <div class="container">
@@ -27,27 +26,28 @@ Fn::FnCheckAccess(1);
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">CONTENIDO</div>
-                        </div>
-                        
-                	</div>
+                <div class="col-lg-12 content">
+                    <div class="alert alert-info">
+                        <a class="close" data-dismiss="alert" href="#">×</a>
+                        <span>
+                            Acá está la información de mi comercio en la cual aparecerá reflejada
+                            en la aplicación en la cual los usuarios podrán apreciar, comentar, ranquear
+                            y conocer.
+                        </span>
+                    </div>
                 </div>
             </div>
             
-        </div>
+        
+            <?php if($_SESSION['usuario']['root'] == 1): ?>
+                <?php require("admin_perfil_root.php"); ?>
+            <?php else: ?>
+                <?php require("admin_perfil_empresa.php"); ?>
+            <?php endif; ?>
+            
+            
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 
 

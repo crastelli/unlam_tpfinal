@@ -73,8 +73,7 @@ Fn::FnCheckAccess(0);
 
 
 <!-- Custom styles for this template -->
-<link href="../../sources/css/admin_login.css" rel="stylesheet">
+<link href="../../assets/css/admin_login.css" rel="stylesheet">
 <!-- Animacion js login -->
-<script src="../../sources/lib/TweenLite.min.js"></script>
-<script src="../../sources/lib/validator.js"></script>
-<script src="../../sources/js/admin_login.js"></script>
+<script src="../../assets/lib/TweenLite.min.js"></script>
+<script src="../../assets/js/admin_login.js"></script>

@@ -12,13 +12,14 @@
     <title><?php echo $ArrInfoPage["page-title"]; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../sources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../sources/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../../assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     
     <!-- Styles Panel -->
-    <link href="../../sources/lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
-    <link href="../../sources/lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
-    <link href="../../sources/lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+    <link href="../../assets/lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
+    <link href="../../assets/lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
+    <link href="../../assets/lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+    <link href="../../assets/css/admin.css" rel="stylesheet">
          
   </head>
   

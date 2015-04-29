@@ -1,7 +1,7 @@
 <?php $ObjUs = (Object) $_SESSION["usuario"]; ?>
 
 
-<nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar" role="navigation">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
