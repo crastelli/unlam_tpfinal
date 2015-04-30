@@ -29,8 +29,19 @@
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Logo</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-5">
                                   <input type="file" class="form-control">
+                                </div>
+                                <div class="col-sm-5">
+                                  <i class="glyphicon glyphicon-picture"></i> no hay ningún logo cargado
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Breve descripción</label>
+                                <div class="col-sm-10">
+                                  <textarea placeholder="Ingrese una breve descripción" class="form-control"></textarea>
                                 </div>
                             </div>
                             
@@ -56,12 +67,26 @@
                                 </div>
 
                                 <label class="col-sm-2 control-label" for="textinput">Password</label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                   <input type="password" placeholder="************" class="form-control">
-                                  <div class="help-block"><i class="glyphicon glyphicon-ok"></i> password cargada</div>
+                                </div>
+                                
+                                <div class="col-sm-2">
+                                    <i class="glyphicon glyphicon-ok"></i> password cargada
                                 </div>
                             </div>
                             
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Habilitar</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="habilitado">
+                                        <option value="0">No</option>
+                                        <option value="1">Si</option>
+                                    </select>
+                                </div>
+                            </div>  
+                                
+                                
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                   <div class="pull-right">
