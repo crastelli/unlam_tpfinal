@@ -13,19 +13,18 @@ $(function()
 
 	$('.form-login').validator().on('submit', function (e)
 	{
-		var $this = $(this);
-		var $msg  = $('div.alert');
-
 		if (!e.isDefaultPrevented())
 		{
 			e.preventDefault();
 
-			var varJSON = {
+			var $this = $(this),
+				$msg  = $('div.alert'),
+				varJSON = {
 							email : $this.find('input[name="email"]').val(),
 							pw    : $this.find('input[name="pw"]').val()
-							}
+							};
 			
-			$.post("function.php", { acc: 'admin-login', dataJSON: JSON.stringify(varJSON) })
+			$.post("ajax_function.php", { acc: 'admin-login', dataJSON: JSON.stringify(varJSON) })
 			.done(function(response)
 			{	
 				var JSON = $.parseJSON(response);
@@ -46,16 +45,15 @@ $(function()
 
 	$('.form-recuperarpw').validator().on('submit', function (e)
 	{
-		var $this = $(this);
-		var $msg = $('div.alert');
-
 		if (!e.isDefaultPrevented())
 		{
 			e.preventDefault();
 
-			var varJSON = { email: $this.find('input[name="email"]').val() }
+			var $this   = $(this),
+				$msg    = $('div.alert'),
+				varJSON = { email: $this.find('input[name="email"]').val() };
 			
-			$.post("function.php", { acc: 'admin-recuperarpw', dataJSON: JSON.stringify(varJSON) })
+			$.post("ajax_function.php", { acc: 'admin-recuperarpw', dataJSON: JSON.stringify(varJSON) })
 			.done(function(response)
 			{	
 				var JSON = $.parseJSON(response);

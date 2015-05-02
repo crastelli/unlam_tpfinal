@@ -1,12 +1,19 @@
+<?php
+$data = $objAccess->FnGetUsuarioId(Fn::FnGetDatosAccess()->id);
+?>
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
+            
                 <div class="panel-heading">
                     <div class="text-muted bootstrap-admin-box-title">Modificar <?php echo $ArrInfoPage["page-title"]; ?></div>
                 </div>
-                
+                            
                 <div class="bootstrap-admin-panel-content">
-                    <form accept-charset="UTF-8" role="form" class="form-horizontal" data-toggle="validator">
+                    
+                    <div class="alert alert-aviso"><span></span></div>
+                    
+                    <form accept-charset="UTF-8" role="form" class="form-horizontal form-perfil-usuario" data-toggle="validator">
                         <fieldset>
 
                             <!-- Form Name -->
@@ -16,7 +23,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Nombre</label>
                                 <div class="col-sm-10">
-                                  <input type="text" placeholder="Ingrese un nombre" class="form-control" data-match-error required>
+                                  <input type="text" name="nombre" placeholder="Ingrese un nombre" class="form-control" value="<?php echo (isset($data->nombre))? $data->nombre : ''; ?>" data-match-error required>
                                   <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -25,12 +32,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Teléfono</label>
                                 <div class="col-sm-4">
-                                  <input type="text" placeholder="Ingrese un teléfono" class="form-control">
+                                  <input type="text" name="telefono" placeholder="Ingrese un teléfono" class="form-control" value="<?php echo (isset($data->telefono))? $data->telefono : ''; ?>">
                                 </div>
 
                                 <label class="col-sm-2 control-label" for="textinput">Dirección</label>
                                 <div class="col-sm-4">
-                                  <input type="text" placeholder="Ingrese una dirección" class="form-control">
+                                  <input type="text" name="direccion" placeholder="Ingrese una dirección" class="form-control" value="<?php echo (isset($data->direccion))? $data->direccion : ''; ?>">
                                 </div>
                             </div>
 
@@ -38,13 +45,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Email (usuario)</label>
                                 <div class="col-sm-4">
-                                  <input type="email" placeholder="Ingrese un email" class="form-control" data-match-error required>
+                                  <input type="email" name="email" placeholder="Ingrese un email" class="form-control" value="<?php echo (isset($data->email))? $data->email : ''; ?>" data-match-error required>
                                   <div class="help-block with-errors"></div>
                                 </div>
 
                                 <label class="col-sm-2 control-label" for="textinput">Password</label>
                                 <div class="col-sm-4">
-                                  <input type="password" placeholder="************" class="form-control">
+                                  <input type="password" name="pw" placeholder="************" class="form-control">
                                   <div class="help-block"><i class="glyphicon glyphicon-ok"></i> password cargada</div>
                                 </div>
                             </div>
@@ -52,12 +59,15 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                   <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <button type="submit" class="btn btn-primary guardar">Guardar</button>
                                   </div>
                                 </div>
                             </div>
 
                         </fieldset>
+                        
+                        <!-- Hidden -->
+                        <input type="hidden" name="id" value="<?php echo (isset($data->id))? $data->id : ''; ?>">
                     </form>
                 </div>
                 

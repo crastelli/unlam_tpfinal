@@ -1,9 +1,11 @@
 <?php
 require "../class/access.class.php";
 require "../class/function.class.php";
+
 $ArrInfoPage = [ "page-title" => "Mi Perfíl", "menu-class" => "page-perfil" ];
 
 Fn::FnCheckAccess(1);
+$objAccess = new Access;
 
 ?>  
 

@@ -30,6 +30,13 @@ Abstract Class Fn
 		}
 	}
 
+	static function FnGetDatosAccess()
+	{
+		if(isset($_SESSION["usuario"]))
+		{
+			return (Object) $_SESSION["usuario"];
+		}else return null;
+	}
 
 	static function FnParseString($str)
 	{
@@ -83,7 +90,20 @@ Abstract Class Fn
 									break;
 						}
 						break;
-
+			case 'admin-perfil-usuario':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'Datos guardatos con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'Error al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
 			default:
 				break;
 		}

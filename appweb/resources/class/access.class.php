@@ -6,6 +6,9 @@ session_start();
 Class Access extends Database
 {
 
+	/**
+		# LOGIN
+	*/
 	private function FnLoginUsuario($email, $pw)
 	{
 		$qry = sprintf("SELECT `id`, `nombre`, `email`
@@ -28,23 +31,48 @@ Class Access extends Database
 		return $this->queryOne($qry);
 	}
 
-	private function FnGetUsuario($email)
+	public function FnExisteUsuario($email)
 	{
-		$qry = sprintf("SELECT `id`, `nombre`
+		$qry = sprintf("SELECT 1
 						FROM `Usuario`
 						WHERE `email` = '%s'
 						AND `estado` = 1
 						LIMIT 1", $email);
-		return $this->queryOne($qry);
+		$existe = $this->queryOne($qry);
+		if($existe)return true;
+		else return false;
 	}
 
-	private function FnGetEmpresa($email)
+	public function FnExisteEmpresa($email)
 	{
-		$qry = sprintf("SELECT `id`, `nombre`
+		$qry = sprintf("SELECT 1
 					FROM `Empresa`
 					WHERE `email` = '%s'
 					AND `estado` = 1
 					LIMIT 1", $email);
+		$existe = $this->queryOne($qry);
+		if($existe)return true;
+		else return false;
+	}
+
+	public function FnGetUsuarioId($id)
+	{
+		$qry = sprintf("SELECT `id`, `nombre`, `telefono`, `direccion`, `email`
+						FROM `Usuario`
+						WHERE `id` = %d
+						AND `estado` = 1
+						LIMIT 1", $id);
+		return $this->queryOne($qry);
+	}
+
+	public function FnGetEmpresaId($id)
+	{
+		$qry = sprintf("SELECT `id`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`
+								`descripcion`, `habilitado`
+					FROM `Empresa`
+					WHERE `id` = %d
+					AND `estado` = 1
+					LIMIT 1", $id);
 		return $this->queryOne($qry);
 	}
 
@@ -85,14 +113,14 @@ Class Access extends Database
 	{
 		$err = 0;
 
-		$access = $this->FnGetUsuario($email);
+		$access = $this->FnExisteUsuario($email);
 		if( $access )
 		{
 			//ENVIO CORREO
 			$err = -1;
 		}else{
 
-			$access = $this->FnGetEmpresa($email);
+			$access = $this->FnExisteEmpresa($email);
 			if( $access )
 			{
 				//ENVIO CORREO
@@ -107,5 +135,25 @@ Class Access extends Database
 		$err = 0;
 		if( session_destroy() ) $err = -1;
 		return $err;
+	}
+
+	/**
+		# PERFIL
+	*/
+
+	public function FnAdminGuardarPerfilUsuario($id, $nombre, $telefono, $direcion, $email, $pw)
+	{
+		$update_pw = (!empty($pw))? ' ,`pw` = "'.$pw.'" ' : '';
+		$qry = sprintf("UPDATE `Usuario`
+							SET `nombre` = '%s',
+							`telefono`   = '%s',
+							`direccion`  = '%s',
+							`email`      = '%s'
+							{$update_pw}
+						WHERE `id` = %d", 
+						$nombre, $telefono, $direcion, $email, $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		return 1;
 	}
 }
