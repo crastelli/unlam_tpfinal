@@ -1,17 +1,18 @@
 <?php
-require "../class/access.class.php";
-require "../class/function.class.php";
+require "../../config/ini.php";
 $ArrInfoPage = [ "page-title" => "Empresas", "menu-class" => "page-empresa" ];
 
-Fn::FnCheckAccess(1);
-Fn::FnCheckAccessAdmin();
+try {
+    Fn::FnCheckAccess(1);
+    Fn::FnCheckAccessAdmin();
+} catch (Exception $e) {
+    echo $e->getMessage();
+    die;
+}
+?>
 
-?>  
-
-<?php require "../template/admin_header.php"; ?>
-<?php require "../template/admin_menu.php"; ?>
-
-
+<?php require ROOT_DIR._DIR_TML_."admin_header.php"; ?>
+<?php require ROOT_DIR._DIR_TML_."admin_menu.php"; ?>
 
 <div class="container">
     <!-- left, vertical navbar & content -->
@@ -164,13 +165,4 @@ Fn::FnCheckAccessAdmin();
 </div>
 
 
-
-
-
-
-
-
-
-
-
-<?php require "../template/admin_footer.php"; ?>
+<?php require ROOT_DIR._DIR_TML_."admin_footer.php"; ?>

@@ -1,6 +1,5 @@
 <?php $ObjUs = (Object) $_SESSION["usuario"]; ?>
 
-
 <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar" role="navigation">
     <div class="container">
         <div class="row">

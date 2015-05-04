@@ -1,16 +1,19 @@
 <?php
-require "../class/access.class.php";
-require "../class/function.class.php";
+require "../../config/ini.php";
+
+try {
+    $objAccess = new Access;
+    Fn::FnCheckAccess(1);
+} catch (Exception $e) {
+    echo $e->getMessage();
+    die;
+}
+
 $ArrInfoPage = [ "page-title" => "Inicio", "menu-class" => "page-home" ];
+?>
 
-Fn::FnCheckAccess(1);
-
-?>  
-
-<?php require "../template/admin_header.php"; ?>
-<?php require "../template/admin_menu.php"; ?>
-
-
+<?php require ROOT_DIR._DIR_TML_."admin_header.php"; ?>
+<?php require ROOT_DIR._DIR_TML_."admin_menu.php"; ?>
 
 <div class="container">
     <!-- left, vertical navbar & content -->
@@ -45,14 +48,4 @@ Fn::FnCheckAccess(1);
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<?php require "../template/admin_footer.php"; ?>
+<?php require ROOT_DIR._DIR_TML_."admin_footer.php"; ?>

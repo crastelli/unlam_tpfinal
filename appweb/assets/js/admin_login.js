@@ -1,44 +1,39 @@
 $(function()
 {
-	$(document).mousemove(function(e){
-	 TweenLite.to($('body'), 
-	    .5, 
-	    { css: 
-	        {
-	            'background-position':parseInt(event.pageX/80) + "% "+parseInt(event.pageY/120)+"%, "+parseInt(event.pageX/150)+"% "+parseInt(event.pageY/150)+"%, "+parseInt(event.pageX/300)+"% "+parseInt(event.pageY/300)+"%"
-	        }
-	    });
-	});
-
-
 	$('.form-login').validator().on('submit', function (e)
 	{
 		if (!e.isDefaultPrevented())
 		{
 			e.preventDefault();
 
-			var $this = $(this),
-				$msg  = $('div.alert'),
-				varJSON = {
-							email : $this.find('input[name="email"]').val(),
-							pw    : $this.find('input[name="pw"]').val()
-							};
-			
-			$.post("ajax_function.php", { acc: 'admin-login', dataJSON: JSON.stringify(varJSON) })
-			.done(function(response)
-			{	
-				var JSON = $.parseJSON(response);
-				console.log(JSON);
-				if(JSON.codErr == 0)
-				{
-					location.reload(false);
-				}else{
-					$msg.removeClass();
-					$msg.addClass('alert alert-'+JSON.class);
-					$msg.find('span').text(JSON.msg);
-					$this.find('input[name="pw"]').val('');
-				}
-			});
+			var $msg  = $('div.alert'),
+				$form = $(this),
+				formData = new FormData( $form[0] );
+
+			formData.append("acc", "admin-login");
+
+			$.ajax({
+				url         : 'ajax_function.php',  
+				type        : 'POST',
+				data        : formData,
+				cache       : false,
+				contentType : false,
+				processData : false,				
+				success     : function(response)
+							{
+								var JSON = $.parseJSON(response);
+								console.log(JSON);
+								if(JSON.status["codErr"] == 0)
+								{
+									location.reload(false);
+								}else{
+									$msg.removeClass();
+									$msg.addClass('alert alert-'+JSON.status["class"]);
+									$msg.find('span').text(JSON.status["msg"]);
+									$form.find('input[name="pw"]').val('');
+								}
+			            	}
+        	});
 		}
 	});
 
@@ -49,22 +44,31 @@ $(function()
 		{
 			e.preventDefault();
 
-			var $this   = $(this),
-				$msg    = $('div.alert'),
-				varJSON = { email: $this.find('input[name="email"]').val() };
-			
-			$.post("ajax_function.php", { acc: 'admin-recuperarpw', dataJSON: JSON.stringify(varJSON) })
-			.done(function(response)
-			{	
-				var JSON = $.parseJSON(response);
-				$msg.removeClass();
-				$msg.addClass('alert alert-'+JSON.class);
-				$msg.find('span').text(JSON.msg);
-				if(JSON.codErr == -1)
-				{
-					$this.find('input[name="email"]').val('');
-				}
-			});
+			var $msg  = $('div.alert'),
+				$form = $(this),
+				formData = new FormData( $form[0] );
+
+			formData.append("acc", "admin-recuperarpw");
+
+			$.ajax({
+				url         : 'ajax_function.php',  
+				type        : 'POST',
+				data        : formData,
+				cache       : false,
+				contentType : false,
+				processData : false,				
+				success     : function(response)
+							{
+								var JSON = $.parseJSON(response);
+								$msg.removeClass();
+								$msg.addClass('alert alert-'+JSON.status["class"]);
+								$msg.find('span').text(JSON.status["msg"]);
+								if(JSON.status["codErr"] == -1)
+								{
+									$form.find('input[name="email"]').val('');
+								}
+			            	}
+        	});
 		}
 	}); 
 

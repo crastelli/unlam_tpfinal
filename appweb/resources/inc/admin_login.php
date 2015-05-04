@@ -1,12 +1,18 @@
 <?php
-require "../class/access.class.php";
-require "../class/function.class.php";
-$ArrInfoPage = [ "page-title" => "Login", "menu-class" => "" ];
+require "../../config/ini.php";
 
-Fn::FnCheckAccess(0);
+
+try {
+    Fn::FnCheckAccess(0);
+} catch (Exception $e) {
+    echo $e->getMessage();
+    die;
+}
+
+$ArrInfoPage = [ "page-title" => "Login", "menu-class" => "" ];
 ?>  
 
-<?php require "../template/admin_header.php"; ?>
+<?php require ROOT_DIR._DIR_TML_."admin_header.php"; ?>
 
 <div class="container">
     <div class="row vertical-offset-100">
@@ -69,11 +75,9 @@ Fn::FnCheckAccess(0);
 	</div>
 </div>
 
-<?php require "../template/admin_footer.php"; ?>
-
+<?php require ROOT_DIR._DIR_TML_."admin_footer.php"; ?>
 
 <!-- Custom styles for this template -->
-<link href="../../assets/css/admin_login.css" rel="stylesheet">
+<link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin_login.css" rel="stylesheet">
 <!-- Animacion js login -->
-<script src="../../assets/lib/TweenLite.min.js"></script>
-<script src="../../assets/js/admin_login.js"></script>
+<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/admin_login.js"></script>

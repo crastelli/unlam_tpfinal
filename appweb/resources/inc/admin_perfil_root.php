@@ -1,6 +1,18 @@
 <?php
 $data = $objAccess->FnGetUsuarioId(Fn::FnGetDatosAccess()->id);
 ?>
+
+<div class="row">
+    <div class="col-lg-12 content">
+        <div class="alert alert-info">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <span>
+                En esta sección se encuentra los datos de ingreso al panel para poder organizar y llevar a cabo la administración
+                de la aplicación.
+            </span>
+        </div>
+    </div>
+</div>
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -56,6 +68,15 @@ $data = $objAccess->FnGetUsuarioId(Fn::FnGetDatosAccess()->id);
                                 </div>
                             </div>
                             
+                           <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <span class="label label-default">
+                                        Las modificaciones tanto de email como de contraseña se verán reflejadas
+                                        en el próximo inicio de sesión.
+                                    </span>
+                                </div>
+                            </div>
+                                                        
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                   <div class="pull-right">
@@ -68,6 +89,7 @@ $data = $objAccess->FnGetUsuarioId(Fn::FnGetDatosAccess()->id);
                         
                         <!-- Hidden -->
                         <input type="hidden" name="id" value="<?php echo (isset($data->id))? $data->id : ''; ?>">
+                        <!-- -->
                     </form>
                 </div>
                 

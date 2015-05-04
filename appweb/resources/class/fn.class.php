@@ -1,5 +1,4 @@
 <?php
-
 Abstract Class Fn
 {
 	static $page_login      = 'admin_login.php';
@@ -11,9 +10,9 @@ Abstract Class Fn
 	{
 		if(!isset($_SESSION["usuario"]))
 		{
-			if($access != 0) header("Location: " . Fn::$page_login);
+			if($access != 0) header("Location: " . BASE_URL._DIR_INC_.Fn::$page_login);
 		}else{
-			if($access == 0) header("Location: " . Fn::$page_home_panel);
+			if($access == 0) header("Location: " . BASE_URL._DIR_INC_.Fn::$page_home_panel);
 		}
 	}
 	//Incluir este metodo en las paginas restringidas por los usuarios comunes ( no root )	
@@ -21,11 +20,11 @@ Abstract Class Fn
 	{
 		if(!isset($_SESSION["usuario"]))
 		{
-			header("Location: " . Fn::$page_login);
+			header("Location: " . BASE_URL._DIR_INC_.Fn::$page_login);
 		}else{
 			if($_SESSION["usuario"]["root"] == 0)
 			{
-				header("Location: " . Fn::$page_home_panel);
+				header("Location: " . BASE_URL._DIR_INC_.Fn::$page_home_panel);
 			}
 		}
 	}
@@ -61,7 +60,7 @@ Abstract Class Fn
 						switch ($err)
 						{
 							case 1:
-									$obj->msg   = 'Error al ingresar los datos.';
+									$obj->msg   = 'ERROR: al ingresar los datos.';
 									$obj->class = 'danger';
 									break;
 							case 0:
@@ -76,11 +75,11 @@ Abstract Class Fn
 						switch ($err)
 						{
 							case -1:
-									$obj->msg   = 'Datos enviados, revice su casilla de correo';
+									$obj->msg   = 'AVISO: Datos enviados, revice su casilla de correo';
 									$obj->class = 'success';
 									break;							
 							case 1:
-									$obj->msg   = 'Error al ingresar los datos.';
+									$obj->msg   = 'ERROR: al ingresar los datos.';
 									$obj->class = 'danger';
 									break;
 							case 0:
@@ -94,12 +93,38 @@ Abstract Class Fn
 						switch ($err)
 						{
 							case -1:
-									$obj->msg   = 'Datos guardatos con éxito.';
+									$obj->msg   = 'AVISO: Datos guardatos con éxito.';
 									$obj->class = 'success';
 									break;							
 							case 1:
-									$obj->msg   = 'Error al ingresar los datos.';
+									$obj->msg   = 'ERROR: al ingresar los datos.';
 									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-perfil-empresa':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Datos guardatos con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							case 2:
+									$obj->msg   = 'ADVERTENCIA: Ya existe una empresa registrada con el mismo email.';
+									$obj->class = 'warning';
+									break;
+							case 3:
+									$obj->msg   = 'ADVERTENCIA: El archivo que intenta subir debe ser una imagen (JPG, PNG) menor a 1MG';
+									$obj->class = 'warning';
+									break;
+							case 4:
+									$obj->msg   = 'ADVERTENCIA: Hubo un error al intentar subir el archivo.';
+									$obj->class = 'warning';
 									break;
 							default:break;
 						}
