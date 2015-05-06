@@ -172,7 +172,7 @@ function uploadFile($archivo, $path)
 	{
 		$num_rand       = explode(" ", microtime());
 		$num_rand       = substr($num_rand[1], -3);
-		$archivo_nombre = $num_rand."-".Fn::FnParseString(str_replace(" ", "", basename($archivo['name'])));
+		$archivo_nombre = $num_rand."_".Fn::FnParseString(str_replace(" ", "", basename($archivo['name'])));
 		$temporal       = $archivo['tmp_name'];
 		$tamano         = ($archivo['size'] / 1000 / 1000);
 		$type           = $archivo['type'];
@@ -183,6 +183,13 @@ function uploadFile($archivo, $path)
 			if (!move_uploaded_file($temporal, ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre))
 			{
 				$err = 4;
+			}else{
+				// Si la imagen subió la achico a un tamaño general para el logo
+				list($ancho, $alto) = getimagesize(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
+				$archivo_nombre_n = "logo".$archivo_nombre;
+				resizeImagen(ROOT_DIR._DIR_UPLOAD_.$path, $archivo_nombre, 250, 250, $archivo_nombre_n, $type);
+			    @unlink(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
+			    $archivo_nombre = $archivo_nombre_n; // asi guardo en la db el nombre que quedo en la img
 			}
 		}else{
 			$err = 3;
@@ -192,3 +199,46 @@ function uploadFile($archivo, $path)
 	return ['archivo_nombre' => $archivo_nombre, 'err' => $err];
 }
 // <--
+
+
+// Funcion para achicar la imagen
+function resizeImagen($ruta, $foto, $alto, $ancho, $foto_n, $ext)
+{
+    
+    $rutaImagenOriginal = $ruta._DS_.$foto;
+    switch ($ext)
+    {
+    	case 'image/png'	: $img_original = imagecreatefrompng($rutaImagenOriginal);
+    						  break;
+    	case 'image/jpeg'   :
+    	default 			: $img_original = imagecreatefromjpeg($rutaImagenOriginal);
+    						  break;
+    }
+
+ 	$max_ancho = $ancho;
+    $max_alto = $alto;
+
+    list($ancho,$alto) = getimagesize($rutaImagenOriginal);
+    $x_ratio = $max_ancho / $ancho;
+    $y_ratio = $max_alto / $alto;
+
+    if( ($ancho <= $max_ancho) && ($alto <= $max_alto) )
+    {
+    	$ancho_final = $ancho;
+        $alto_final = $alto;
+    } elseif (($x_ratio * $alto) < $max_alto)
+    {
+        $alto_final = ceil($x_ratio * $alto);
+        $ancho_final = $max_ancho;
+    } else{
+        $ancho_final = ceil($y_ratio * $ancho);
+        $alto_final = $max_alto;
+    }
+
+    $tmp=imagecreatetruecolor($ancho_final,$alto_final);
+
+    imagecopyresampled($tmp,$img_original,0,0,0,0,$ancho_final, $alto_final,$ancho,$alto);
+    imagedestroy($img_original);
+    $calidad=70;
+    imagejpeg($tmp,$ruta._DS_.$foto_n,$calidad); 
+}

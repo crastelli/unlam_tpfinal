@@ -51,7 +51,7 @@ $data = $objAccess->FnGetEmpresaId(Fn::FnGetDatosAccess()->id);
                                 <label class="col-sm-2 control-label" for="textinput">Logo</label>
                                 <div class="col-sm-5">
                                   <input type="file" name="logo" id="logo" class="form-control">
-                                  <i class="glyphicon glyphicon-warning-sign"></i> Solo archivo jpg/png. Máx. 1mg
+                                  <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg
                                 </div>
                                 <div class="col-sm-5 container-img" data-path="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/">
                                     <?php if(isset($data->logo)): ?>

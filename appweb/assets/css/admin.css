@@ -3,3 +3,4 @@ body { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAA
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }
 .alert-aviso{ display: none}
+form.form-perfil-empresa .container-img > img{ border: 1px solid gray;border-radius:4px;}

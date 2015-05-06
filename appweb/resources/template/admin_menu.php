@@ -21,9 +21,11 @@
 						<?php else: ?>
 							<li class="page-home <?php echo ($ArrInfoPage['menu-class'] == 'page-home')? 'active' : ''; ?>"> <a href="admin_home.php">Inicio</a> </li>
 							<li class="page-perfil <?php echo ($ArrInfoPage['menu-class'] == 'page-perfil')? 'active' : ''; ?>"> <a href="admin_perfil.php">Mi perfíl</a> </li>
-							<li class="page-empresa <?php echo ($ArrInfoPage['menu-class'] == 'page-empresa')? 'active' : ''; ?>"> <a href="admin_empresa.php">Empresas</a> </li>
+                            <li class="page-zona <?php echo ($ArrInfoPage['menu-class'] == 'page-zona')? 'active' : ''; ?>"> <a href="admin_zona.php">Zonas</a> </li>
+							<li class="page-rubro <?php echo ($ArrInfoPage['menu-class'] == 'page-rubro')? 'active' : ''; ?>"> <a href="admin_rubro.php">Rubros</a> </li>
+                            <li class="page-empresa <?php echo ($ArrInfoPage['menu-class'] == 'page-empresa')? 'active' : ''; ?>"> <a href="admin_empresa.php">Empresas</a> </li>
 						<?php endif; ?>
-							<li><a href="javascript:void(0);" class="btn-logout">Cerrar sesión</a></li>
+							<li><a href="javascript:void(0);" class="btn-logout">Salir</a></li>
 						</ul>
 						                        
                         
