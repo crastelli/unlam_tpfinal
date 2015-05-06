@@ -20,7 +20,7 @@ $(function()
 	});	
 
 
-	$('body').on('click', '.form-perfil-usuario .guardar', function(e)
+	$('body').on('click', '.form-perfil-admin .guardar', function(e)
 	{
 		e.preventDefault();
 		var $msg = $('div.alert-aviso');
@@ -30,10 +30,10 @@ $(function()
 		{
 			if(result)
 			{
-				var $form    = $('.form-perfil-usuario'),
+				var $form    = $('.form-perfil-admin'),
 					formData = new FormData( $form[0] );
 
-				formData.append("acc", "admin-perfil-usuario");
+				formData.append("acc", "admin-perfil-admin");
 
 				$.ajax({
 					url         : 'ajax_function.php',  
@@ -81,24 +81,30 @@ $(function()
 					contentType : false,
 					processData : false,
 					success     : function(response)
-								{									
+								{															
 									var JSON = $.parseJSON(response);
 									$msg.removeClass();
 									$msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
 									$msg.find('span').text(JSON.status["msg"]);
 									$msg.show();
 									$form.find('input[name="pw"]').val('');
+									$form.find('input[name="logo"]').val('');
+
 									// Cuando actualizo una imagen la actualizo en la vista
 									var path_upload = $form.find('div.container-img').data("path");
-									if( $form.find('div.container-img > img').length > 0)
+
+									if(JSON.data_extra["logo"] != '')
 									{
-										$form.find('div.container-img > img').attr("src", path_upload+JSON.data_extra["logo"]);
-									}else{
-										// En el caso de que sea la primera carga de la imagen creo la misma cuando la suba
-										var img = $('<img>');
-										img.attr('src', path_upload+JSON.data_extra["logo"]);
-										img.attr('width', '100px');
-										$form.find('div.container-img').html(img);
+										if( $form.find('div.container-img > img').length > 0)
+										{
+											$form.find('div.container-img > img').attr("src", path_upload+JSON.data_extra["logo"]);
+										}else{
+											// En el caso de que sea la primera carga de la imagen creo la misma cuando la suba
+											var img = $('<img>');
+											img.attr('src', path_upload+JSON.data_extra["logo"]);
+											img.attr('width', '100px');
+											$form.find('div.container-img').html(img);
+										}
 									}
 				            	}
 	        	});

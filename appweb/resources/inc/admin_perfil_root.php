@@ -1,5 +1,6 @@
 <?php
-$data = $objAccess->FnGetUsuarioId(Fn::FnGetDatosAccess()->id);
+$Admin = new Admin;
+$data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
 ?>
 
 <div class="row">
@@ -25,7 +26,7 @@ $data = $objAccess->FnGetUsuarioId(Fn::FnGetDatosAccess()->id);
                     
                     <div class="alert alert-aviso"><span></span></div>
                     
-                    <form accept-charset="UTF-8" role="form" class="form-horizontal form-perfil-usuario" data-toggle="validator">
+                    <form accept-charset="UTF-8" role="form" class="form-horizontal form-perfil-admin" data-toggle="validator">
                         <fieldset>
 
                             <!-- Form Name -->

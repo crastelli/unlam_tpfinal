@@ -4,15 +4,15 @@ Abstract Class Fn
 	static $page_login      = 'admin_login.php';
 	static $page_home_panel = 'admin_home.php';
 
-	//access => 0 (PAGINA DE LOGEO)
-	//access => 1 (PAGINAS INTERNAS DE LA APP - TODO EL RESTO QUE NO SEA LOGIN)
-	static function FnCheckAccess($access=0)
+	//acceso => 0 (PAGINA DE LOGEO)
+	//acceso => 1 (PAGINAS INTERNAS DE LA APP - TODO EL RESTO QUE NO SEA LOGIN)
+	static function FnCheckAccess($acceso=0)
 	{
 		if(!isset($_SESSION["usuario"]))
 		{
-			if($access != 0) header("Location: " . BASE_URL._DIR_INC_.Fn::$page_login);
+			if($acceso != 0) header("Location: " . BASE_URL._DIR_INC_.Fn::$page_login);
 		}else{
-			if($access == 0) header("Location: " . BASE_URL._DIR_INC_.Fn::$page_home_panel);
+			if($acceso == 0) header("Location: " . BASE_URL._DIR_INC_.Fn::$page_home_panel);
 		}
 	}
 	//Incluir este metodo en las paginas restringidas por los usuarios comunes ( no root )	
@@ -89,7 +89,7 @@ Abstract Class Fn
 									break;
 						}
 						break;
-			case 'admin-perfil-usuario':
+			case 'admin-perfil-admin':
 						switch ($err)
 						{
 							case -1:
@@ -134,6 +134,88 @@ Abstract Class Fn
 		}
 
 		return $obj;
+	}
+
+
+	// SUBIDA DE ARCHIVOS -->
+	static function uploadFile($archivo, $path)
+	{
+		$err            = -1;
+		$archivo_nombre = '';
+
+		if($archivo["error"] == UPLOAD_ERR_OK)
+		{
+			$num_rand       = explode(" ", microtime());
+			$num_rand       = substr($num_rand[1], -3);
+			$archivo_nombre = $num_rand."_".Fn::FnParseString(str_replace(" ", "", basename($archivo['name'])));
+			$temporal       = $archivo['tmp_name'];
+			$tamano         = ($archivo['size'] / 1000 / 1000);
+			$type           = $archivo['type'];
+			$ext_permitidas = array("image/jpeg", "image/png");
+
+			if( in_array($type, $ext_permitidas) && $tamano <= 1)
+			{
+				if (!move_uploaded_file($temporal, ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre))
+				{
+					$err = 4;
+				}else{
+					// Si la imagen subió la achico a un tamaño general para el logo
+					list($ancho, $alto) = getimagesize(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
+					$archivo_nombre_n = "logo".$archivo_nombre;
+					Fn::resizeImagen(ROOT_DIR._DIR_UPLOAD_.$path, $archivo_nombre, 250, 250, $archivo_nombre_n, $type);
+				    @unlink(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
+				    $archivo_nombre = $archivo_nombre_n; // asi guardo en la db el nombre que quedo en la img
+				}
+			}else{
+				$err = 3;
+			}
+		}
+
+		return ['archivo_nombre' => $archivo_nombre, 'err' => $err];
+	}
+	// <--
+
+
+	// Funcion para achicar la imagen
+	static function resizeImagen($ruta, $foto, $alto, $ancho, $foto_n, $ext)
+	{
+	    
+	    $rutaImagenOriginal = $ruta._DS_.$foto;
+	    switch ($ext)
+	    {
+	    	case 'image/png'	: $img_original = imagecreatefrompng($rutaImagenOriginal);
+	    						  break;
+	    	case 'image/jpeg'   :
+	    	default 			: $img_original = imagecreatefromjpeg($rutaImagenOriginal);
+	    						  break;
+	    }
+
+	 	$max_ancho = $ancho;
+	    $max_alto = $alto;
+
+	    list($ancho,$alto) = getimagesize($rutaImagenOriginal);
+	    $x_ratio = $max_ancho / $ancho;
+	    $y_ratio = $max_alto / $alto;
+
+	    if( ($ancho <= $max_ancho) && ($alto <= $max_alto) )
+	    {
+	    	$ancho_final = $ancho;
+	        $alto_final = $alto;
+	    } elseif (($x_ratio * $alto) < $max_alto)
+	    {
+	        $alto_final = ceil($x_ratio * $alto);
+	        $ancho_final = $max_ancho;
+	    } else{
+	        $ancho_final = ceil($y_ratio * $ancho);
+	        $alto_final = $max_alto;
+	    }
+
+	    $tmp=imagecreatetruecolor($ancho_final,$alto_final);
+
+	    imagecopyresampled($tmp,$img_original,0,0,0,0,$ancho_final, $alto_final,$ancho,$alto);
+	    imagedestroy($img_original);
+	    $calidad=70;
+	    imagejpeg($tmp,$ruta._DS_.$foto_n,$calidad); 
 	}
 
 

@@ -2,7 +2,6 @@
 require "../../config/ini.php";
 
 try {
-    $objAccess = new Access;
     Fn::FnCheckAccess(1);
 } catch (Exception $e) {
     echo $e->getMessage();

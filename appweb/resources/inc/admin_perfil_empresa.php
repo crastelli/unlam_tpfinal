@@ -1,5 +1,6 @@
 <?php
-$data = $objAccess->FnGetEmpresaId(Fn::FnGetDatosAccess()->id);
+$Empresa = new Empresa;
+$data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
 ?>
 
 <div class="row">
