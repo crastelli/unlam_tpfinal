@@ -2,10 +2,12 @@
 
 Class Empresa extends Usuario
 {
+	private $nombre_referente;
+	private $dni_referente;
 	private $razon_social;
 	private $logo;
 	private $descripcion;
-	private $destacado;
+	private $es_premium;
 	private $habilitado;
 
 	public function FnLogin($email, $pw)
@@ -33,7 +35,7 @@ Class Empresa extends Usuario
 
 	public function FnGetById($id)
 	{
-		$qry = sprintf("SELECT `id`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`,
+		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`,
 								`descripcion`, `habilitado`
 					FROM `Empresa`
 					WHERE `id` = %d
@@ -61,11 +63,11 @@ Class Empresa extends Usuario
 		return $err;
 	}
 
-	public function FnGuardarPerfil($id, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
+	public function FnGuardarPerfil($id, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
 	{
 		$err = -1;
 		$logo_ant = '';
-		
+
 		if(!$this->FnExistente($id, $email))
 		{
 			// Si viene un logo, guardo el anterior para despues borrarlo
@@ -79,16 +81,18 @@ Class Empresa extends Usuario
 			$update_pw   = (!empty($pw))? ' ,`pw` = "'.$pw.'" ' : '';
 			$update_logo = (!empty($logo))? ' ,`logo` = "'.$logo.'" ' : '';
 			$qry = sprintf("UPDATE `Empresa`
-								SET `nombre`   = '%s',
-								`razon_social` = '%s',
-								`telefono`     = '%s',
-								`direccion`    = '%s',
-								`descripcion`  = '%s',
-								`email`        = '%s'
+								SET `nombre_referente` = '%s',
+								`dni_referente`        = '%s',
+								`nombre`               = '%s',
+								`razon_social`         = '%s',
+								`telefono`             = '%s',
+								`direccion`            = '%s',
+								`descripcion`          = '%s',
+								`email`                = '%s'
 								{$update_pw}
 								{$update_logo}
 							WHERE `id` = %d", 
-							$nombre, $razon_social, $telefono, $direccion, $descripcion, $email, $id);
+							$nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $email, $id);
 			$update = $this->execute($qry, "update");
 			if(!$update) $err = 1;
 			else{

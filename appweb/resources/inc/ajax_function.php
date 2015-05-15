@@ -152,19 +152,21 @@ function FnAdminPerfilEmpresa()
 	if(isset($_POST["id"]))
 	{
 		// POST -->
-		$id           = $_POST["id"];
-		$nombre       = $_POST["nombre"];
-		$razon_social = $_POST["razon_social"];
-		$telefono     = $_POST["telefono"];
-		$direccion    = $_POST["direccion"];
-		$descripcion  = $_POST["descripcion"];
-		$archivo      = $_FILES["logo"];
-		$email        = trim(strtolower($_POST["email"]));
-		$pw           = $_POST["pw"];
-		$acc          = $_POST["acc"];
+		$id               = $_POST["id"];
+		$nombre           = $_POST["nombre"];
+		$nombre_referente = $_POST["nombre_referente"];
+		$dni_referente    = $_POST["dni_referente"];		
+		$razon_social     = $_POST["razon_social"];
+		$telefono         = $_POST["telefono"];
+		$direccion        = $_POST["direccion"];
+		$descripcion      = $_POST["descripcion"];
+		$archivo          = $_FILES["logo"];
+		$email            = trim(strtolower($_POST["email"]));
+		$pw               = $_POST["pw"];
+		$acc              = $_POST["acc"];
 		// <!--
-
-		$upload       = Fn::uploadFile($archivo, "logo_empresa");
+		
+		$upload           = Fn::uploadFile($archivo, "logo_empresa");
 		 
 		if($upload["err"] == -1) $logo = $upload["archivo_nombre"];
 		else{
@@ -173,7 +175,7 @@ function FnAdminPerfilEmpresa()
 			return json_encode($returnJSON);
 		}
 
-		$err = $Empresa->FnGuardarPerfil($id, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+		$err = $Empresa->FnGuardarPerfil($id, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 

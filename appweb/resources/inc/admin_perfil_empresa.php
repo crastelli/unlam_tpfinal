@@ -31,9 +31,25 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                         <fieldset>
 
                             <!-- Form Name -->
-                            <legend>Mis datos</legend>
+                            <legend>Datos referente</legend>
                             
                             <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Nombre referente</label>
+                                <div class="col-sm-4">
+                                  <input type="text" placeholder="Ingrese un nombre" class="form-control" name="nombre_referente" value="<?php echo (isset($data->nombre_referente))? $data->nombre_referente : ''; ?>" data-match-error required>
+                                  <div class="help-block with-errors"></div>
+                                </div>
+
+                                <label class="col-sm-2 control-label" for="textinput">DNI referente</label>
+                                <div class="col-sm-4">
+                                  <input type="text" placeholder="Ingrese una razón social" class="form-control" name="dni_referente" value="<?php echo (isset($data->dni_referente))? $data->dni_referente : ''; ?>" data-match-error required>
+                                  <div class="help-block with-errors"></div>
+                                </div>                                
+                            </div>
+                                   
+                            <legend>Datos comercio</legend>
+                                                  
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Nombre</label>
                                 <div class="col-sm-4">
