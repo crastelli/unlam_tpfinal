@@ -1,5 +1,38 @@
-*{ margin: 0; padding: 0; }
-html, body, #map{
-    width: 500px;
-    height: 500px;
+@media screen {
+    #mapa {
+        width: 100%;
+        height: 100%;
+        position: fixed !important;/*Para que la API de Google no ponga su propio estilo*/
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    #banner {
+        margin-bottom: 1.5em;
+    }
+    #contenedor {
+        position: relative;
+        margin-bottom: 4em;/*Necesario para que la nav, que tiene position fixed, no tape el final de la página*/
+    }
+    #modalFotosVideos h2 {font-size: 1em }
+    #contenido {
+        background-color: rgba(255, 255, 255, .75);
+    }
+    #nav {
+        font-weight: 700;
+        background-color: #01C9EB;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+    #nav ul {
+        margin: 0;
+    }
+    #nav a {
+        color: #000;
+        padding: .5em;
+        display: block;
+    }
 }

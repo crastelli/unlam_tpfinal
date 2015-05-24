@@ -1,11 +1,16 @@
-function fCargarMapa(){
+$(function(){
+	fCargarMapa();
+});
+
+function fCargarMapa()
+{
     var popup;
-    var n=1;
+    var n = 1;
     var options = {
-        zoom: 9
-        , center: new google.maps.LatLng(18.2, -66.5)
-        , disableDefaultUI: true
+        zoom: 11,
+        center: new google.maps.LatLng(-34.612727, -58.445734),
+        disableDefaultUI: true
     };
  
-    var map = new google.maps.Map(document.getElementById('map'), options);
-};
+    var map = new google.maps.Map(document.getElementById('mapa'), options);
+}
