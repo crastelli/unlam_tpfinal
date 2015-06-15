@@ -22,8 +22,8 @@
   
 <body>
     <div id="contenedor" class="container">
-        <div class="row">
-            <header id="banner" class="col-xs-12" role="banner">
+        <header id="banner" class="row">
+            <div class="col-xs-12" role="banner">
                     <img src="<?php echo BASE_URL._DIR_ASSETS_; ?>images/logo-milugar.png" width="185" height="60"><a href="#contenido" class="sr-only sr-only-focusable">Saltar al contenido</a>
-            </header>
-        </div>
+            </div>
+        </header>

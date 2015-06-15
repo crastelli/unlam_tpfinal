@@ -5,22 +5,24 @@
         position: fixed !important;/*Para que la API de Google no ponga su propio estilo*/
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: -1;/*Para que se vea el fondo de las ventanas modales*/
     }
-    #banner {
-        margin-bottom: 1.5em;
-    }
+	#banner img {
+		margin-left: -15px;
+		padding: 7px 14px 14px;
+		box-sizing: content-box;/*Sobreponiendo el box-sizing aplicado por bootstrap*/
+	}
     #contenedor {
         position: relative;
-        margin-bottom: 4em;/*Necesario para que la nav, que tiene position fixed, no tape el final de la página*/
+        margin-bottom: 4em;/*Necesario para que la nav, que tiene position:fixed, no tape el final de la página*/
     }
     #modalFotosVideos h2 {font-size: 1em }
-    #contenido {
+    #banner img, #contenido {
         background-color: rgba(255, 255, 255, .75);
     }
     #nav {
         font-weight: 700;
-        background-color: #01C9EB;
+        background-color: rgba(1, 201, 235, .5);
         width: 100%;
         position: fixed;
         left: 0;
@@ -35,4 +37,9 @@
         padding: .5em;
         display: block;
     }
+}
+@media screen and (min-width: 992px) {
+	#contenedor {
+		margin: 0;/*Sobreponiendo el margin de .container*/
+	}
 }

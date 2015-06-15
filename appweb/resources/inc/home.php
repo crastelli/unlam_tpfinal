@@ -3,7 +3,7 @@
 
 
 <div class="row" class="contenido-gral ajaxContainer">
-	<main id="contenido" class="col-xs-12" role="main">
+	<main id="contenido" class="col-xs-12 col-md-6" role="main">
 		<article>
 			<form action="index.html" class="form-inline">
 				<div class="form-group">
