@@ -1,5 +1,5 @@
 <?php require "../../config/ini.php"; ?>
-<?php require ROOT_DIR._DIR_TML_."header.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."header.php"; ?>
 
 
 <div class="row" class="contenido-gral ajaxContainer">
@@ -18,4 +18,4 @@
 	</main>
 </div>
 
-<?php require ROOT_DIR._DIR_TML_."footer.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."footer.php"; ?>

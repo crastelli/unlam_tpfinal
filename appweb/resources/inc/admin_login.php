@@ -10,7 +10,7 @@ try {
 $ArrInfoPage = [ "page-title" => "Login", "menu-class" => "" ];
 ?>  
 
-<?php require ROOT_DIR._DIR_TML_."admin_header.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."admin_header.php"; ?>
 
 <div class="container">
     <div class="row vertical-offset-100">
@@ -73,7 +73,7 @@ $ArrInfoPage = [ "page-title" => "Login", "menu-class" => "" ];
 	</div>
 </div>
 
-<?php require ROOT_DIR._DIR_TML_."admin_footer.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."admin_footer.php"; ?>
 
 <!-- Custom styles for this template -->
 <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin_login.css" rel="stylesheet">

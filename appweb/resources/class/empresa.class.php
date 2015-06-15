@@ -6,9 +6,13 @@ Class Empresa extends Usuario
 	private $dni_referente;
 	private $razon_social;
 	private $logo;
+	private $idzona;
+	private $idrubro;
+	private $latitud;
+	private $longitud;
 	private $descripcion;
-	private $es_premium;
 	private $habilitado;
+	private $es_premium;
 
 	public function FnLogin($email, $pw)
 	{
@@ -36,8 +40,8 @@ Class Empresa extends Usuario
 	public function FnGetById($id)
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`
-					FROM `Empresa`
+								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
+ 					FROM `Empresa`
 					WHERE `id` = %d
 					AND `estado` = 1
 					LIMIT 1", $id);
@@ -63,7 +67,7 @@ Class Empresa extends Usuario
 		return $err;
 	}
 
-	public function FnGuardarPerfil($id, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
+	public function FnGuardarPerfil($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
 	{
 		$err = -1;
 		$logo_ant = '';
@@ -88,11 +92,14 @@ Class Empresa extends Usuario
 								`telefono`             = '%s',
 								`direccion`            = '%s',
 								`descripcion`          = '%s',
-								`email`                = '%s'
+								`email`                = '%s',
+								`idzona`               = %d,
+								`idrubro`              = %d, 
+								`lat_long`             = '%s'
 								{$update_pw}
 								{$update_logo}
 							WHERE `id` = %d", 
-							$nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $email, $id);
+							$nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $email, $idzona, $idrubro, $lat_long, $id);
 			$update = $this->execute($qry, "update");
 			if(!$update) $err = 1;
 			else{

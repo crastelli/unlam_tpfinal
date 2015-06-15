@@ -11,8 +11,8 @@ try {
 $ArrInfoPage = [ "page-title" => "Inicio", "menu-class" => "page-home" ];
 ?>
 
-<?php require ROOT_DIR._DIR_TML_."admin_header.php"; ?>
-<?php require ROOT_DIR._DIR_TML_."admin_menu.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."admin_header.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."admin_menu.php"; ?>
 
 <div class="container">
     <!-- left, vertical navbar & content -->
@@ -47,4 +47,4 @@ $ArrInfoPage = [ "page-title" => "Inicio", "menu-class" => "page-home" ];
     </div>
 </div>
 
-<?php require ROOT_DIR._DIR_TML_."admin_footer.php"; ?>
+<?php require ROOT_DIR._DIR_TMP_."admin_footer.php"; ?>

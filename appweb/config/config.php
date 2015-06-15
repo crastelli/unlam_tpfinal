@@ -10,7 +10,7 @@ define('_DS_', DIRECTORY_SEPARATOR);
 define('_DIR_ASSETS_', 'appweb'._DS_.'assets'._DS_);
 define('_DIR_INC_', 'appweb'._DS_.'resources'._DS_.'inc'._DS_);
 define('_DIR_CLASS_', 'appweb'._DS_.'resources'._DS_.'class'._DS_);
-define('_DIR_TML_', 'appweb'._DS_.'resources'._DS_.'template'._DS_);
+define('_DIR_TMP_', 'appweb'._DS_.'resources'._DS_.'template'._DS_);
 define('_DIR_UPLOAD_', 'appweb'._DS_.'upload'._DS_);
 
 define('ENVIRONMENT', 'development');

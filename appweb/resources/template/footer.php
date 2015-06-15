@@ -16,7 +16,7 @@
 <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/jquery.min.js"></script>
 
 <!-- Google Maps -->
-<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false&amp;language=es"></script>
+<script src="//maps.google.com/maps/api/js?sensor=false&amp;language=es&libraries=places"></script>
 
 <!-- Bootstrap core JS -->
 <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>

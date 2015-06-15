@@ -72,7 +72,6 @@ $(function()
 					formData = new FormData( $form[0] );
 
 				formData.append("acc", "admin-perfil-empresa");
-
 				$.ajax({
 					url         : 'ajax_function.php',  
 					type        : 'POST',

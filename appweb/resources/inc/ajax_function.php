@@ -13,7 +13,7 @@ try {
 
 if(empty($_POST))
 {
-	header("Location: ".BASE_URL._DIR_TML_."404.php");
+	header("Location: ".BASE_URL._DIR_TMP_."404.php");
 	die;
 }
 
@@ -159,10 +159,14 @@ function FnAdminPerfilEmpresa()
 		$razon_social     = $_POST["razon_social"];
 		$telefono         = $_POST["telefono"];
 		$direccion        = $_POST["direccion"];
+		$lat_long         = $_POST["lat_long"];
+		$idzona           = $_POST["idzona"];
+		$idrubro          = $_POST["idrubro"];
 		$descripcion      = $_POST["descripcion"];
 		$archivo          = $_FILES["logo"];
 		$email            = trim(strtolower($_POST["email"]));
 		$pw               = $_POST["pw"];
+		$logo             = null;
 		$acc              = $_POST["acc"];
 		// <!--
 		
@@ -175,7 +179,7 @@ function FnAdminPerfilEmpresa()
 			return json_encode($returnJSON);
 		}
 
-		$err = $Empresa->FnGuardarPerfil($id, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+		$err = $Empresa->FnGuardarPerfil($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 

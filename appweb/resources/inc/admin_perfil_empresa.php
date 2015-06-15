@@ -1,5 +1,7 @@
 <?php
 $Empresa = new Empresa;
+$Rubro   = new Rubro;
+$Zona   = new Zona;
 $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
 ?>
 
@@ -48,8 +50,8 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 </div>                                
                             </div>
                                    
-                            <legend>Datos comercio</legend>
-                                                  
+                            <legend>Datos comercio</legend>                                                  
+                            
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Nombre</label>
                                 <div class="col-sm-4">
@@ -82,24 +84,15 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Breve descripción</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-4">
                                   <textarea placeholder="Ingrese una breve descripción" class="form-control" name="descripcion"><?php echo (isset($data->descripcion))? $data->descripcion : ''; ?></textarea>
                                 </div>
-                            </div>
-                            
-                            <!-- Text input-->
-                            <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Teléfono</label>
                                 <div class="col-sm-4">
                                   <input type="text" placeholder="Ingrese un teléfono" class="form-control" name="telefono" value="<?php echo (isset($data->telefono))? $data->telefono : ''; ?>">
                                 </div>
-
-                                <label class="col-sm-2 control-label" for="textinput">Dirección</label>
-                                <div class="col-sm-4">
-                                  <input type="text" placeholder="Ingrese una dirección" class="form-control" name="direccion" value="<?php echo (isset($data->direccion))? $data->direccion : ''; ?>">
-                                </div>
                             </div>
-
+                    
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="textinput">Email (usuario)</label>
@@ -117,7 +110,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                     <i class="glyphicon glyphicon-ok"></i> password cargada
                                 </div>
                             </div>
-                                
+                            
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <span class="label label-default">
@@ -127,15 +120,55 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 </div>
                             </div>
                             
+                            <legend>Ubicación y especificación de búsqueda</legend>
+                                          
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Zona</label>
+                                <div class="col-sm-4">
+                                    <select name="idzona" class="form-control">
+                                        <option value="-1">-Seleccione-</option>
+                                        <?php foreach($Zona->getZonas() as $row): ?>
+                                            <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idzona) && $data->idzona == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <label class="col-sm-2 control-label" for="textinput">Rubro</label>
+                                <div class="col-sm-4">
+                                    <select name="idrubro" class="form-control">
+                                        <option value="-1">-Seleccione-</option>
+                                       <?php foreach($Rubro->getRubros() as $row): ?>
+                                            <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idrubro) && $data->idrubro == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>                               
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="textinput">Dirección</label>
+                                <div class="col-sm-4">
+                                    <input type="text" placeholder="Ingrese una dirección" class="form-control" name="direccion" value="<?php echo (isset($data->direccion))? $data->direccion : ''; ?>" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <label class="col-sm-2 control-label" for="textinput">Latitud / Longitud</label>
+                                <div class="col-sm-4">
+                                    <input type="text" placeholder="-" class="form-control" readonly name="lat_long" value="<?php echo (isset($data->lat_long) && $data->lat_long != '')? $data->lat_long : ''; ?>">
+                                </div>
+                                <div class="col-sm-12">
+                                    <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+                                    <div id="mapa"></div>
+                                </div>  
+                            </div>
+                        
+                                                                                                                                  
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                   <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary guardar">Guardar</button>
+                                    <a href="#" class="btn btn-primary guardar">Guardar</a>
                                   </div>
                                 </div>
                             </div>
-                            
-
                         </fieldset>
 
                         <!-- Hidden -->
@@ -148,3 +181,59 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
         </div>
     </div>
 </div>
+<script type="text/javascript"> window.onload = function() { fCargarMapa($('input[name="lat_long"]').val()); } </script>
+
+
+<style type="text/css">
+
+  #mapa {
+    height: 400px;
+    margin: 0px;
+    padding: 0px
+  }
+  .controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+  }
+
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
+  .pac-container {
+    font-family: Roboto;
+  }
+
+  #type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+  }
+
+  #type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
+  #target {
+    width: 345px;
+  }
+
+</style>
