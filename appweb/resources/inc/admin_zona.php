@@ -18,9 +18,9 @@ try {
     <!-- left, vertical navbar & content -->
     <div class="row">
         <!-- content -->
-        <div class="col-md-12">
+        <div class="col-xs-12">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xs-12">
                     <div class="page-header">
                         <h1><?php echo $ArrInfoPage["page-title"]; ?></h1>
                     </div>
@@ -28,7 +28,7 @@ try {
             </div>
 
             <div class="row">
-                <div class="col-lg-12 content">
+                <div class="col-xs-12 content">
                     <div class="alert alert-info">
                         <a class="close" data-dismiss="alert" href="#">×</a>
                         <span>
