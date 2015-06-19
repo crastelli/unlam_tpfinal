@@ -4,12 +4,12 @@ Class Admin extends Usuario
 {
 	public function FnLogin($email, $pw)
 	{
-		$qry = sprintf("SELECT `id`, `nombre`, `email`
+		$qry = sprintf("SELECT `id`, `nombre`, `email`, `pw`
 						FROM `Usuario`
 						WHERE `email` = '%s'
 						AND `pw` = '%s'
 						AND `estado` = 1
-						LIMIT 1", $email, $pw);
+						LIMIT 1", $email, md5($pw));
 		return $this->queryOne($qry);
 	}
 
@@ -27,7 +27,7 @@ Class Admin extends Usuario
 
 	public function FnGetById($id)
 	{
-		$qry = sprintf("SELECT `id`, `nombre`, `telefono`, `direccion`, `email`
+		$qry = sprintf("SELECT `id`, `nombre`, `telefono`, `direccion`, `email`, `pw`
 						FROM `Usuario`
 						WHERE `id` = %d
 						AND `estado` = 1
@@ -58,7 +58,7 @@ Class Admin extends Usuario
 	{
 		$err = 1;
 		
-		$update_pw = (!empty($pw))? ' ,`pw` = "'.$pw.'" ' : '';
+		$update_pw = (!empty($pw))? ' ,`pw` = "'.md5($pw).'" ' : '';
 		$qry = sprintf("UPDATE `Usuario`
 							SET `nombre` = '%s',
 							`telefono`   = '%s',

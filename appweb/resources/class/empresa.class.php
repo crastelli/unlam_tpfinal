@@ -21,7 +21,7 @@ Class Empresa extends Usuario
 				WHERE `email` = '%s'
 				AND `pw` = '%s'
 				AND `estado` = 1
-				LIMIT 1", $email, $pw);
+				LIMIT 1", $email, md5($pw));
 		return $this->queryOne($qry);
 	}	
 
@@ -37,9 +37,18 @@ Class Empresa extends Usuario
 		else return false;
 	}
 
+	public function FnGetEmpresas()
+	{
+		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
+								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
+ 					FROM `Empresa`
+					WHERE `estado` = 1", False);
+		return $this->query($qry);
+	}
+
 	public function FnGetById($id)
 	{
-		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`,
+		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
 								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
  					FROM `Empresa`
 					WHERE `id` = %d
@@ -82,7 +91,7 @@ Class Empresa extends Usuario
 			}
 			//
 
-			$update_pw   = (!empty($pw))? ' ,`pw` = "'.$pw.'" ' : '';
+			$update_pw   = (!empty($pw))? ' ,`pw` = "'.md5($pw).'" ' : '';
 			$update_logo = (!empty($logo))? ' ,`logo` = "'.$logo.'" ' : '';
 			$qry = sprintf("UPDATE `Empresa`
 								SET `nombre_referente` = '%s',

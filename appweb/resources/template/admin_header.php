@@ -12,15 +12,18 @@
     <title><?php echo $ArrInfoPage["page-title"]; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     
     <!-- Styles Panel -->
-    <link href="../../assets/lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
-    <link href="../../assets/lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
-    <link href="../../assets/lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
-    <link href="../../assets/css/admin.css" rel="stylesheet">
-         
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+           
+    <!-- General CSS -->
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin_mapa.css" rel="stylesheet">
+
   </head>
   
 <body class="bootstrap-admin-with-small-navbar">

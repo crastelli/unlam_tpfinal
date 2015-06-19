@@ -7,6 +7,11 @@ try {
     die;
 }
 
+/**
+// http://www.mclibre.org/consultar/php/lecciones/php_cookies.html#L188
+// http://notasweb.com/articulo/php/utilizacion-de-las-cookies-en-php.html
+// COOKIES
+*/
 $ArrInfoPage = [ "page-title" => "Login", "menu-class" => "" ];
 ?>  
 

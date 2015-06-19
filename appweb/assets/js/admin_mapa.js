@@ -34,8 +34,8 @@ function fCargarMapa(pos)
 	pos_default = pos.split(',');
 	pos_lat = parseFloat(pos_default[0]);
 	pos_lng = parseFloat(pos_default[1]);
-	console.log(pos_lat);
-	console.log(pos_lng);
+	//console.log(pos_lat);
+	//console.log(pos_lng);
 
 	var markers = [];
 	var mapOptions = { zoom:18, center:new google.maps.LatLng(pos_lat,pos_lng), mapTypeId:google.maps.MapTypeId.ROADMAP };

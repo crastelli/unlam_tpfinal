@@ -8,7 +8,7 @@ Class Zona extends Database
 	private $estado;
 	private $habilitado;
 
-	public function getZona($id)
+	public function FnGetZona($id)
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `coordenadas`, `habilitado`
 				FROM `Zona`
@@ -17,7 +17,7 @@ Class Zona extends Database
 		return $this->queryOne($qry);
 	}
 
-	public function getZonas()
+	public function FnGetZonas()
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `coordenadas`, `habilitado`
 				FROM `Zona`

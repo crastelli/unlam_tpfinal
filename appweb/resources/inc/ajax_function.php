@@ -129,7 +129,7 @@ function FnAdminPerfilAdmin()
 		$telefono  = $_POST["telefono"];
 		$direccion = $_POST["direccion"];
 		$email     = trim(strtolower($_POST["email"]));
-		$pw        = $_POST["pw"];
+		$pw        = ($_POST["pw"] != '********')? $_POST["pw"] : '';
 		$acc       = $_POST["acc"];
 		// <!--
 		$err       = $Admin->FnGuardarPerfil($id, $nombre, $telefono, $direccion, $email, $pw);
@@ -165,7 +165,7 @@ function FnAdminPerfilEmpresa()
 		$descripcion      = $_POST["descripcion"];
 		$archivo          = $_FILES["logo"];
 		$email            = trim(strtolower($_POST["email"]));
-		$pw               = $_POST["pw"];
+		$pw               = ($_POST["pw"] != '********')? $_POST["pw"] : '';
 		$logo             = null;
 		$acc              = $_POST["acc"];
 		// <!--

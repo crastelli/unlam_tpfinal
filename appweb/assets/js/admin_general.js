@@ -19,7 +19,14 @@ $(function()
 		}); 
 	});	
 
-
+	$('.form-perfil-admin').find('input[name="pw"]').on('click', function(e)
+	{
+		if( $(this).val() == '********' )
+		{
+			$(this).val('');
+			$(this).parents().find('input[name="pw2"]').val('')
+		}
+	});
 	$('.form-perfil-admin').validator().on('submit', function (e)
 	{
 		if (!e.isDefaultPrevented())
@@ -51,7 +58,8 @@ $(function()
 										$msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
 										$msg.find('span').text(JSON.status["msg"]);
 										$msg.show();
-										$form.find('input[name="pw"]').val('');
+										$form.find('input[name="pw"]').val('********');
+										$form.find('input[name="pw2"]').val('********');
 					            	},
 					    complete	: function(){
 											$('html, body').animate({
@@ -69,6 +77,14 @@ $(function()
 		}	
 	});
 
+	$('.form-perfil-empresa').find('input[name="pw"]').on('click', function(e)
+	{
+		if( $(this).val() == '********' )
+		{
+			$(this).val('');
+			$(this).parents().find('input[name="pw2"]').val('')
+		}
+	});
 	$('.form-perfil-empresa').validator().on('submit', function (e)
 	{
 		if (!e.isDefaultPrevented())
@@ -99,7 +115,8 @@ $(function()
 										$msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
 										$msg.find('span').text(JSON.status["msg"]);
 										$msg.show();
-										$form.find('input[name="pw"]').val('');
+										$form.find('input[name="pw"]').val('********');
+										$form.find('input[name="pw2"]').val('********');
 										$form.find('input[name="logo"]').val('');
 
 										// Cuando actualizo una imagen la actualizo en la vista

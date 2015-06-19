@@ -61,21 +61,31 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                     </div>
                                 </div>
 
-                                <div class="col-xs-6">                           
+                                <div class="col-xs-12">                           
                                     <div class="form-group">
-                                        <label class="col-xs-4 control-label" for="textinput">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
-                                        <div class="col-xs-8">
+                                        <label class="col-xs-2 control-label" for="textinput">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-10">
                                             <input type="email" name="email" placeholder="Ingrese un email" class="form-control" value="<?php echo (isset($data->email))? $data->email : ''; ?>" data-match-error required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6">                           
-                                    <div class="form-group">                                                    
-                                        <label class="col-xs-4 control-label" for="textinput">Password <abbr title="Campo requerido">*</abbr></label>
+                                
+                                <div class="col-xs-6"> 
+                                    <div class="form-group">
+                                        <label class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
-                                          <input type="password" name="pw" placeholder="************" class="form-control">
-                                          <div class="help-block"><i class="glyphicon glyphicon-ok"></i> password cargada</div>
+                                            <input type="password" placeholder="************" class="form-control" name="pw" id="pw" data-minlength="8" value="<?php echo (isset($data->pw))? '********' : ''; ?>" required>
+                                            <div class="help-block">M&iacute;nimo 8 caracteres</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-xs-6"> 
+                                    <div class="form-group">
+                                        <label class="col-xs-4 control-label">Confirmar Password <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-8">
+                                            <input type="password" class="form-control" data-match="#pw" name="pw2" data-match-error="Los password no coinciden" placeholder="Confirmar password" value="<?php echo (isset($data->pw))? '********' : ''; ?>" data-match-error required>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>

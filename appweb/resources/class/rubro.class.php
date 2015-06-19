@@ -8,7 +8,7 @@ Class Rubro extends Database
 	private $estado;
 	private $habilitado;
 
-	public function getRubro($id)
+	public function FnGetRubro($id)
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `icono`, `habilitado`
 				FROM `Rubro`
@@ -17,7 +17,7 @@ Class Rubro extends Database
 		return $this->queryOne($qry);
 	}
 
-	public function getRubros()
+	public function FnGetRubros()
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `icono`, `habilitado`
 				FROM `Rubro`

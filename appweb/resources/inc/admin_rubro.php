@@ -32,7 +32,7 @@ try {
                     <div class="alert alert-info">
                         <a class="close" data-dismiss="alert" href="#">×</a>
                         <span>
-                            Listado de todas los rubros cargados en la aplicación.
+                            Listado de todas los rubros cargados en la aplicaci&oacute;n.
                         </span>
                     </div>
                 </div>
@@ -49,26 +49,26 @@ try {
                             <table class="table table-striped table-bordered" id="listado-rubros">
                                 <thead>
                                     <tr>
-                                        <th>Ícono</th>
-                                        <th>Descripción</th>
+                                        <th>&Iacute;cono</th>
+                                        <th>Descripci&oacute;n</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($ObjRubro->getRubros() as $row): ?>
+                                    <?php foreach ($ObjRubro->FnGetRubros() as $row): ?>
                                         <tr>
-                                            <td><?php echo $row->icono; ?></td>
+                                            <td><img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>icono_rubro/<?php echo $row->icono; ?>" width="25px"/></td>
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary" alt="Modificar" title="Modificar">
+                                                <button class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar" id="<?php echo $row->id; ?>">
                                                     <i class="glyphicon glyphicon-pencil"></i>
                                                 </button>
                                                 
-                                                <button class="btn btn-sm btn-warning" alt="Consultar" title="Consultar">
+                                                <button class="btn btn-sm btn-warning btn-consultar" alt="Consultar" title="Consultar" id="<?php echo $row->id; ?>">
                                                     <i class="glyphicon glyphicon-bell"></i>
                                                 </button>
                                                 
-                                                <button class="btn btn-sm btn-danger" alt="Eliminar" title="Eliminar">
+                                                <button class="btn btn-sm btn-danger btn-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </td>

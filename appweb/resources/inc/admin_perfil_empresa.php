@@ -67,8 +67,8 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 </div>
                                 <div class="col-xs-6"> 
                                     <div class="form-group">
-                                        <label class="col-sm-4 control-label">Razón social <abbr title="Campo requerido">*</abbr></label>
-                                        <div class="col-sm-8">
+                                        <label class="col-xs-4 control-label">Razón social <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-8">
                                             <input type="text" placeholder="Ingrese una razón social" class="form-control" name="razon_social" value="<?php echo (isset($data->razon_social))? $data->razon_social : ''; ?>" data-match-error required>
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -111,21 +111,31 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                     </div>
                                 </div>
                         
-                               <div class="col-xs-6"> 
+                               <div class="col-xs-12"> 
                                     <div class="form-group">
-                                        <label class="col-xs-4 control-label">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
-                                        <div class="col-xs-8">
+                                        <label class="col-xs-2 control-label">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-10">
                                             <input type="email" placeholder="Ingrese un email" class="form-control" name="email" value="<?php echo (isset($data->email))? $data->email : ''; ?>" data-match-error required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-xs-6"> 
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
-                                            <input type="password" placeholder="************" class="form-control" name="pw">
-                                            <i class="glyphicon glyphicon-ok"></i> password cargada
+                                            <input type="password" placeholder="************" class="form-control" name="pw" id="pw" data-minlength="8" value="<?php echo (isset($data->pw))? '********' : ''; ?>" required>
+                                            <div class="help-block">M&iacute;nimo 8 caracteres</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-xs-6"> 
+                                    <div class="form-group">
+                                        <label class="col-xs-4 control-label">Confirmar Password <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-8">
+                                            <input type="password" class="form-control" data-match="#pw" name="pw2" data-match-error="Los password no coinciden" placeholder="Confirmar password" value="<?php echo (isset($data->pw))? '********' : ''; ?>" data-match-error required>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +158,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         <label class="col-xs-4 control-label">Zona <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <select name="idzona" class="form-control">
-                                                <?php foreach($Zona->getZonas() as $row): ?>
+                                                <?php foreach($Zona->FnGetZonas() as $row): ?>
                                                     <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idzona) && $data->idzona == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -160,7 +170,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         <label class="col-xs-4 control-label">Rubro <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <select name="idrubro" class="form-control">
-                                               <?php foreach($Rubro->getRubros() as $row): ?>
+                                               <?php foreach($Rubro->FnGetRubros() as $row): ?>
                                                     <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idrubro) && $data->idrubro == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -219,58 +229,3 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
     </div>
 </div>
 <script type="text/javascript"> window.onload = function() { fCargarMapa($('input[name="lat_long"]').val()); } </script>
-
-
-<style type="text/css">
-
-  #mapa {
-    height: 400px;
-    margin: 0px;
-    padding: 0px
-  }
-  .controls {
-    margin-top: 16px;
-    border: 1px solid transparent;
-    border-radius: 2px 0 0 2px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    height: 32px;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  #pac-input {
-    background-color: #fff;
-    font-family: Roboto;
-    font-size: 15px;
-    font-weight: 300;
-    margin-left: 12px;
-    padding: 0 11px 0 13px;
-    text-overflow: ellipsis;
-    width: 400px;
-  }
-
-  #pac-input:focus {
-    border-color: #4d90fe;
-  }
-
-  .pac-container {
-    font-family: Roboto;
-  }
-
-  #type-selector {
-    color: #fff;
-    background-color: #4d90fe;
-    padding: 5px 11px 0px 11px;
-  }
-
-  #type-selector label {
-    font-family: Roboto;
-    font-size: 13px;
-    font-weight: 300;
-  }
-  #target {
-    width: 345px;
-  }
-
-</style>
