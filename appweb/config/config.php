@@ -2,7 +2,8 @@
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 
 // Defines
-define('ROOT_DIR', '/var/www/html/milugar/');
+// define('ROOT_DIR', '/var/www/html/milugar/');
+define('ROOT_DIR', 'C:/Apache24/htdocs/milugar/');
 define('BASE_URL', 'http://localhost/milugar/');
 // --->
 define('_DS_', DIRECTORY_SEPARATOR);
