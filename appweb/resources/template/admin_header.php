@@ -15,7 +15,7 @@
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     
-    <!-- Styles Panel -->
+    <!-- CSS Panel -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">

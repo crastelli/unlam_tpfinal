@@ -8,19 +8,20 @@
 			<form action="home.php" id="formBuscar" class="form-inline" method="post">
 				<div class="form-group">
 					<select name="seleccionuno" id="seleccionuno" class="form-control">
-						<option value="1">Opción 1</option>
-						<option value="2">Opción 1</option>
-						<option value="3">Opción 1</option>
-						<option value="4">Opción 1</option>
-						<option value="5">Opción 1</option>
+						<option value="1">Capital Federal / GBA</option>
+						<option value="2">Ramos Mejía</option>
+						<option value="3">Tigre</option>
+						<option value="4">San justo</option>
+						<option value="5">Lomas de Zamora</option>
+						<option value="6">Quilmes</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<select name="rubro" id="rubro" multiple="multiple">
-					<option value="1">Bares</option>
+					<option value="1">Otros</option>
 					<option value="2">Restaurantes</option>
 					<option value="3">Tiendas</option>
-					<option value="4">Locutorios</option>
+					<option value="4">Bares</option>
 					</select>
 				</div>
 				<div class="form-group">

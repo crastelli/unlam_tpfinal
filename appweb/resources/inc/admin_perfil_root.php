@@ -60,11 +60,7 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                     </div>
                                 </div>
 
-<<<<<<< HEAD
                                 <div class="col-xs-12">                           
-=======
-                                <div class="col-xs-12 col-sm-6">                           
->>>>>>> 4dd64b5ef593700c855844d308bf41d5e3f9c064
                                     <div class="form-group">
                                         <label class="col-xs-2 control-label" for="textinput">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-10">
@@ -73,16 +69,10 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
                                 
                                 <div class="col-xs-6"> 
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
-=======
-                                <div class="col-xs-12 col-sm-6">                           
-                                    <div class="form-group">                                                    
-                                        <label class="col-xs-4 control-label" for="textinput">Password <abbr title="Campo requerido">*</abbr></label>
->>>>>>> 4dd64b5ef593700c855844d308bf41d5e3f9c064
                                         <div class="col-xs-8">
                                             <input type="password" placeholder="************" class="form-control" name="pw" id="pw" data-minlength="8" value="<?php echo (isset($data->pw))? '********' : ''; ?>" required>
                                             <div class="help-block">M&iacute;nimo 8 caracteres</div>
