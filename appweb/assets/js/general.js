@@ -1,5 +1,10 @@
-$(function(){
+$(document).ready(function(){
 	fCargarMapa();
+	$('#rubro').multiselect({
+		nonSelectedText : "Seleccioná un rubro",
+		allSelectedText : "Todos los rubros",
+		numberDisplayed: 4
+	});
 });
 
 function fCargarMapa()

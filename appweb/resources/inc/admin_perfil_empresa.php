@@ -35,7 +35,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
 
                                 <div class="col-xs-12"> <legend>Datos referente</legend> </div>
                                 
-                                <div class="col-xs-6">                           
+                                <div class="col-xs-12 col-sm-6">                           
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Nombre referente <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -44,7 +44,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div> 
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-12 col-sm-6">
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">DNI referente <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -56,7 +56,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 
                                 <div class="col-xs-12"> <legend>Datos comercio</legend> </div>
                                 
-                                <div class="col-xs-6"> 
+                                <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Nombre <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -65,23 +65,23 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6"> 
+                                <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
-                                        <label class="col-sm-4 control-label">Razón social <abbr title="Campo requerido">*</abbr></label>
-                                        <div class="col-sm-8">
+                                        <label class="col-xs-4 control-label">Razón social <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-8">
                                             <input type="text" placeholder="Ingrese una razón social" class="form-control" name="razon_social" value="<?php echo (isset($data->razon_social))? $data->razon_social : ''; ?>" data-match-error required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>                                
                                 </div>
                                 
-                                <div class="col-xs-6"> 
+                                <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Logo</label>
                                         <div class="col-xs-8">
                                             <input type="file" name="logo" id="logo" class="form-control">
                                             <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg
-                                            <div class="container-img text-center" data-path="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/">
+                                            <div class="container-img" data-path="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/">
                                                 <br />
                                                 <?php if(isset($data->logo)): ?>
                                                     <img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/<?php echo $data->logo; ?>" width="100px"/>
@@ -93,7 +93,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                     </div>
                                 </div>
                                 
-                                <div class="col-xs-6"> 
+                                <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">   
                                         <label class="col-xs-4 control-label">Teléfono</label>
                                         <div class="col-xs-8">
@@ -104,14 +104,14 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 
                                 <div class="col-xs-12"> 
                                     <div class="form-group">
-                                        <label class="col-xs-2 control-label">Breve descripción</label>
-                                        <div class="col-xs-10">
+                                        <label class="col-xs-4 col-sm-2 control-label">Breve descripción</label>
+                                        <div class="col-xs-8 col-sm-10">
                                             <textarea rows="2" placeholder="Ingrese una breve descripción" class="form-control" name="descripcion"><?php echo (isset($data->descripcion))? $data->descripcion : ''; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         
-                               <div class="col-xs-6"> 
+                               <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -120,7 +120,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6"> 
+                                <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -132,7 +132,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 
                                 <div class="col-xs-12"> 
                                     <div class="form-group">
-                                        <div class="col-xs-offset-3 col-xs-9">
+                                        <div class="col-sm-offset-3 col-sm-9">
                                             <span class="label label-default">
                                                 Las modificaciones tanto de email como de contraseña se verán reflejadas
                                                 en el próximo inicio de sesión.
@@ -143,7 +143,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 
                                 <div class="col-xs-12"> <legend>Ubicación y especificación de búsqueda</legend> </div>
                                        
-                                <div class="col-xs-6">        
+                                <div class="col-xs-12 col-sm-6">        
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Zona <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -155,7 +155,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6">        
+                                <div class="col-xs-12 col-sm-6">        
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Rubro <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -168,7 +168,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                     </div>
                                 </div>
                                 
-                                <div class="col-xs-6">        
+                                <div class="col-xs-12 col-sm-6">        
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label">Dirección <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -177,7 +177,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6">        
+                                <div class="col-xs-12 col-sm-6">        
                                     <div class="form-group">    
                                         <label class="col-xs-4 control-label">Latitud / Longitud</label>
                                         <div class="col-xs-8">

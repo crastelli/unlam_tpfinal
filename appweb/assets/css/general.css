@@ -16,13 +16,15 @@
         position: relative;
         margin-bottom: 4em;/*Necesario para que la nav, que tiene position:fixed, no tape el final de la página*/
     }
+	#listaOpciones label {
+		display: block;
+	}
     #modalFotosVideos h2 {font-size: 1em }
-    #banner img, #contenido {
+    #banner img, #contenido, #nav {
         background-color: rgba(255, 255, 255, .75);
     }
     #nav {
         font-weight: 700;
-        background-color: rgba(1, 201, 235, .5);
         width: 100%;
         position: fixed;
         left: 0;
@@ -38,8 +40,18 @@
         display: block;
     }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
 	#contenedor {
-		margin: 0;/*Sobreponiendo el margin de .container*/
+		margin: 0 auto 0 10px;/*Sobreponiendo el margin de .container*/
+	}
+	body#pagHome #contenido {
+		position: fixed;
+		width: 496px;
+		height: 80px;
+		padding-top: 20px;
+		top: 50%;
+		left: 50%;
+		margin: -40px 0 0 -248px;
+		z-index: 0;
 	}
 }

@@ -7,7 +7,7 @@ try {
     echo $e->getMessage();
     die;
 }
-$ArrInfoPage = [ "page-title" => "Mi Perfíl", "menu-class" => "page-perfil" ];
+$ArrInfoPage = [ "page-title" => "Mi Perfil", "menu-class" => "page-perfil" ];
 ?>
 
 <?php require ROOT_DIR._DIR_TMP_."admin_header.php"; ?>

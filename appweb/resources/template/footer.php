@@ -3,6 +3,7 @@
             <ul class="list-unstyled list-inline">
                 <li><a href="#">Registro</a></li>
                 <li><a href="#">Contacto</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
             </ul>
         </nav>
     
@@ -18,6 +19,7 @@
 
 	<!-- Bootstrap core JS -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap-multiselect.js"></script>
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/general.js"></script>
 
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootbox.min.js"></script>

@@ -34,15 +34,15 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                 
                                 <div class="col-xs-12">                           
                                     <div class="form-group">
-                                        <label class="col-xs-2 control-label" for="textinput">Nombre <abbr title="Campo requerido">*</abbr></label>
-                                        <div class="col-xs-10">
+                                        <label class="col-xs-4 col-sm-2 control-label" for="textinput">Nombre <abbr title="Campo requerido">*</abbr></label>
+                                        <div class="col-xs-8 col-sm-10">
                                             <input type="text" name="nombre" placeholder="Ingrese un nombre" class="form-control" value="<?php echo (isset($data->nombre))? $data->nombre : ''; ?>" data-match-error required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-xs-6">                           
+                                <div class="col-xs-12 col-sm-6">                           
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label" for="textinput">Teléfono</label>
                                         <div class="col-xs-8">
@@ -50,8 +50,7 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="col-xs-6">                           
+                                <div class="col-xs-12 col-sm-6">                           
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label" for="textinput">Dirección <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -61,7 +60,7 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                     </div>
                                 </div>
 
-                                <div class="col-xs-6">                           
+                                <div class="col-xs-12 col-sm-6">                           
                                     <div class="form-group">
                                         <label class="col-xs-4 control-label" for="textinput">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -70,7 +69,7 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6">                           
+                                <div class="col-xs-12 col-sm-6">                           
                                     <div class="form-group">                                                    
                                         <label class="col-xs-4 control-label" for="textinput">Password <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
@@ -82,7 +81,7 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                                 
                                <div class="col-xs-12"> 
                                     <div class="form-group">
-                                        <div class="col-xs-offset-3 col-xs-9">
+                                        <div class="col-sm-offset-3 col-sm-9">
                                             <span class="label label-default">
                                                 Las modificaciones tanto de email como de contraseña se verán reflejadas
                                                 en el próximo inicio de sesión.
