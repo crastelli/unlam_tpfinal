@@ -25,7 +25,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Buscar</button>
+					<button type="submit" class="btn btn-lg btn-primary">Buscar</button>
 				</div>
 			</form>
 		</article>
