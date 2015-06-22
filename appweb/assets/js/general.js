@@ -30,7 +30,7 @@ $(function()
             size: 'lg',
             buttons: [
                 {text: 'Cancelar', style: 'danger', close: true, click: fCancelarRegistroEmpresa },
-                {text: 'Guardar', style: 'success', close: true, click: fGuardarRegistroEmpresa }
+                {text: 'Enviar', style: 'success', close: true, click: fGuardarRegistroEmpresa }
             ]
         };        
         eModal.ajax(options);
@@ -45,7 +45,7 @@ $(function()
             size: 'lg',
             buttons: [
                 {text: 'Cancelar', style: 'danger', close: true, click: fCancelarContacto },
-                {text: 'Guardar', style: 'success', close: true, click: fGuardarContacto }
+                {text: 'Enviar', style: 'success', close: true, click: fGuardarContacto }
             ]
         };        
         eModal.ajax(options);
