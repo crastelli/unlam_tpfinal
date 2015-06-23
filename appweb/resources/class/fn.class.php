@@ -59,8 +59,12 @@ Abstract Class Fn
 			case 'admin-login':
 						switch ($err)
 						{
+							case 2:
+									$obj->msg   = 'ERROR: Usuario bloqueado por varios intentos erroneos. Debe esperar unos minutos y volver a intentarlo.';
+									$obj->class = 'danger';
+									break;
 							case 1:
-									$obj->msg   = 'ERROR: al ingresar los datos.';
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
 									$obj->class = 'danger';
 									break;
 							case 0:

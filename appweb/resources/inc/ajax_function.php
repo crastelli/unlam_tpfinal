@@ -57,20 +57,60 @@ function FnAdminLogin()
 
 	if(isset($_POST["email"]) && isset($_POST["pw"]))
 	{
-		// POST -->
-		$email = trim(strtolower($_POST["email"]));
-		$pw    = trim($_POST["pw"]);
-		$acc   = $_POST["acc"];
-		// <!--
+		$acc = $_POST["acc"];
+		if (!isset($_COOKIE["bloqueo_usuario"]))
+		{
+			// POST -->
+			$email = trim(strtolower($_POST["email"]));
+			$pw    = trim($_POST["pw"]);
+			// <!--
+			
+			$minutos_reset   = 1; // minutos donde la cookie se resetea en un rango de tiempo antes de los 3 intentos
+			$minutos_bloqueo = 5; // minutos de bloqueo
 
-		if($Admin->FnExiste($email))
-		{
-			$us = $Admin->FnLogin($email, $pw);
-			if(!is_null($us)) $err = Usuario::setAccesoAdmin($us);
-		}elseif($Empresa->FnExiste($email))
-		{
-			$us = $Empresa->FnLogin($email, $pw);
-			if(!is_null($us)) $err = Usuario::setAccesoEmpresa($us);
+			if($Admin->FnExiste($email))
+			{
+				$us = $Admin->FnLogin($email, $pw);
+				if(!is_null($us))
+				{
+					$err = Usuario::setAccesoAdmin($us);
+					setcookie("usuario", '', time() - 60);
+				}else{
+					// Ingreso erroneo
+					if (isset($_COOKIE["usuario"]))
+					{
+						$valor = $_COOKIE["usuario"] + 1;
+						if($valor >= 3)
+						{
+							setcookie("bloqueo_usuario", 1, time() + 60*$minutos_bloqueo);
+						}else setcookie("usuario", $valor, time() + 60*$minutos_reset);
+					}else{
+						setcookie("usuario", 1, time() + 60*$minutos_reset);
+					}
+				}
+			}elseif($Empresa->FnExiste($email))
+			{
+				$us = $Empresa->FnLogin($email, $pw);
+				if(!is_null($us))
+				{
+					$err = Usuario::setAccesoEmpresa($us);
+					setcookie("usuario", '', time() - 60);
+				}else{
+					// Ingreso erroneo
+					if (isset($_COOKIE["usuario"]))
+					{
+						$valor = $_COOKIE["usuario"] + 1;
+						if($valor >= 3)
+						{
+							setcookie("bloqueo_usuario", 1, time() + 60*$minutos_bloqueo);
+						}else setcookie("usuario", $valor, time() + 60*$minutos_reset);
+					}else{
+						setcookie("usuario", 1, time() + 60*$minutos_reset);
+					}
+				}
+			}
+		}else{
+			$err = 2;
 		}
 	}
 
