@@ -47,9 +47,9 @@ try {
                                 
                                     <div class="col-xs-12">                           
                                         <div class="form-group">
-                                            <label class="col-xs-2 control-label">Descripci&oacute;n <abbr title="Campo requerido">*</abbr></label>
-                                            <div class="col-xs-10">
-                                                <input type="text" placeholder="Ingrese una descripci&oacute;n" <?php echo $edit; ?> class="form-control" name="descripcion" value="<?php echo (isset($data->descripcion))? $data->descripcion : ''; ?>" data-match-error required>
+                                            <label for="descripcion" class="col-xs-4 col-sm-2 control-label">Descripci&oacute;n <abbr title="Campo requerido">*</abbr></label>
+                                            <div class="col-xs-8 col-sm-10">
+                                                <input type="text" placeholder="Ingrese una descripci&oacute;n" <?php echo $edit; ?> class="form-control" name="descripcion" id="descripcion" value="<?php echo (isset($data->descripcion))? $data->descripcion : ''; ?>" data-match-error required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div> 
@@ -57,9 +57,9 @@ try {
                                     
                                    <div class="col-xs-12">                           
                                         <div class="form-group">
-                                            <label class="col-xs-2 control-label">Coordenadas <abbr title="Campo requerido">*</abbr></label>
-                                            <div class="col-xs-10">
-                                                <input type="text" placeholder="Ingrese las coordenadas" <?php echo $edit; ?> class="form-control" name="coordenadas" value="<?php echo (isset($data->coordenadas))? $data->coordenadas : ''; ?>" data-match-error required>
+                                            <label for="coordenadas" class="col-xs-4 col-sm-2 control-label">Coordenadas <abbr title="Campo requerido">*</abbr></label>
+                                            <div class="col-xs-8 col-sm-10">
+                                                <input type="text" placeholder="Ingrese las coordenadas" <?php echo $edit; ?> class="form-control" name="coordenadas" id="coordenadas" value="<?php echo (isset($data->coordenadas))? $data->coordenadas : ''; ?>" data-match-error required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div> 
@@ -69,7 +69,7 @@ try {
                                         <div class="form-group">
                                             <div class="col-xs-offset-2 col-xs-10">
                                               <div class="pull-right">
-                                                <a href="admin_zona.php" class="btn btn-default volver">Voler</a>
+                                                <a href="admin_zona.php" class="btn btn-default volver">Volver</a>
                                                 <button type="submit" <?php echo $edit; ?> class="btn btn-primary guardar">Guardar</button>
                                               </div>
                                             </div>

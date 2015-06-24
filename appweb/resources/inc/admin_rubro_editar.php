@@ -47,9 +47,9 @@ try {
                                 
                                     <div class="col-xs-12">                           
                                         <div class="form-group">
-                                            <label class="col-xs-2 control-label">Descripci&oacute;n <abbr title="Campo requerido">*</abbr></label>
-                                            <div class="col-xs-10">
-                                                <input type="text" placeholder="Ingrese una descripci&oacute;n" <?php echo $edit; ?> class="form-control" name="descripcion" value="<?php echo (isset($data->descripcion))? $data->descripcion : ''; ?>" data-match-error required>
+                                            <label for="descripcion" class="col-xs-4 col-sm-2 control-label">Descripci&oacute;n <abbr title="Campo requerido">*</abbr></label>
+                                            <div class="col-xs-8 col-sm-10">
+                                                <input type="text" placeholder="Ingrese una descripci&oacute;n" <?php echo $edit; ?> class="form-control" name="descripcion" id="descripcion" value="<?php echo (isset($data->descripcion))? $data->descripcion : ''; ?>" data-match-error required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div> 
@@ -57,8 +57,8 @@ try {
                                     
                                     <div class="col-xs-12"> 
                                         <div class="form-group">
-                                            <label class="col-xs-2 control-label">&Iacute;cono <abbr title="Campo requerido">*</abbr></label>
-                                            <div class="col-xs-10">
+                                            <label for="icono" class="col-xs-4 col-sm-2 control-label">&Iacute;cono <abbr title="Campo requerido">*</abbr></label>
+                                            <div class="col-xs-8 col-sm-10">
                                                 <input type="file" name="icono" id="icono" class="form-control" <?php echo $edit; ?> onchange="javascript: document.getElementById('icono_txt').value = this.files[0].name;">
                                                 <input type="text" id="icono_txt" class="simular_hidden" value="<?php echo (isset($data->icono))? $data->icono : ''; ?>" data-match-error required>
                                                 <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg

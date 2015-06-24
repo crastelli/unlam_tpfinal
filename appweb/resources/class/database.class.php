@@ -10,7 +10,8 @@ Abstract Class Database
 	{
 		$this->host = "localhost";
 		$this->user = "root";
-		$this->pw 	= ""; 
+		// $this->pw 	= ""; 
+		$this->pw 	= "1234"; 
 		$this->db 	= "db_milugar";
 	}
 

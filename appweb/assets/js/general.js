@@ -8,7 +8,7 @@ function fCargarMapa()
         disableDefaultUI: true
     };
  
-    var map = new google.maps.Map(document.getElementById('mapa'), options);
+    var map = new google.maps.Map(document.getElementById('mapaFondo'), options);
 }
 
 $(function()
