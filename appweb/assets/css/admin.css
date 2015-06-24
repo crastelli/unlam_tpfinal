@@ -4,3 +4,4 @@ body { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAA
 .error-actions .btn { margin-right:10px; }
 .alert-aviso{ display: none}
 form.form-perfil-empresa .container-img > img{ border: 1px solid gray;border-radius:4px;}
+form input.simular_hidden {font-color:white;border:none;width:1px;height:1px;}

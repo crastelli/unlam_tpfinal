@@ -158,7 +158,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         <label class="col-xs-4 control-label">Zona <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <select name="idzona" class="form-control">
-                                                <?php foreach($Zona->FnGetZonas() as $row): ?>
+                                                <?php foreach($Zona->FnGetAll() as $row): ?>
                                                     <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idzona) && $data->idzona == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -170,7 +170,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         <label class="col-xs-4 control-label">Rubro <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <select name="idrubro" class="form-control">
-                                               <?php foreach($Rubro->FnGetRubros() as $row): ?>
+                                               <?php foreach($Rubro->FnGetAll() as $row): ?>
                                                     <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idrubro) && $data->idrubro == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                 <?php endforeach; ?>
                                             </select>

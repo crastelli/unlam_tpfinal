@@ -83,7 +83,7 @@ Abstract Class Fn
 									$obj->class = 'success';
 									break;							
 							case 1:
-									$obj->msg   = 'ERROR: al ingresar los datos.';
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
 									$obj->class = 'danger';
 									break;
 							case 0:
@@ -101,7 +101,7 @@ Abstract Class Fn
 									$obj->class = 'success';
 									break;							
 							case 1:
-									$obj->msg   = 'ERROR: al ingresar los datos.';
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
 									$obj->class = 'danger';
 									break;
 							default:break;
@@ -115,7 +115,7 @@ Abstract Class Fn
 									$obj->class = 'success';
 									break;							
 							case 1:
-									$obj->msg   = 'ERROR: al ingresar los datos.';
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
 									$obj->class = 'danger';
 									break;
 							case 2:
@@ -129,6 +129,82 @@ Abstract Class Fn
 							case 4:
 									$obj->msg   = 'ADVERTENCIA: Hubo un error al intentar subir el archivo.';
 									$obj->class = 'warning';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-rubro-editar':
+						switch ($err)
+						{					
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-rubro-borrar':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro borrado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-rubro-habilitar':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro actualizado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-zona-editar':
+						switch ($err)
+						{					
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-zona-borrar':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro borrado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-zona-habilitar':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro actualizado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
 									break;
 							default:break;
 						}
@@ -165,7 +241,7 @@ Abstract Class Fn
 				}else{
 					// Si la imagen subió la achico a un tamaño general para el logo
 					list($ancho, $alto) = getimagesize(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
-					$archivo_nombre_n = "logo".$archivo_nombre;
+					$archivo_nombre_n = "imagen".$archivo_nombre;
 					Fn::resizeImagen(ROOT_DIR._DIR_UPLOAD_.$path, $archivo_nombre, 250, 250, $archivo_nombre_n, $type);
 				    @unlink(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
 				    $archivo_nombre = $archivo_nombre_n; // asi guardo en la db el nombre que quedo en la img
@@ -183,7 +259,6 @@ Abstract Class Fn
 	// Funcion para achicar la imagen
 	static function resizeImagen($ruta, $foto, $alto, $ancho, $foto_n, $ext)
 	{
-	    
 	    $rutaImagenOriginal = $ruta._DS_.$foto;
 	    switch ($ext)
 	    {
@@ -193,7 +268,6 @@ Abstract Class Fn
 	    	default 			: $img_original = imagecreatefromjpeg($rutaImagenOriginal);
 	    						  break;
 	    }
-
 	 	$max_ancho = $ancho;
 	    $max_alto = $alto;
 
@@ -216,10 +290,18 @@ Abstract Class Fn
 
 	    $tmp=imagecreatetruecolor($ancho_final,$alto_final);
 
+	    if( $ext == 'image/png')
+	    {
+			imagealphablending($tmp, false);
+			imagesavealpha($tmp,true);
+			$transparent = imagecolorallocatealpha($tmp, 255, 255, 255, 127);
+			imagefilledrectangle($tmp, 0, 0, $ancho_final, $alto_final, $transparent);
+			imagecopyresampled($tmp, $img_original, 0, 0, 0, 0, $ancho_final, $alto_final, $ancho, $alto);
+	    }
+
 	    imagecopyresampled($tmp,$img_original,0,0,0,0,$ancho_final, $alto_final,$ancho,$alto);
-	    imagedestroy($img_original);
-	    $calidad=70;
-	    imagejpeg($tmp,$ruta._DS_.$foto_n,$calidad); 
+		imagepng($tmp, $ruta._DS_.$foto_n);
+		imagedestroy($img_original);
 	}
 
 

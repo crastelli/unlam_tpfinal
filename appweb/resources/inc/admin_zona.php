@@ -32,7 +32,7 @@ try {
                     <div class="alert alert-info">
                         <a class="close" data-dismiss="alert" href="#">×</a>
                         <span>
-                            Listado de todas las zonas cargadas en la aplicaci&oacute;n.
+                            Listado de todas los zonas cargados en la aplicaci&oacute;n.
                         </span>
                     </div>
                 </div>
@@ -43,30 +43,38 @@ try {
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">Listado de <?php echo $ArrInfoPage["page-title"]; ?></div>
+                            <div class="text-muted bootstrap-admin-box-title">
+                                <a href="admin_zona_editar.php" alt="Nuevo" title="Nuevo" class="btn btn-sm btn-primary">Nuevo</a>
+                                Listado de <?php echo $ArrInfoPage["page-title"]; ?>
+                            </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
-                            <table class="table table-striped table-bordered" id="listado-rubros">
+                        
+                            <div class="alert alert-aviso"><span></span></div>
+                            
+                            <table class="table table-striped table-bordered" id="listado">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Descripci&oacute;n</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($ObjZona->FnGetZonas() as $row): ?>
-                                        <tr>
+                                    <?php foreach ($ObjZona->FnGetAll() as $row): ?>
+                                        <tr data-id="<?php echo $row->id; ?>">
+                                            <td width="30px"><input type="checkbox" class="cbx-admin-zona-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar" id="<?php echo $row->id; ?>">
+                                                <a href="admin_zona_editar.php?id=<?php echo $row->id; ?>" class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar">
                                                     <i class="glyphicon glyphicon-pencil"></i>
-                                                </button>
+                                                </a>
                                                 
-                                                <button class="btn btn-sm btn-warning btn-consultar" alt="Consultar" title="Consultar" id="<?php echo $row->id; ?>">
+                                                <a href="admin_zona_editar.php?id=<?php echo $row->id; ?>&view" alt="Consultar" title="Consultar" class="btn btn-sm btn-warning btn-editar">
                                                     <i class="glyphicon glyphicon-bell"></i>
-                                                </button>
+                                                </a>
                                                 
-                                                <button class="btn btn-sm btn-danger btn-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
+                                                <button class="btn btn-sm btn-danger btn-admin-zona-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </td>

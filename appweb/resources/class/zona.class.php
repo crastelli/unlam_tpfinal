@@ -8,7 +8,7 @@ Class Zona extends Database
 	private $estado;
 	private $habilitado;
 
-	public function FnGetZona($id)
+	public function FnGetById($id)
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `coordenadas`, `habilitado`
 				FROM `Zona`
@@ -17,7 +17,7 @@ Class Zona extends Database
 		return $this->queryOne($qry);
 	}
 
-	public function FnGetZonas()
+	public function FnGetAll()
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `coordenadas`, `habilitado`
 				FROM `Zona`
@@ -25,4 +25,42 @@ Class Zona extends Database
 		return $this->query($qry);
 	}	
 
+	public function FnGuardar( $descripcion, $coordenadas)
+	{
+		$err = -1;
+		$qry = sprintf("INSERT INTO `Zona` (`descripcion`,`coordenadas`)
+							VALUES ('%s', '%s')", $descripcion, $coordenadas);
+		$insert = $this->execute($qry, "insert");
+		if($insert <= 0) $err = 1;
+		return $err;			
+	}
+
+	public function FnBorrar($id)
+	{
+		$qry = sprintf("UPDATE `Zona` SET `estado` = 0 WHERE `id` = %d", $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+	}
+
+	public function FnEditar($id, $descripcion, $coordenadas)
+	{
+		$err = -1;
+		$qry = sprintf("UPDATE `Zona`
+							SET `descripcion` = '%s',
+							`coordenadas` = '%s'
+						WHERE `id` = %d", 
+						$descripcion, $coordenadas, $id);
+		$update = $this->execute($qry, "update");
+		if(!$update) $err = 1;
+		return $err;		
+	}
+
+	public function FnHabilitar($id, $habilitado)
+	{
+		$qry = sprintf("UPDATE `Zona` SET `habilitado` = %d WHERE `id` = %d", $habilitado, $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+	}
 }

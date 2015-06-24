@@ -6,6 +6,10 @@ try {
 	$Admin = new Admin;
 	global $Empresa;
 	$Empresa = new Empresa;
+	global $Rubro;
+	$Rubro = new Rubro;
+	global $Zona;
+	$Zona = new Zona;
 } catch (Exception $e) {
     echo $e->getMessage();
     die;
@@ -24,11 +28,17 @@ $acc = (isset($_POST["acc"]))? $_POST["acc"] : null;
 */
 switch($acc)
 {
-	case 'admin-login'          : echo FnAdminLogin(); break;
-	case 'admin-recuperarpw'    : echo FnAdminRecuperarPw(); break;
-	case 'admin-logout'         : echo FnAdminLogout(); break;
-	case 'admin-perfil-admin'   : echo FnAdminPerfilAdmin(); break;
-	case 'admin-perfil-empresa' : echo FnAdminPerfilEmpresa(); break;
+	case 'admin-login'           : echo FnAdminLogin(); break;
+	case 'admin-recuperarpw'     : echo FnAdminRecuperarPw(); break;
+	case 'admin-logout'          : echo FnAdminLogout(); break;
+	case 'admin-perfil-admin'    : echo FnAdminPerfilAdmin(); break;
+	case 'admin-perfil-empresa'  : echo FnAdminPerfilEmpresa(); break;
+	case 'admin-rubro-editar'    : echo FnAdminEditarRubro(); break;
+	case 'admin-rubro-borrar'    : echo FnAdminBorrarRubro(); break;
+	case 'admin-rubro-habilitar' : echo FnAdminHabilitarRubro(); break;
+	case 'admin-zona-editar'     : echo FnAdminEditarZona(); break;
+	case 'admin-zona-borrar'     : echo FnAdminBorrarZona(); break;
+	case 'admin-zona-habilitar'  : echo FnAdminHabilitarZona(); break;
 	default: break;
 }
 
@@ -150,6 +160,7 @@ function FnAdminRecuperarPw()
 	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
 	return json_encode($returnJSON);
 }
+// <!--
 
 /**
 	# PERFIL
@@ -224,5 +235,171 @@ function FnAdminPerfilEmpresa()
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 
 	$returnJSON = [ "status" => $msjJSON, "data_extra" => [ "logo" => $logo ] ];
+	return json_encode($returnJSON);
+}
+// <!--
+
+/**
+	RUBROS
+*/
+function FnAdminEditarRubro()
+{
+	global $Rubro;
+	$returnJSON = $msjJSON = null;
+	$acc = $icono = '';
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id          = $_POST["id"];
+		$descripcion = $_POST["descripcion"];
+		$archivo     = $_FILES["icono"];
+		$icono       = null;
+		$acc         = $_POST["acc"];
+		// <!--
+		
+		$upload = Fn::uploadFile($archivo, "icono_rubro");
+		 
+		if($upload["err"] == -1) $icono = $upload["archivo_nombre"];
+		else{
+			$msjJSON    = Fn::FnGetMsg($acc, $upload["err"]);
+			$returnJSON = $msjJSON;
+			return json_encode($returnJSON);
+		}
+
+		if($id > 0) $err = $Rubro->FnEditar($id, $descripcion, $icono);
+		else $err = $Rubro->FnGuardar($descripcion, $icono);		
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => [ "logo" => $icono ] ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminBorrarRubro()
+{
+	global $Rubro;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id  = $_POST["id"];
+		$acc = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Rubro->FnBorrar($id);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminHabilitarRubro()
+{
+	global $Rubro;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id         = $_POST["id"];
+		$habilitado = $_POST["habilitado"];
+		$acc        = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Rubro->FnHabilitar($id, $habilitado);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+// <!-- 
+
+/**
+	ZONA
+*/
+function FnAdminEditarZona()
+{
+	global $Zona;
+	$returnJSON = $msjJSON = null;
+	$acc = '';
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id          = $_POST["id"];
+		$descripcion = $_POST["descripcion"];
+		$coordenadas = $_POST["coordenadas"];
+		$acc         = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Zona->FnEditar($id, $descripcion, $coordenadas);
+		else $err = $Zona->FnGuardar($descripcion, $coordenadas);		
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminBorrarZona()
+{
+	global $Zona;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id  = $_POST["id"];
+		$acc = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Zona->FnBorrar($id);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminHabilitarZona()
+{
+	global $Zona;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id         = $_POST["id"];
+		$habilitado = $_POST["habilitado"];
+		$acc        = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Zona->FnHabilitar($id, $habilitado);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
 	return json_encode($returnJSON);
 }
