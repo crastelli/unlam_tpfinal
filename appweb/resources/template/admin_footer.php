@@ -7,6 +7,9 @@
 	<!-- Bootstrap core JS -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>
 
+    <!-- Alertify -->
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/alertify.min.js"></script>
+
 	<!-- General JS -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/admin_general.js"></script>
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/admin_mapa.js"></script>

@@ -1,3 +1,22 @@
+// ALERTAS CUSTOMIZADAS
+alertify.info = alertify.extend("info");
+alertify.warning = alertify.extend("warning");
+alertify.set({ labels: {
+    ok     : "Aceptar",
+    cancel : "Cancelar"
+} });
+function alerta(type, msg)
+{
+    switch(type)
+    {
+        case 'info'    : alertify.info(msg); break;
+        case 'warning' : alertify.warning(msg); break;
+        case 'danger'  : alertify.danger(msg); break;
+        case 'success' : alertify.success(msg); break;
+    }
+}
+//
+
 function fCargarMapa()
 {
     var popup;

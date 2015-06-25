@@ -16,8 +16,15 @@
     
     <!-- Bootstrap core JS -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- Select multiselect-->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap-multiselect.js"></script>
+   
+    <!-- eModal -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/eModal.min.js"></script>
+    
+    <!-- Alertify -->
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/alertify.min.js"></script>
 
     <!-- Google Maps -->
     <script src="//maps.google.com/maps/api/js?sensor=false&amp;language=es&libraries=places"></script>

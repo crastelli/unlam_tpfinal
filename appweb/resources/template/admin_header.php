@@ -14,7 +14,10 @@
     <!-- Bootstrap core CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    
+   
+    <!-- Alertify -->
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/alertify.bootstrap.min.css" rel="stylesheet">
+ 
     <!-- CSS Panel -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">

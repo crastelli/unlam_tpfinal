@@ -14,8 +14,13 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Select multiselect -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet">
     
+    <!-- Alertify -->
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/alertify.bootstrap.min.css" rel="stylesheet">
+
     <!-- General CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/general.css" rel="stylesheet">
          
