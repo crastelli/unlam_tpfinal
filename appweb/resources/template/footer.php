@@ -7,7 +7,7 @@
             </ul>
         </nav>
     
-        <div id="mapa"></div>
+        <div id="mapaFondo"></div>
         
     </div> <!-- Fin #contenedor -->
 

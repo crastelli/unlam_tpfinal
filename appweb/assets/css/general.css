@@ -1,5 +1,5 @@
 @media screen {
-    #mapa {
+    #mapaFondo {
         width: 100%;
         height: 100%;
         position: fixed !important;/*Para que la API de Google no ponga su propio estilo*/
