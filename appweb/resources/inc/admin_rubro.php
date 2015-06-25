@@ -64,7 +64,7 @@ try {
                                 <tbody>
                                     <?php foreach ($ObjRubro->FnGetAll() as $row): ?>
                                         <tr data-id="<?php echo $row->id; ?>">
-                                            <td width="30px"><input type="checkbox" class="cbx-admin-rubro-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
+                                            <td width="30px"><input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-rubro-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
                                             <td><img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>icono_rubro/<?php echo $row->icono; ?>" width="25px"/></td>
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>
@@ -76,7 +76,7 @@ try {
                                                     <i class="glyphicon glyphicon-bell"></i>
                                                 </a>
                                                 
-                                                <button class="btn btn-sm btn-danger btn-admin-rubro-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
+                                                <button class="btn btn-sm btn-danger btn-admin-borrar" data-acc="admin-rubro-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </td>

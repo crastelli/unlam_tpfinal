@@ -3,7 +3,7 @@
 
 
 <div class="row" class="contenido-gral ajaxContainer">
-	<main id="contenido" class="col-xs-12 col-md-6" role="main">
+	<main id="contenido" class="col-xs-12 col-md-6 formBuscar" role="main">
 		<article>
 			<form action="home.php" id="formBuscar" class="form-inline" method="post">
 				<div class="form-group filtro_zona">

@@ -44,7 +44,7 @@
 	#contenedor {
 		margin: 0 auto 0 10px;/*Sobreponiendo el margin de .container*/
 	}
-	body#pagHome #contenido {
+	#contenido.formBuscar {
 		position: fixed;
 		width: 680px; /* 600px */
 		height: 85px; /* 80px */

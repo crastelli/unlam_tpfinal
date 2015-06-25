@@ -42,7 +42,7 @@ try {
                         
                             <div class="alert alert-aviso"><span></span></div>
                             
-                            <form accept-charset="UTF-8" role="form" class="form-horizontal form-zona-editar" data-toggle="validator">
+                            <form accept-charset="UTF-8" role="form" class="form-horizontal form-editar" data-acc="admin-zona-editar" data-retorno="admin_zona.php" data-toggle="validator">
                                 <fieldset>
                                 
                                     <div class="col-xs-12">                           
