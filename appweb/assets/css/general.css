@@ -13,16 +13,18 @@
 		box-sizing: content-box;/*Sobreponiendo el box-sizing aplicado por bootstrap*/
 	}
     #contenedor {
-        position: relative;
+		position: relative;
         margin-bottom: 4em;/*Necesario para que la nav, que tiene position:fixed, no tape el final de la página*/
     }
-	#listaOpciones label {
-		display: block;
-	}
     #modalFotosVideos h2 {font-size: 1em }
     #banner img, #contenido, #nav {
         background-color: rgba(255, 255, 255, .80);
     }
+	#listaResultadosFiltros {
+		background-color: #FFF;
+		height: 300px;
+		overflow: auto;
+	}
     #nav {
         font-weight: 700;
         width: 100%;
@@ -39,12 +41,19 @@
         padding: .5em;
         display: block;
     }
+	div.filtro_zona > select, div.filtro_rubro button {
+		width: 275px;
+		height: 55px;
+	}
+	div.filtro_rubro ul {
+	   width: 100%;
+	}
 }
 @media screen and (min-width: 768px) {
 	#contenedor {
 		margin: 0 auto 0 10px;/*Sobreponiendo el margin de .container*/
 	}
-	#contenido.formBuscar {
+	#contenido.contenidoConFormBuscar {
 		position: fixed;
 		width: 680px; /* 600px */
 		height: 85px; /* 80px */
@@ -55,12 +64,11 @@
 		z-index: 0;
 	}
     #contenido.formResultado {
-        position: fixed;
         width: 480px;
         height: 520px;
+		overflow: auto;
         padding-top: 16px;
         margin: 10px 0 0 0;
-        z-index: 0;
     }
 }
 

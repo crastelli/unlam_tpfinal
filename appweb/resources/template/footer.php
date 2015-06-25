@@ -6,10 +6,10 @@
                 <li><a href="javascript:void(0);" class="modal-terminos">Términos y condiciones</a></li>
             </ul>
         </nav>
-    
-        <div id="mapaFondo"></div>
         
     </div> <!-- Fin #contenedor -->
+    
+	<div id="mapaFondo"></div>
 
 	<!-- jQuery  -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/jquery.min.js"></script>

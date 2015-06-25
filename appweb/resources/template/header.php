@@ -28,8 +28,8 @@
   
 <body>
     <div id="contenedor" class="container">
-        <header id="banner" class="row">
+        <header id="banner" class="row" aria-hidden="true">
             <div class="col-xs-12" role="banner">
-                    <img src="<?php echo BASE_URL._DIR_ASSETS_; ?>images/logo-milugar.png" width="185" height="60"><a href="#contenido" class="sr-only sr-only-focusable">Saltar al contenido</a>
+                    <img src="<?php echo BASE_URL._DIR_ASSETS_; ?>images/logo-milugar.png" width="185" height="60">
             </div>
         </header>

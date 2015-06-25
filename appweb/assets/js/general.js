@@ -17,40 +17,38 @@ function alerta(type, msg)
 }
 //
 
-function fCargarMapa()
-{
-    var popup;
-    var n = 1;
-    var options = {
+function fCargarMapaHome() {
+    var popup,
+	n = 1,
+	options = {
         zoom: 11,
         center: new google.maps.LatLng(-34.612727, -58.445734),
         disableDefaultUI: true
     };
- 
     var map = new google.maps.Map(document.getElementById('mapaFondo'), options);
 }
 
 $(function()
 {
-    fCargarMapa();
-    $('#rubro').multiselect({
+    $('form#formBuscar select#rubro').multiselect({
         nonSelectedText : "Seleccioná un rubro",
         allSelectedText : "Todos los rubros",
         numberDisplayed: 4
     });
+    fCargarMapaHome();
 
     // Popup's
     $('.modal-registrar-empresa').on('click', function()
     {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
-            url: "http://localhost/milugar/appweb/resources/inc/modals/modal_registrar_empresa.php",
-            title:'Registro de empresa',
-            size: 'lg',
-            buttons: [
-                {text: 'Cancelar', style: 'danger', close: true, click: fCancelarRegistroEmpresa },
-                {text: 'Enviar', style: 'success', close: true, click: fGuardarRegistroEmpresa }
-            ]
+            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_registrar_empresa.php",
+            title   :'Registro de empresa',
+            size    : 'lg',
+            buttons : [
+                        {text: 'Cancelar', style: 'danger', close: true, click: fCancelarRegistroEmpresa },
+                        {text: 'Enviar', style: 'success', close: true, click: fGuardarRegistroEmpresa }
+                    ]
         };        
         eModal.ajax(options);
     });
@@ -59,13 +57,13 @@ $(function()
     {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
-            url: "http://localhost/milugar/appweb/resources/inc/modals/modal_contacto.php",
-            title:'Contacto',
-            size: 'lg',
-            buttons: [
-                {text: 'Cancelar', style: 'danger', close: true, click: fCancelarContacto },
-                {text: 'Enviar', style: 'success', close: true, click: fGuardarContacto }
-            ]
+            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_contacto.php",
+            title   :'Contacto',
+            size    : 'lg',
+            buttons : [
+                        {text: 'Cancelar', style: 'danger', close: true, click: fCancelarContacto },
+                        {text: 'Enviar', style: 'success', close: true, click: fGuardarContacto }
+                    ]
         };        
         eModal.ajax(options);
     });
@@ -74,12 +72,26 @@ $(function()
     {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
-            url: "http://localhost/milugar/appweb/resources/inc/modals/modal_terminos.php",
-            title:'Terminos y condiciones',
-            size: 'lg',
-            buttons: [
-                {text: 'Cerrar', style: 'info', close: true}
-            ]
+            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_terminos.php",
+            title   :'Terminos y condiciones',
+            size    : 'lg',
+            buttons : [
+                        {text   : 'Cerrar', style: 'info', close: true}
+                    ]
+        };        
+        eModal.ajax(options);
+    });
+
+    $('.modal-empresa-foto-video').on('click', function()
+    {
+        var options = {
+            // TODO: PONER URL DINAMICA PARA JS
+            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_empresa_foto_video.php",
+            title   :'Información de la empresa',
+            size    : 'lg',
+            buttons : [
+                        {text   : 'Cerrar', style: 'info', close: true}
+                    ]
         };        
         eModal.ajax(options);
     });

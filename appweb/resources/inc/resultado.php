@@ -3,53 +3,48 @@
 
 
 <div class="row" class="contenido-gral ajaxContainer">
-	<main id="contenido" class="col-xs-12 col-md-6 formResultado" role="main">	
+	<main id="contenido" class="col-xs-12 col-md-6 formResultado" role="main">
+		<header>
+			<h1>Resultados de la búsqueda</h1>
+		</header>
 		<article>
-			##
-				hacer la funcionalidad de apertura y cierre de este contenedor
-			##
-			<p><b>Filtros</b></p>
-			##
-				achicar el tamaño de los selectores en alto y centrarlos
-				el boton buscar deberia estar alineado a la derecha y mas chico (en relacion a los selectores)
-			##
-			<form action="home.php" id="formBuscar" class="form-inline" method="post">
-				<div class="form-group filtro_zona">
-					<select name="seleccionuno" id="seleccionuno" class="form-control">
-						<option value="1">Capital Federal / GBA</option>
-						<option value="2">Ramos Mejía</option>
-						<option value="3">Tigre</option>
-						<option value="4">San justo</option>
-						<option value="5">Lomas de Zamora</option>
-						<option value="6">Quilmes</option>
-					</select>
+			<p><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#opcionesFiltro" aria-expanded="false" aria-controls="opcionesFiltro">Filtrar búsqueda <span class="caret"></span></button></p>
+			<div class="collapse" id="opcionesFiltro">
+				<div class="well">
+					<form action="resultados.php" method="get" id="formBuscar" class="form-horizontal clearfix">
+						<div class="form-group">
+							<label for="ciudad" class="col-sm-2 control-label">Ciudad</label>
+							<div class="col-sm-10">
+								<select name="ciudad" id="ciudad" class="form-control">
+									<option value="1">Capital Federal / GBA</option>
+									<option value="2">Ramos Mejía</option>
+									<option value="3">Tigre</option>
+									<option value="4">San justo</option>
+									<option value="5">Lomas de Zamora</option>
+									<option value="6">Quilmes</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="rubro" class="col-sm-2 control-label">Rubro</label>
+							<div class="col-sm-10">
+								<select name="rubro" id="rubro" multiple="multiple">
+									<option value="1">Otros</option>
+									<option value="2">Restaurantes</option>
+									<option value="3">Tiendas</option>
+									<option value="4">Bares</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary">Buscar</button>
+							</div>
+						</div>
+					</form>
 				</div>
-				<br />
-				<div class="form-group filtro_rubro">
-					<select name="rubro" id="rubro" multiple="multiple">
-					<option value="1">Otros</option>
-					<option value="2">Restaurantes</option>
-					<option value="3">Tiendas</option>
-					<option value="4">Bares</option>
-					</select>
-				</div>
-				<br />
-				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-primary">Buscar</button>
-				</div>
-			</form>
-		</article>	
-		
-		
-		<hr />
-		<article>
-			<p><b>Resultados</b></p>
-			##
-				aca va el resultado de los filtros en formato de lista
-				el ul deberia tener un scroll con un tamaño fijo hasta el fin del contenedor
-				y en los li poner un hover de otro color al pasar el mouse por encima
-			##
-			<ul>
+			</div>
+			<ul id="listaResultadosFiltros" class="nav nav-pills nav-stacked">
 				<li><a href="#">Av. Libertador 4214 (Bar)</a></li>
 				<li><a href="#">Av. Rivadavia 11224 (Restaurante)</a></li>
 				<li><a href="#">Av. F. Alcorta 4523 (Bar)</a></li>
@@ -57,6 +52,10 @@
 				<li><a href="#">Av. Corrientes 232 (Restaurante)</a></li>
 				<li><a href="#">Gral. Hornos 5022 (Gimnasio)</a></li>
 			</ul>
+			
+			
+			<p><a href="javascript:void(0);" class="modal-empresa-foto-video">FOTOS&VIDEOS(no va aca, solo de prueba)</a></p>
+			
 		</article>	
 	</main>
 </div>
