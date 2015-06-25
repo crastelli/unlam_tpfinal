@@ -122,7 +122,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
 
                                 <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
-                                        <label for="pw" class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
+                                        <label class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <input type="password" placeholder="************" class="form-control" name="pw" id="pw" data-minlength="8" value="<?php echo (isset($data->pw))? '********' : ''; ?>" required>
                                             <div class="help-block">M&iacute;nimo 8 caracteres</div>
@@ -131,7 +131,7 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                 </div>
                                  <div class="col-xs-12 col-sm-6"> 
                                     <div class="form-group">
-                                        <label for="pw2" class="col-xs-4 control-label">Confirmar Password <abbr title="Campo requerido">*</abbr></label>
+                                        <label class="col-xs-4 control-label">Confirmar Password <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <input type="password" class="form-control" data-match="#pw" name="pw2" id="pw2" data-match-error="Los password no coinciden" placeholder="Confirmar password" value="<?php echo (isset($data->pw))? '********' : ''; ?>" data-match-error required>
                                             <div class="help-block with-errors"></div>
