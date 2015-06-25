@@ -1,24 +1,22 @@
-function fCargarMapa()
-{
-    var popup;
-    var n = 1;
-    var options = {
+function fCargarMapaHome() {
+    var popup,
+	n = 1,
+	options = {
         zoom: 11,
         center: new google.maps.LatLng(-34.612727, -58.445734),
         disableDefaultUI: true
     };
- 
     var map = new google.maps.Map(document.getElementById('mapaFondo'), options);
 }
 
 $(function()
 {
-    fCargarMapa();
-    $('#rubro').multiselect({
+    $('form#formBuscar select#rubro').multiselect({
         nonSelectedText : "Seleccioná un rubro",
         allSelectedText : "Todos los rubros",
         numberDisplayed: 4
     });
+    fCargarMapaHome();
 
     // Popup's
     $('.modal-registrar-empresa').on('click', function()

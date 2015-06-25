@@ -16,9 +16,6 @@
         position: relative;
         margin-bottom: 4em;/*Necesario para que la nav, que tiene position:fixed, no tape el final de la página*/
     }
-	#listaOpciones label {
-		display: block;
-	}
     #modalFotosVideos h2 {font-size: 1em }
     #banner img, #contenido, #nav {
         background-color: rgba(255, 255, 255, .75);
@@ -39,12 +36,22 @@
         padding: .5em;
         display: block;
     }
+	div.filtro_zona > select, div.filtro_rubro button {
+		width: 275px;
+		height: 55px;
+	}
+	div.filtro_rubro ul {
+	   width: 100%;
+	}
+	.modal-dialog .modal-body {
+		overflow: hidden;
+	}
 }
 @media screen and (min-width: 768px) {
 	#contenedor {
 		margin: 0 auto 0 10px;/*Sobreponiendo el margin de .container*/
 	}
-	body#pagHome #contenido {
+	#contenido.contenidoConFormBuscar {
 		position: fixed;
 		width: 680px; /* 600px */
 		height: 85px; /* 80px */
@@ -54,19 +61,4 @@
 		margin: -40px 0 0 -300px;
 		z-index: 0;
 	}
-}
-
-div.filtro_zona > select
-{
-    width: 275px !important;
-    height: 55px;
-}
-div.filtro_rubro button
-{
-    width: 275px;
-    height: 55px;
-}
-div.filtro_rubro ul
-{
-   width: 275px;
 }
