@@ -6,18 +6,18 @@
                 <li><a href="javascript:void(0);" class="modal-terminos">Términos y condiciones</a></li>
             </ul>
         </nav>
-    
-        <div id="mapaFondo"></div>
         
     </div> <!-- Fin #contenedor -->
+    
+	<div id="mapaFondo"></div>
 
 	<!-- jQuery  -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/jquery.min.js"></script>
-
-	<!-- Bootstrap core JS -->
-	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap-multiselect.js"></script>
-	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/eModal.min.js"></script>
+    
+    <!-- Bootstrap core JS -->
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap-multiselect.js"></script>
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/eModal.min.js"></script>
 
     <!-- Google Maps -->
     <script src="//maps.google.com/maps/api/js?sensor=false&amp;language=es&libraries=places"></script>
@@ -26,7 +26,7 @@
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/general.js"></script>
 
     <!-- Extras -->
-	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootbox.min.js"></script>
-	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/validator.js"></script>
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootbox.min.js"></script>
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/validator.js"></script>
   </body>
 </html>

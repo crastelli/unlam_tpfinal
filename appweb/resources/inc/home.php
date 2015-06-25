@@ -3,6 +3,7 @@
 
 
 <div class="row" class="contenido-gral ajaxContainer">
+
 	<main id="contenido" class="col-xs-12 col-md-6 contenidoConFormBuscar" role="main">
 		<header class="sr-only">
 			<h1>Inicio</h1>

@@ -3,7 +3,7 @@
 
 	<!-- Google Maps -->
 	<script src="//maps.google.com/maps/api/js?sensor=false&amp;language=es&libraries=places"></script>
-
+	
 	<!-- Bootstrap core JS -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap.min.js"></script>
 

@@ -14,10 +14,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet">
     
     <!-- General CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/general.css" rel="stylesheet">
-    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/bootstrap-multiselect.css" rel="stylesheet">
          
   </head>
   

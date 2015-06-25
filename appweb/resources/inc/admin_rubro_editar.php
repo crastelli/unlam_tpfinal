@@ -42,7 +42,7 @@ try {
                         
                             <div class="alert alert-aviso"><span></span></div>
                             
-                            <form accept-charset="UTF-8" role="form" class="form-horizontal form-rubro-editar" data-toggle="validator">
+                            <form accept-charset="UTF-8" role="form" class="form-horizontal form-editar" data-acc="admin-rubro-editar" data-retorno="admin_rubro.php" data-toggle="validator">
                                 <fieldset>
                                 
                                     <div class="col-xs-12">                           
