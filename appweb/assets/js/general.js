@@ -33,13 +33,12 @@ $(function()
     $('form#formBuscar select#rubro').multiselect({
         nonSelectedText : "Seleccioná un rubro",
         allSelectedText : "Todos los rubros",
-        numberDisplayed: 4
+        numberDisplayed: 7
     });
     fCargarMapaHome();
 
     // Popup's
-    $('.modal-registrar-empresa').on('click', function()
-    {
+    $('.modal-registrar-empresa').on('click', function() {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
             url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_registrar_empresa.php",
@@ -53,8 +52,7 @@ $(function()
         eModal.ajax(options);
     });
 
-    $('.modal-contacto').on('click', function()
-    {
+    $('.modal-contacto').on('click', function() {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
             url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_contacto.php",
@@ -68,8 +66,7 @@ $(function()
         eModal.ajax(options);
     });
 
-    $('.modal-terminos').on('click', function()
-    {
+    $('.modal-terminos').on('click', function() {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
             url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_terminos.php",
@@ -82,8 +79,7 @@ $(function()
         eModal.ajax(options);
     });
 
-    $('.modal-empresa-foto-video').on('click', function()
-    {
+    $('.modal-empresa-foto-video').on('click', function() {
         var options = {
             // TODO: PONER URL DINAMICA PARA JS
             url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_empresa_foto_video.php",

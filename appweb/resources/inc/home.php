@@ -15,17 +15,21 @@
 						<option value="1">Capital Federal / GBA</option>
 						<option value="2">Ramos Mejía</option>
 						<option value="3">Tigre</option>
-						<option value="4">San justo</option>
+						<option value="4">San Justo</option>
 						<option value="5">Lomas de Zamora</option>
 						<option value="6">Quilmes</option>
 					</select>
 				</div>
 				<div class="form-group filtro_rubro">
-					<select name="rubro" id="rubro" multiple="multiple">
-					<option value="1">Otros</option>
+					<select name="rubro" id="rubro" multiple>
+					<option value="1">Tiendas</option>
 					<option value="2">Restaurantes</option>
-					<option value="3">Tiendas</option>
 					<option value="4">Bares</option>
+					<option value="5">Pizzerías</option>
+					<option value="13">Hoteles</option>
+					<option value="14">Cafés</option>
+					<option value="15">Zapaterías</option>
+					<option value="todos">Otros</option>
 					</select>
 				</div>
 				<div class="form-group">

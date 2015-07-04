@@ -2,24 +2,22 @@
     #mapaFondo {
         width: 100%;
         height: 100%;
-        position: fixed !important;/*Para que la API de Google no ponga su propio estilo*/
+        position: fixed !important;/*Reemplaza el position: relative que pone la API de Google Maps*/
         top: 0;
         left: 0;
-        z-index: -1;/*Para que se vea el fondo de las ventanas modales*/
+        z-index: -1;/*Para que se vea el fondo negro translúcido de las ventanas modales*/
     }
 	#banner img {
 		margin-left: -15px;
 		padding: 7px 14px 14px;
-		box-sizing: content-box;/*Sobreponiendo el box-sizing aplicado por bootstrap*/
+		box-sizing: content-box;/*Reemplaza el box-sizing aplicado por bootstrap*/
 	}
     #contenedor {
 		position: relative;
         margin-bottom: 4em;/*Necesario para que la nav, que tiene position:fixed, no tape el final de la página*/
     }
     #modalFotosVideos h2 {font-size: 1em }
-    #banner img, #contenido, #nav {
-        background-color: rgba(255, 255, 255, .80);
-    }
+    #banner img, #contenido, #nav { background-color: rgba(255, 255, 255, .80); }
 	#listaResultadosFiltros {
 		background-color: #FFF;
 		height: 300px;
@@ -33,9 +31,7 @@
         bottom: 0;
         z-index: 1;
     }
-    #nav ul {
-        margin: 0;
-    }
+    #nav ul { margin: 0; }
     #nav a {
         color: #000;
         padding: .5em;
@@ -45,14 +41,18 @@
 		width: 275px;
 		height: 55px;
 	}
-	div.filtro_rubro ul {
-	   width: 100%;
+	div.filtro_rubro ul, div.filtro_rubro ul li label { width: 100%; }
+	div.filtro_zona > select {
+		width: 275px !important;
+		height: 55px;
+	}
+	div.filtro_rubro button {
+		width: 275px;
+		height: 55px;
 	}
 }
 @media screen and (min-width: 768px) {
-	#contenedor {
-		margin: 0 auto 0 10px;/*Sobreponiendo el margin de .container*/
-	}
+	#contenedor { margin: 0 auto 0 10px;/*Sobreponiendo el margin predeterminado de .container*/ }
 	#contenido.contenidoConFormBuscar {
 		position: fixed;
 		width: 680px; /* 600px */
@@ -70,19 +70,6 @@
         padding-top: 16px;
         margin: 10px 0 0 0;
     }
-}
-
-div.filtro_zona > select
-{
-    width: 275px !important;
-    height: 55px;
-}
-div.filtro_rubro button
-{
-    width: 275px;
-    height: 55px;
-}
-div.filtro_rubro ul
-{
-   width: 275px;
+	
+	div.filtro_rubro ul { top: -150%; }
 }

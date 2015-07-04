@@ -1,8 +1,8 @@
 <div class="clearfix">
     <h4>Datos referente</h4>
     
-    <div class="clearfix">                           
-    <div class="col-xs-12 col-sm-6 clearfix">                           
+    <div class="row">                           
+    <div class="col-xs-12 col-sm-6">                           
         <div class="form-group clearfix">
             <label for="nombre_referente" class="col-xs-4 control-label">Nombre referente <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
@@ -11,7 +11,7 @@
             </div>
         </div> 
     </div>
-    <div class="col-xs-12 col-sm-6 clearfix">
+    <div class="col-xs-12 col-sm-6">
         <div class="form-group clearfix">
             <label for="dni_referente" class="col-xs-4 control-label">DNI referente <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
@@ -24,8 +24,8 @@
     
     <h4>Datos comercio</h4>
     
-    <div class="clearfix"> 
-    <div class="col-xs-12 col-sm-6 clearfix"> 
+    <div class="row"> 
+    <div class="col-xs-12 col-sm-6"> 
         <div class="form-group clearfix">
             <label for="nombre" class="col-xs-4 control-label">Nombre <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-6 clearfix"> 
+    <div class="col-xs-12 col-sm-6"> 
         <div class="form-group clearfix">
             <label for="razon_social" class="col-xs-4 control-label">Razón social <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
@@ -45,8 +45,8 @@
     </div>
     </div>
     
-    <div class="clearfix"> 
-    <div class="col-xs-12 col-sm-6 clearfix"> 
+    <div class="row"> 
+    <div class="col-xs-12 col-sm-6"> 
         <div class="form-group clearfix">
             <label for="logo" class="col-xs-4 control-label">Logo</label>
             <div class="col-xs-8">
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-6 clearfix"> 
+    <div class="col-xs-12 col-sm-6"> 
         <div class="form-group clearfix">   
             <label for="telefono" class="col-xs-4 control-label">Teléfono</label>
             <div class="col-xs-8">
@@ -69,7 +69,8 @@
     </div>
     </div>
     
-    <div class="col-xs-12 clearfix"> 
+    <div class="row"> 
+    <div class="col-xs-12"> 
         <div class="form-group clearfix">
             <label for="descripcion" class="col-xs-4 col-sm-2 control-label">Breve descripción</label>
             <div class="col-xs-8 col-sm-10">
@@ -77,28 +78,31 @@
             </div>
         </div>
     </div>
+    </div>
 
-   <div class="col-xs-12 clearfix"> 
+   <div class="row"> 
+   <div class="col-xs-12"> 
         <div class="form-group clearfix">
-            <label for="email" class="col-xs-4 col-sm-2 control-label">Email (usuario) <abbr title="Campo requerido">*</abbr></label>
+            <label for="email" class="col-xs-4 col-sm-2 control-label">E-mail (usuario) <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8 col-sm-10">
                 <input type="email" placeholder="Ingrese un email" class="form-control" name="email" id="email" value="" data-match-error required>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
     </div>
+    </div>
 
-	<div class="clearfix">
+	<div class="row">
     <div class="col-xs-12 col-sm-6"> 
         <div class="form-group clearfix">
             <label for="pw" class="col-xs-4 control-label">Password <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
-                <input type="password" placeholder="************" class="form-control" name="pw" id="pw" data-minlength="8" value="" required>
+                <input type="password" placeholder="Password" class="form-control" name="pw" id="pw" data-minlength="8" value="" required>
                 <div class="help-block">M&iacute;nimo 8 caracteres</div>
             </div>
         </div>
     </div>
-     <div class="col-xs-12 col-sm-6 clearfix"> 
+     <div class="col-xs-12 col-sm-6"> 
         <div class="form-group clearfix">
             <label for="pw2" class="col-xs-4 control-label">Confirmar Password <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
@@ -109,20 +113,9 @@
     </div>
     </div>
     
-    <div class="col-xs-12 clearfix"> 
-        <div class="form-group clearfix">
-            <div class="col-sm-offset-3 col-sm-9">
-                <span class="label label-default">
-                    Las modificaciones tanto de email como de contraseña se verán reflejadas
-                    en el próximo inicio de sesión.
-                </span>
-            </div>
-        </div>
-    </div>
-    
     <h4>Ubicación y especificación de búsqueda</h4>
            
-    <div class="clearfix">        
+    <div class="row">        
     <div class="col-xs-12 col-sm-6">        
         <div class="form-group clearfix">
             <label for="idzona" class="col-xs-4 control-label">Zona <abbr title="Campo requerido">*</abbr></label>
@@ -137,13 +130,13 @@
             <label for="idrubro" class="col-xs-4 control-label">Rubro <abbr title="Campo requerido">*</abbr></label>
             <div class="col-xs-8">
                 <select name="idrubro" id="idrubro" class="form-control">
-                                                               </select>
+                 </select>
             </div>                               
         </div>
     </div>
     </div>
     
-    <div class="clearfix">        
+    <div class="row">        
     <div class="col-xs-12 col-sm-6">        
         <div class="form-group clearfix">
             <label for="direccion" class="col-xs-4 control-label">Dirección <abbr title="Campo requerido">*</abbr></label>
@@ -163,6 +156,7 @@
     </div>   
     </div>   
     
+    <div class="row">     
     <div class="col-xs-12">     
         <div class="form-group clearfix">
             <div class="col-xs-12">  
@@ -170,6 +164,7 @@
                 <div id="mapa"></div>
             </div>
         </div>  
+    </div>
     </div>
 
 </div>
