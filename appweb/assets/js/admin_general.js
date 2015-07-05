@@ -1,5 +1,12 @@
 $(function()
 {
+	// GALERIA -->
+	$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });   
+	// <!--
+
 	// CERRAR SESSION -->
 	$('body').on('click', '.navbar .btn-logout', function(e)
 	{
@@ -186,6 +193,7 @@ $(function()
 				success     : function(response)
 							{
 								var JSON = $.parseJSON(response);
+								// TODO: ERROR CUANDO VIENE 3 QUE ES EL PESO DE LA IMAGEN SUPERIOR A 1MG
 								if(JSON.status["codErr"] == -1)
 								{
 									location.href = pagina_retorno;
@@ -206,7 +214,7 @@ $(function()
 	});
 	$('.btn-admin-borrar').on('click', function()
 	{
-			var id  = $(this).attr('id'),
+			var id  = $(this).parents('.item').data('id'),
 			$msg    = $('div.alert-aviso'),
 			formAcc = $(this).data('acc');
 			$msg.hide();
@@ -221,7 +229,7 @@ $(function()
 						var JSON = $.parseJSON(response);
 						if(JSON.status["codErr"] == -1)
 						{
-							$('#listado tbody').find('tr[data-id="'+id+'"]').remove();
+							$('#listado').find('.item[data-id="'+id+'"]').remove();
 						}
 						$msg.removeClass();
 						$msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
@@ -233,7 +241,7 @@ $(function()
 	});
 	$('.cbx-admin-habilitar').on('change', function(e)
 	{
-			var id  = $(this).parents('tr').data('id'),
+			var id  = $(this).parents('.item').data('id'),
 			$msg    = $('div.alert-aviso'),
 			formAcc = $(this).data('acc');
 			$msg.hide();

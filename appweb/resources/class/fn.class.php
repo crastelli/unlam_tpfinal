@@ -209,6 +209,120 @@ Abstract Class Fn
 							default:break;
 						}
 						break;
+			case 'admin-empresa-editar':
+						switch ($err)
+						{											
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							case 2:
+									$obj->msg   = 'ADVERTENCIA: Ya existe una empresa registrada con el mismo email.';
+									$obj->class = 'warning';
+									break;
+							case 3:
+									$obj->msg   = 'ADVERTENCIA: El archivo que intenta subir debe ser una imagen (JPG, PNG) menor a 1MG';
+									$obj->class = 'warning';
+									break;
+							case 4:
+									$obj->msg   = 'ADVERTENCIA: Hubo un error al intentar subir el archivo.';
+									$obj->class = 'warning';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-empresa-borrar':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro borrado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-empresa-habilitar':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro actualizado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
+			case 'admin-empresa-imagen-editar':
+						switch ($err)
+						{					
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							case 3:
+									$obj->msg   = 'ADVERTENCIA: El archivo que intenta subir debe ser una imagen (JPG, PNG) menor a 1MG';
+									$obj->class = 'warning';
+									break;									
+							default:break;
+						}
+						break;
+			case 'admin-empresa-imagen-borrar':
+						switch ($err)
+						{				
+							case -1:
+									$obj->msg   = 'AVISO: Registro eliminado con éxito.';
+									$obj->class = 'success';
+									break;		
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							case 3:
+									$obj->msg   = 'ADVERTENCIA: El archivo que intenta subir debe ser una imagen (JPG, PNG) menor a 1MG';
+									$obj->class = 'warning';
+									break;									
+							default:break;
+						}
+						break;
+			case 'admin-empresa-video-editar':
+						switch ($err)
+						{					
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							case 3:
+									$obj->msg   = 'ADVERTENCIA: El archivo que intenta subir debe ser una imagen (JPG, PNG) menor a 1MG';
+									$obj->class = 'warning';
+									break;									
+							default:break;
+						}
+						break;
+			case 'admin-empresa-video-borrar':
+						switch ($err)
+						{				
+							case -1:
+									$obj->msg   = 'AVISO: Registro eliminado con éxito.';
+									$obj->class = 'success';
+									break;		
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							case 3:
+									$obj->msg   = 'ADVERTENCIA: El archivo que intenta subir debe ser una imagen (JPG, PNG) menor a 1MG';
+									$obj->class = 'warning';
+									break;									
+							default:break;
+						}
+						break;
 			default:
 				break;
 		}

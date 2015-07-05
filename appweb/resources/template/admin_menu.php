@@ -23,8 +23,8 @@
                         <?php if($ObjUs->root == 0): ?>
 							<li class="page-home <?php echo ($ArrInfoPage['menu-class'] == 'page-home')? 'active' : ''; ?>"> <a href="admin_home.php">Inicio</a> </li>
 							<li class="page-perfil <?php echo ($ArrInfoPage['menu-class'] == 'page-perfil')? 'active' : ''; ?>"> <a href="admin_perfil.php">Mi perfil</a> </li>
-                            <li class="page-empresa-imagen <?php echo ($ArrInfoPage['menu-class'] == 'page-empresa-imagen')? 'active' : ''; ?>"> <a href="#">Mis imágenes</a> </li>
-							<li class="page-empresa-video <?php echo ($ArrInfoPage['menu-class'] == 'page-empresa-video')? 'active' : ''; ?>"> <a href="#">Mis videos</a> </li>
+                            <li class="page-empresa-imagen <?php echo ($ArrInfoPage['menu-class'] == 'page-empresa-imagen')? 'active' : ''; ?>"> <a href="admin_empresa_imagen.php">Mis imágenes</a> </li>
+							<li class="page-empresa-video <?php echo ($ArrInfoPage['menu-class'] == 'page-empresa-video')? 'active' : ''; ?>"> <a href="admin_empresa_video.php">Mis videos</a> </li>
 						<?php else: ?>
 							<li class="page-home <?php echo ($ArrInfoPage['menu-class'] == 'page-home')? 'active' : ''; ?>"> <a href="admin_home.php">Inicio</a> </li>
 

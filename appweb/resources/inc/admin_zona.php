@@ -62,7 +62,7 @@ try {
                                 </thead>
                                 <tbody>
                                     <?php foreach ($ObjZona->FnGetAll() as $row): ?>
-                                        <tr data-id="<?php echo $row->id; ?>">
+                                        <tr class="item" data-id="<?php echo $row->id; ?>">
                                             <td width="30px"><input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-zona-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>
@@ -74,7 +74,7 @@ try {
                                                     <i class="glyphicon glyphicon-bell"></i>
                                                 </a>
                                                 
-                                                <button class="btn btn-sm btn-danger btn-admin-borrar" data-acc="admin-zona-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
+                                                <button class="btn btn-sm btn-danger btn-admin-borrar" data-acc="admin-zona-borrar" alt="Eliminar" title="Eliminar">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </td>

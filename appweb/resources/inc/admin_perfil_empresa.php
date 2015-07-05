@@ -190,7 +190,8 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                     <div class="form-group">    
                                         <label for="lat_long" class="col-xs-4 control-label">Latitud / Longitud</label>
                                         <div class="col-xs-8">
-                                            <input type="text" placeholder="-" class="form-control" readonly name="lat_long" id="lat_long" value="<?php echo (isset($data->lat_long) && $data->lat_long != '')? $data->lat_long : ''; ?>">
+                                            <input type="text" placeholder="-" class="form-control" readonly name="lat_long" id="lat_long" value="<?php echo (isset($data->lat_long) && $data->lat_long != '')? $data->lat_long : ''; ?>" required>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>   

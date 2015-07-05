@@ -40,17 +40,25 @@ try {
                 </div>
             </div> 
             
+            
             <!-- Listado principal -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">Listado de <?php echo $ArrInfoPage["page-title"]; ?></div>
+                            <div class="text-muted bootstrap-admin-box-title">
+                                <a href="admin_empresa_editar.php" alt="Nuevo" title="Nuevo" class="btn btn-sm btn-primary">Nuevo</a>
+                                Listado de <?php echo $ArrInfoPage["page-title"]; ?>
+                            </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
-                            <table class="table table-striped table-bordered" id="listado-rubros">
+                        
+                            <div class="alert alert-aviso"><span></span></div>
+                            
+                            <table class="table table-striped table-bordered" id="listado">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Logo</th>
                                         <th>Nombre</th>
                                         <th>Raz&oacute;n social</th>
@@ -60,23 +68,34 @@ try {
                                 </thead>
                                 <tbody>
                                     <?php foreach ($ObjEmpresa->FnGetEmpresas() as $row): ?>
-                                        <tr>
+                                        <tr class="item" data-id="<?php echo $row->id; ?>">
+                                            <td width="30px"><input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-empresa-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
                                             <td><img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/<?php echo $row->logo; ?>" width="35px"/></td>
                                             <td><?php echo $row->nombre; ?></td>
                                             <td><?php echo $row->razon_social; ?></td>
                                             <td><?php echo $row->direccion; ?></td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar" id="<?php echo $row->id; ?>">
+                                                <a href="admin_empresa_editar.php?id=<?php echo $row->id; ?>" class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar">
                                                     <i class="glyphicon glyphicon-pencil"></i>
-                                                </button>
+                                                </a>
                                                 
-                                                <button class="btn btn-sm btn-warning btn-consultar" alt="Consultar" title="Consultar" id="<?php echo $row->id; ?>">
+                                                <a href="admin_empresa_editar.php?id=<?php echo $row->id; ?>&view" alt="Consultar" title="Consultar" class="btn btn-sm btn-warning btn-editar">
                                                     <i class="glyphicon glyphicon-bell"></i>
-                                                </button>
+                                                </a>
                                                 
-                                                <button class="btn btn-sm btn-danger btn-borrar" alt="Eliminar" title="Eliminar" id="<?php echo $row->id; ?>">
+                                                <button class="btn btn-sm btn-danger btn-admin-borrar" data-acc="admin-empresa-borrar" alt="Eliminar" title="Eliminar">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
+                                                
+                                                <span class="separador">|</span>
+                                                
+                                                <a href="admin_empresa_imagen.php?id=<?php echo $row->id; ?>" alt="Imagenes" title="Imagenes" class="btn btn-sm btn-default">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </a>
+                                                
+                                                <a href="admin_empresa_video.php?id=<?php echo $row->id; ?>" alt="Videos" title="Videos" class="btn btn-sm btn-default">
+                                                    <i class="glyphicon glyphicon-film"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>                             
@@ -86,8 +105,8 @@ try {
                     </div>
                 </div>
             </div>
-            <!-- Listado principal -->
-            
+            <!-- Listado principal -->            
+
         </div>
     </div>
 </div>

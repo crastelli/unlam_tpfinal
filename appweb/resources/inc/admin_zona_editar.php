@@ -45,24 +45,32 @@ try {
                             <form accept-charset="UTF-8" role="form" class="form-horizontal form-editar" data-acc="admin-zona-editar" data-retorno="admin_zona.php" data-toggle="validator">
                                 <fieldset>
                                 
-                                    <div class="col-xs-12">                           
+                                    <div class="col-xs-12 col-sm-6">        
                                         <div class="form-group">
-                                            <label for="descripcion" class="col-xs-4 col-sm-2 control-label">Descripci&oacute;n <abbr title="Campo requerido">*</abbr></label>
-                                            <div class="col-xs-8 col-sm-10">
-                                                <input type="text" placeholder="Ingrese una descripci&oacute;n" <?php echo $edit; ?> class="form-control" name="descripcion" id="descripcion" value="<?php echo (isset($data->descripcion))? $data->descripcion : ''; ?>" data-match-error required>
+                                            <label for="descripcion" class="col-xs-4 control-label">Descripci&oacute;n <abbr title="Campo requerido">*</abbr></label>
+                                            <div class="col-xs-8">
+                                                <input type="text" placeholder="Ingrese una descripcion" <?php echo $edit; ?> class="form-control" name="descripcion" id="direccion" value="<?php echo (isset($data->descripcion))? $data->descripcion : ''; ?>" required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
-                                    
-                                   <div class="col-xs-12">                           
-                                        <div class="form-group">
-                                            <label for="coordenadas" class="col-xs-4 col-sm-2 control-label">Coordenadas <abbr title="Campo requerido">*</abbr></label>
-                                            <div class="col-xs-8 col-sm-10">
-                                                <input type="text" placeholder="Ingrese las coordenadas" <?php echo $edit; ?> class="form-control" name="coordenadas" id="coordenadas" value="<?php echo (isset($data->coordenadas))? $data->coordenadas : ''; ?>" data-match-error required>
+                                    <div class="col-xs-12 col-sm-6">        
+                                        <div class="form-group">    
+                                            <label for="lat_long" class="col-xs-4 control-label">Latitud / Longitud</label>
+                                            <div class="col-xs-8">
+                                                <input type="text" placeholder="-" class="form-control" readonly name="lat_long" id="lat_long" value="<?php echo (isset($data->lat_long) && $data->lat_long != '')? $data->lat_long : ''; ?>" required>
                                                 <div class="help-block with-errors"></div>
+                                             </div>
+                                        </div>
+                                    </div>   
+                                    
+                                    <div class="col-xs-12">     
+                                        <div class="form-group">
+                                            <div class="col-xs-12">  
+                                                <input id="pac-input" class="controls" type="text" <?php echo $edit; ?> placeholder="Ingrese dirección..." />
+                                                <div id="mapa"></div>
                                             </div>
-                                        </div> 
+                                        </div>  
                                     </div>
                                     
                                     <div class="col-xs-12">                                                                                                   
@@ -95,3 +103,5 @@ try {
 
 
 <?php require ROOT_DIR._DIR_TMP_."admin_footer.php"; ?>
+
+<script type="text/javascript"> window.onload = function() { fCargarMapa($('input[name="lat_long"]').val()); } </script>

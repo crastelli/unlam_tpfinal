@@ -4,13 +4,13 @@ Class Zona extends Database
 {
 	private $id;
 	private $descripcion;
-	private $coordenadas;
+	private $lat_long;
 	private $estado;
 	private $habilitado;
 
 	public function FnGetById($id)
 	{
-		$qry = sprintf("SELECT `id`, `descripcion`, `coordenadas`, `habilitado`
+		$qry = sprintf("SELECT `id`, `descripcion`, `lat_long`, `habilitado`
 				FROM `Zona`
 				WHERE `id` = %d
 				LIMIT 1", $id);
@@ -19,17 +19,17 @@ Class Zona extends Database
 
 	public function FnGetAll()
 	{
-		$qry = sprintf("SELECT `id`, `descripcion`, `coordenadas`, `habilitado`
+		$qry = sprintf("SELECT `id`, `descripcion`, `lat_long`, `habilitado`
 				FROM `Zona`
 				WHERE `estado` = 1", False);
 		return $this->query($qry);
 	}	
 
-	public function FnGuardar( $descripcion, $coordenadas)
+	public function FnGuardar( $descripcion, $lat_long)
 	{
 		$err = -1;
-		$qry = sprintf("INSERT INTO `Zona` (`descripcion`,`coordenadas`)
-							VALUES ('%s', '%s')", $descripcion, $coordenadas);
+		$qry = sprintf("INSERT INTO `Zona` (`descripcion`,`lat_long`)
+							VALUES ('%s', '%s')", $descripcion, $lat_long);
 		$insert = $this->execute($qry, "insert");
 		if($insert <= 0) $err = 1;
 		return $err;			
@@ -43,14 +43,14 @@ Class Zona extends Database
 		else return 1;
 	}
 
-	public function FnEditar($id, $descripcion, $coordenadas)
+	public function FnEditar($id, $descripcion, $lat_long)
 	{
 		$err = -1;
 		$qry = sprintf("UPDATE `Zona`
 							SET `descripcion` = '%s',
-							`coordenadas` = '%s'
+							`lat_long` = '%s'
 						WHERE `id` = %d", 
-						$descripcion, $coordenadas, $id);
+						$descripcion, $lat_long, $id);
 		$update = $this->execute($qry, "update");
 		if(!$update) $err = 1;
 		return $err;		

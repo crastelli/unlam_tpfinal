@@ -76,7 +76,7 @@ Class Empresa extends Usuario
 		return $err;
 	}
 
-	public function FnGuardarPerfil($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
+	public function FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
 	{
 		$err = -1;
 		$logo_ant = '';
@@ -119,6 +119,23 @@ Class Empresa extends Usuario
 		return $err;		
 	}
 
+	public function FnGuardar($idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
+	{
+		$err = -1;
+		if(!$this->FnExistente(null, $email))
+		{
+			$qry = sprintf("INSERT INTO `Empresa`
+							(`idzona`, `idrubro`, `lat_long`, `nombre_referente`, `dni_referente`, 
+							`nombre`, `razon_social`, `telefono`, `direccion`, `descripcion`, 
+							`email`, `pw`, `logo`)
+							VALUES (%d, %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+							$idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $email, md5($pw), $logo);
+			$insert = $this->execute($qry, "insert");
+			if($insert <= 0) $err = 1;
+		}else $err = 2;
+		return $err;		
+	}
+
 	// Chequea que no haya otra empresa registrada con dicho email.
 	private function FnExistente($id, $email)
 	{
@@ -130,4 +147,106 @@ Class Empresa extends Usuario
 		return $this->queryOne($qry);	
 	}
 
+	public function FnBorrar($id)
+	{
+		$qry = sprintf("UPDATE `Empresa` SET `estado` = 0 WHERE `id` = %d", $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+	}
+
+	public function FnHabilitar($id, $habilitado)
+	{
+		$qry = sprintf("UPDATE `Empresa` SET `habilitado` = %d WHERE `id` = %d", $habilitado, $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+	}	
+
+	// Imagen -->
+	public function FnGetImagenes($idempresa)
+	{
+		$qry = sprintf("SELECT `id`, `idempresa`, `titulo`, `descripcion`, `link_imagen` imagen, `estado`, `habilitado`, `fecha`
+					FROM `Imagen_rel_empresa`
+					WHERE `idempresa` = %d
+					AND `estado` = 1", $idempresa);
+		return $this->query($qry);	
+	}
+	public function FnGuardarImagen($idempresa, $titulo, $descripcion, $imagen)
+	{
+		$err = -1;
+
+		$qry = sprintf("INSERT INTO `Imagen_rel_empresa`
+						(`idempresa`, `titulo`, `descripcion`, `link_imagen`)
+						VALUES (%d, '%s', '%s', '%s')",
+						$idempresa, $titulo, $descripcion, $imagen);
+		$insert = $this->execute($qry, "insert");
+		if($insert <= 0) $err = 1;
+
+		return $err;		
+	}
+	public function FnBorrarImagen($id)
+	{
+		$qry = sprintf("UPDATE `Imagen_rel_empresa` SET `estado` = 0 WHERE `id` = %d", $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+				
+	}
+	public function FnHabilitarImagenEmpresa($id, $habilitado)
+	{
+		$qry = sprintf("UPDATE `Imagen_rel_empresa` SET `habilitado` = %d WHERE `id` = %d", $habilitado, $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+	}		
+	// -->
+
+	// Video -->
+	public function FnGetVideos($idempresa)
+	{
+		$qry = sprintf("SELECT `id`, `idempresa`, `titulo`, `descripcion`, `codigo`, `estado`, `habilitado`, `fecha`
+					FROM `Video_rel_empresa`
+					WHERE `idempresa` = %d
+					AND `estado` = 1", $idempresa);
+		return $this->query($qry);	
+	}
+	public function FnGuardarVideo($idempresa, $titulo, $descripcion, $link)
+	{
+		$err = -1;
+
+		$codigo = '';
+		if($link != '')
+		{
+			$match = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $link, $matches);
+		    if((int) $match > 0)
+		                $codigo = $matches[0];
+		}
+
+		$qry = sprintf("INSERT INTO `Video_rel_empresa`
+						(`idempresa`, `titulo`, `descripcion`, `codigo`)
+						VALUES (%d, '%s', '%s', '%s')",
+						$idempresa, $titulo, $descripcion, $codigo);
+		$insert = $this->execute($qry, "insert");
+		if($insert <= 0) $err = 1;
+
+		return $err;		
+	}
+	public function FnBorrarVideo($id)
+	{
+		$qry = sprintf("UPDATE `Video_rel_empresa` SET `estado` = 0 WHERE `id` = %d", $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+				
+	}
+	public function FnHabilitarVideoEmpresa($id, $habilitado)
+	{
+		$qry = sprintf("UPDATE `Video_rel_empresa` SET `habilitado` = %d WHERE `id` = %d", $habilitado, $id);
+		$update = $this->execute($qry, "update");
+		echo $qry;die;
+		if($update) return -1;
+		else return 1;
+	}	
+	// -->	
 }

@@ -103,5 +103,4 @@ try {
     </div>
 </div>
 
-
 <?php require ROOT_DIR._DIR_TMP_."admin_footer.php"; ?>

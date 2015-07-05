@@ -28,17 +28,27 @@ $acc = (isset($_POST["acc"]))? $_POST["acc"] : null;
 */
 switch($acc)
 {
-	case 'admin-login'           : echo FnAdminLogin(); break;
-	case 'admin-recuperarpw'     : echo FnAdminRecuperarPw(); break;
-	case 'admin-logout'          : echo FnAdminLogout(); break;
-	case 'admin-perfil-admin'    : echo FnAdminPerfilAdmin(); break;
-	case 'admin-perfil-empresa'  : echo FnAdminPerfilEmpresa(); break;
-	case 'admin-rubro-editar'    : echo FnAdminEditarRubro(); break;
-	case 'admin-rubro-borrar'    : echo FnAdminBorrarRubro(); break;
-	case 'admin-rubro-habilitar' : echo FnAdminHabilitarRubro(); break;
-	case 'admin-zona-editar'     : echo FnAdminEditarZona(); break;
-	case 'admin-zona-borrar'     : echo FnAdminBorrarZona(); break;
-	case 'admin-zona-habilitar'  : echo FnAdminHabilitarZona(); break;
+	case 'admin-login'                    : echo FnAdminLogin(); break;
+	case 'admin-recuperarpw'              : echo FnAdminRecuperarPw(); break;
+	case 'admin-logout'                   : echo FnAdminLogout(); break;
+	case 'admin-perfil-admin'             : echo FnAdminPerfilAdmin(); break;
+	case 'admin-perfil-empresa'           : echo FnAdminPerfilEmpresa(); break;
+	case 'admin-rubro-editar'             : echo FnAdminEditarRubro(); break;
+	case 'admin-rubro-borrar'             : echo FnAdminBorrarRubro(); break;
+	case 'admin-rubro-habilitar'          : echo FnAdminHabilitarRubro(); break;
+	case 'admin-zona-editar'              : echo FnAdminEditarZona(); break;
+	case 'admin-zona-borrar'              : echo FnAdminBorrarZona(); break;
+	case 'admin-zona-habilitar'           : echo FnAdminHabilitarZona(); break;
+	case 'admin-empresa-editar'           : echo FnAdminEditarEmpresa(); break;
+	case 'admin-empresa-borrar'           : echo FnAdminBorrarEmpresa(); break;
+	case 'admin-empresa-habilitar'        : echo FnAdminHabilitarEmpresa(); break;
+	case 'admin-empresa-imagen-editar'    : echo FnAdminImagenEmpresa(); break;
+	case 'admin-empresa-imagen-borrar'    : echo FnAdminImagenEmpresaBorrar(); break;
+	case 'admin-empresa-imagen-habilitar' : echo FnAdminHabilitarImagenEmpresa(); break;
+	//EN PROCESO
+	case 'admin-empresa-video-editar'     : echo FnAdminVideoEmpresa(); break;
+	case 'admin-empresa-video-borrar'     : echo FnAdminVideoEmpresaBorrar(); break;
+	case 'admin-empresa-video-habilitar'  : echo FnAdminHabilitarVideoEmpresa(); break;
 	default: break;
 }
 
@@ -230,7 +240,7 @@ function FnAdminPerfilEmpresa()
 			return json_encode($returnJSON);
 		}
 
-		$err = $Empresa->FnGuardarPerfil($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+		$err = $Empresa->FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 
@@ -344,12 +354,12 @@ function FnAdminEditarZona()
 		// POST -->
 		$id          = $_POST["id"];
 		$descripcion = $_POST["descripcion"];
-		$coordenadas = $_POST["coordenadas"];
+		$lat_long    = $_POST["lat_long"];
 		$acc         = $_POST["acc"];
 		// <!--
 
-		if($id > 0) $err = $Zona->FnEditar($id, $descripcion, $coordenadas);
-		else $err = $Zona->FnGuardar($descripcion, $coordenadas);		
+		if($id > 0) $err = $Zona->FnEditar($id, $descripcion, $lat_long);
+		else $err = $Zona->FnGuardar($descripcion, $lat_long);		
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 
@@ -397,6 +407,267 @@ function FnAdminHabilitarZona()
 		// <!--
 
 		if($id > 0) $err = $Zona->FnHabilitar($id, $habilitado);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+/**
+	EMPRESA
+*/
+function FnAdminEditarEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$acc = $logo = '';
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id               = $_POST["id"];
+		$nombre           = $_POST["nombre"];
+		$nombre_referente = $_POST["nombre_referente"];
+		$dni_referente    = $_POST["dni_referente"];		
+		$razon_social     = $_POST["razon_social"];
+		$telefono         = $_POST["telefono"];
+		$direccion        = $_POST["direccion"];
+		$lat_long         = $_POST["lat_long"];
+		$idzona           = $_POST["idzona"];
+		$idrubro          = $_POST["idrubro"];
+		$descripcion      = $_POST["descripcion"];
+		$archivo          = $_FILES["logo"];
+		$email            = trim(strtolower($_POST["email"]));
+		$pw               = ($_POST["pw"] != '********')? $_POST["pw"] : '';
+		$logo             = null;
+		$acc              = $_POST["acc"];
+		// <!--
+		
+		$upload = Fn::uploadFile($archivo, "logo_empresa");
+		 
+		if($upload["err"] == -1) $logo = $upload["archivo_nombre"];
+		else{
+			$msjJSON    = Fn::FnGetMsg($acc, $upload["err"]);
+			$returnJSON = $msjJSON;
+			return json_encode($returnJSON);
+		}
+
+		if($id > 0) $err = $Empresa->FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+		else $err = $Empresa->FnGuardar($idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => [ "logo" => $logo ] ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminBorrarEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id  = $_POST["id"];
+		$acc = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnBorrar($id);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminHabilitarEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id         = $_POST["id"];
+		$habilitado = $_POST["habilitado"];
+		$acc        = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnHabilitar($id, $habilitado);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+/**
+	IMAGEN EMPRESA
+*/
+function FnAdminImagenEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$acc = $imagen = '';
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["idempresa"]))
+	{
+		// POST -->
+		$idempresa   = $_POST["idempresa"];
+		$descripcion = $_POST["descripcion"];
+		$titulo      = $_POST["titulo"];
+		$archivo     = $_FILES["imagen"];
+		$imagen      = null;
+		$acc         = $_POST["acc"];
+		// <!--
+		
+		$upload = Fn::uploadFile($archivo, "galeria_imagen_empresa");
+		 
+		if($upload["err"] == -1) $imagen = $upload["archivo_nombre"];
+		else{
+			$msjJSON    = Fn::FnGetMsg($acc, $upload["err"]);
+			$returnJSON = $msjJSON;
+			return json_encode($returnJSON);
+		}
+		
+		$err = $Empresa->FnGuardarImagen($idempresa, $titulo, $descripcion, $imagen);
+
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => [ "logo" => $imagen ] ];
+	return json_encode($returnJSON);
+}
+function FnAdminImagenEmpresaBorrar()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id  = $_POST["id"];
+		$acc = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnBorrarImagen($id);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+function FnAdminHabilitarImagenEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id         = $_POST["id"];
+		$habilitado = $_POST["habilitado"];
+		$acc        = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnHabilitarImagenEmpresa($id, $habilitado);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+/**
+	VIDEO EMPRESA
+*/
+function FnAdminVideoEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$acc = '';
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["idempresa"]))
+	{
+		// POST -->
+		$idempresa   = $_POST["idempresa"];
+		$descripcion = $_POST["descripcion"];
+		$titulo      = $_POST["titulo"];
+		$link        = $_POST["link"];
+		$acc         = $_POST["acc"];
+		// <!--
+		
+		$err = $Empresa->FnGuardarVideo($idempresa, $titulo, $descripcion, $link);
+
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+function FnAdminVideoEmpresaBorrar()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id  = $_POST["id"];
+		$acc = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnBorrarVideo($id);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+function FnAdminHabilitarVideoEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id         = $_POST["id"];
+		$habilitado = $_POST["habilitado"];
+		$acc        = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnHabilitarVideoEmpresa($id, $habilitado);	
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 

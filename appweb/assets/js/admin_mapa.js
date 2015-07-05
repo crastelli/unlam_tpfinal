@@ -21,7 +21,7 @@ function updateMarkerPosition(latLng)
 
 function updateCampoDireccion(dire)
 {
-	$('input[name="direccion"]').val(dire);
+	$('input[id="direccion"]').val(dire);
 }
 
 function jsRemoveMarker()
@@ -31,11 +31,18 @@ function jsRemoveMarker()
 
 function fCargarMapa(pos)
 {
-	pos_default = pos.split(',');
-	pos_lat = parseFloat(pos_default[0]);
-	pos_lng = parseFloat(pos_default[1]);
-	//console.log(pos_lat);
-	//console.log(pos_lng);
+	if(pos != '')
+	{
+		pos_default = pos.split(',');
+		pos_lat = parseFloat(pos_default[0]);
+		pos_lng = parseFloat(pos_default[1]);
+		//console.log(pos_lat);
+		//console.log(pos_lng);
+	}else{
+		pos_lat = parseFloat('-34.6036844');
+		pos_lng = parseFloat('-58.381559100000004');
+		$('input[name="lat_long"]').val(pos_lat+","+pos_lng);
+	}
 
 	var markers = [];
 	var mapOptions = { zoom:18, center:new google.maps.LatLng(pos_lat,pos_lng), mapTypeId:google.maps.MapTypeId.ROADMAP };
@@ -59,6 +66,7 @@ function fCargarMapa(pos)
 										map        : map,
 										draggable  : true
 									});
+
 	google.maps.event.addListener(marker, 'drag', function() { updateMarkerPosition(marker.getPosition()); });
 	google.maps.event.addListener(marker, 'dragend', function() { geocodePosition(marker.getPosition()); });
 				
@@ -98,6 +106,8 @@ function fCargarMapa(pos)
 		}
 		map.fitBounds(bounds);
 	});
+	
+
 	google.maps.event.addListener(map, 'bounds_changed', function() {
 		var bounds = map.getBounds();
 		searchBox.setBounds(bounds);
