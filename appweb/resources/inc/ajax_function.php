@@ -2,14 +2,16 @@
 require "../../config/ini.php";
 
 try {
-    global $Admin;
-	$Admin = new Admin;
+	global $Admin;
+	$Admin   = new Admin;
 	global $Empresa;
 	$Empresa = new Empresa;
 	global $Rubro;
-	$Rubro = new Rubro;
+	$Rubro   = new Rubro;
 	global $Zona;
-	$Zona = new Zona;
+	$Zona    = new Zona;
+	global $Correo;
+	$Correo  = new Correo;
 } catch (Exception $e) {
     echo $e->getMessage();
     die;
@@ -55,6 +57,16 @@ switch($acc)
 /**
 	# FUNCIONES
 */
+function randomPassword() {
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
+}
 
 /**
 	# LOGIN
@@ -144,6 +156,8 @@ function FnAdminRecuperarPw()
 {
 	global $Admin;
 	global $Empresa;
+	global $Correo;
+
 	$returnJSON = $msjJSON = null;
 	$acc = '';
 	$err = 1;
@@ -154,15 +168,44 @@ function FnAdminRecuperarPw()
 		$email   = trim(strtolower($_POST["email"]));
 		$acc     = $_POST["acc"];
 		// <!--
-
+		$err = 1;
 		if($Admin->FnExiste($email))
 		{
-			$err = $Admin->FnRecuperarPw($email);
+			$info = $Admin->FnRecuperarPw($email);
+			if(!is_null($info))
+			{
+				$npass = randomPassword();
+				$Admin->FnModificarPassword($info->id, $npass);
+				//Envio email
+				$subject = 'Cambio de Contraseña - Milugar.com';
+				$body    = 'Su nueva contraseña es: <b>'.$npass.'</b>';
+				$body   .= '<br />Una vez ingresado a la aplicación dirígete a la sección "Mi Perfil" y cámbiala para mayor seguridad.';
+				$name    = $info->nombre;
+				$address = array();
+				array_push($address, (object)array("email" => $info->email) );
+				$cc      = False;
+				$error = $Correo->Enviar($subject, $address, $body, $name, $cc);
+				if($error == '') $err = -1;
+			}
 		}elseif($Empresa->FnExiste($email))
 		{
-			$err = $Empresa->FnRecuperarPw($email);
+			$info = $Empresa->FnRecuperarPw($email);
+			if(!is_null($info))
+			{
+				$npass = randomPassword();
+				$Empresa->FnModificarPassword($info->id, $npass);
+				//Envio email
+				$subject = 'Cambio de Contraseña - Milugar.com';
+				$body    = 'Su nueva contraseña es: <b>'.$npass.'</b>';
+				$body   .= '<br />Una vez ingresado a la aplicación dirígete a la sección "Mi Perfil" y cámbiala para mayor seguridad.';
+				$name    = $info->nombre;
+				$address = array();
+				array_push($address, (object)array("email" => $info->email) );
+				$cc      = False;
+				$error = $Correo->Enviar($subject, $address, $body, $name, $cc);
+				if($error == '') $err = -1;
+			}
 		}
-
 	}
 	
 	$msjJSON = Fn::FnGetMsg($acc, $err);

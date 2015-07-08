@@ -1,5 +1,6 @@
 <?php
 require "../../config/ini.php";
+
 try {
     Fn::FnCheckAccess(0);
 } catch (Exception $e) {

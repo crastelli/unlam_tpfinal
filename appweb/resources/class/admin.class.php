@@ -35,22 +35,33 @@ Class Admin extends Usuario
 		return $this->queryOne($qry);
 	}
 
-	private function FnGetByEmail($email)
+	public function FnGetByEmail($email)
 	{
-		return true;
+		$qry = sprintf("SELECT `id`, `nombre`, `telefono`, `direccion`, `email`, `pw`
+						FROM `Usuario`
+						WHERE `email` = '%s'
+						AND `estado` = 1
+						LIMIT 1", $email);
+		return $this->queryOne($qry);
 	}
 
 	public function FnRecuperarPw($email)
 	{
-		$err = 1;
-
 		$us = $this->FnGetByEmail($email);
-		if( $us )
-		{
-			//ENVIO CORREO
-			$err = -1;
-		}
+		if( $us ) return $us;
+		return null;
+	}
 
+	public function FnModificarPassword($id, $pw)
+	{
+		$err = 1;
+		$qry = sprintf("UPDATE `Usuario`
+							SET `pw` = '%s'
+						WHERE `id` = %d", 
+						md5($pw), $id);
+		$update = $this->execute($qry, "update");
+		if($update) $err = -1;
+		
 		return $err;
 	}
 

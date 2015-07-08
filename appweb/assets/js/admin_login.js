@@ -50,6 +50,7 @@ $(function()
 
 			formData.append("acc", "admin-recuperarpw");
 
+
 			$.ajax({
 				url         : 'ajax_function.php',  
 				type        : 'POST',
@@ -67,7 +68,11 @@ $(function()
 								{
 									$form.find('input[name="email"]').val('');
 								}
-			            	}
+								$form.find('input').prop('disabled', false);
+			            	},
+			    beforeSend : function(){
+			    				$form.find('input').prop('disabled', true);
+			    			}
         	});
 		}
 	}); 

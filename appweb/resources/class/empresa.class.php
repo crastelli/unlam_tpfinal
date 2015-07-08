@@ -57,22 +57,34 @@ Class Empresa extends Usuario
 		return $this->queryOne($qry);
 	}
 
-	private function FnGetByEmail($email)
+	public function FnGetByEmail($email)
 	{
-		return true;
+		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
+								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
+ 					FROM `Empresa`
+					WHERE `email` = '%s'
+					AND `estado` = 1
+					LIMIT 1", $email);
+		return $this->queryOne($qry);
 	}
 
 	public function FnRecuperarPw($email)
 	{
+		$empresa = $this->FnGetByEmail($email);
+		if( $empresa ) return $empresa;
+		return null;
+	}
+
+	public function FnModificarPassword($id, $pw)
+	{
 		$err = 1;
-
-		$us = $this->FnGetByEmail($email);
-		if( $us )
-		{
-			//ENVIO CORREO
-			$err = -1;
-		}
-
+		$qry = sprintf("UPDATE `Empresa`
+							SET `pw` = '%s'
+						WHERE `id` = %d", 
+						md5($pw), $id);
+		$update = $this->execute($qry, "update");
+		if($update) $err = -1;
+		
 		return $err;
 	}
 
