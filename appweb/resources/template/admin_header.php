@@ -7,7 +7,9 @@
     
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="<?php echo BASE_URL._DIR_ASSETS_; ?>images/milugar.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL._DIR_ASSETS_; ?>images/milugar.ico">
+
 
     <title><?php echo $ArrInfoPage["page-title"]; ?></title>
 
@@ -26,6 +28,9 @@
     <!-- General CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin_mapa.css" rel="stylesheet">
+    
+    <!-- Checkbox Styles -->
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet" />
 
   </head>
   

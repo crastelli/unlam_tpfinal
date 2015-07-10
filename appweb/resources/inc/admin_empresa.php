@@ -58,7 +58,8 @@ try {
                             <table class="table table-striped table-bordered" id="listado">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th>Cta. Premium</th>
+                                        <th>Habilitaci&oacute;n</th>
                                         <th>Logo</th>
                                         <th>Nombre</th>
                                         <th>Raz&oacute;n social</th>
@@ -69,7 +70,15 @@ try {
                                 <tbody>
                                     <?php foreach ($ObjEmpresa->FnGetEmpresas() as $row): ?>
                                         <tr class="item" data-id="<?php echo $row->id; ?>">
-                                            <td width="30px"><input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-empresa-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
+                                            
+                                            <td width="30px">
+                                                <input type="checkbox" data-size="mini" data-label-text="Premium" class="cbx-admin-premium checkbox" data-acc="admin-empresa-premium" <?php echo ($row->es_premium == 1)? 'checked':''; ?> >
+                                            </td>
+                                                                                        
+                                            <td width="30px">
+                                                <input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-empresa-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
+                                            </td>
+                                            
                                             <td><img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/<?php echo $row->logo; ?>" width="35px"/></td>
                                             <td><?php echo $row->nombre; ?></td>
                                             <td><?php echo $row->razon_social; ?></td>

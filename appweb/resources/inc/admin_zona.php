@@ -55,7 +55,7 @@ try {
                             <table class="table table-striped table-bordered" id="listado">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th>Habilitaci&oacute;n</th>
                                         <th>Descripci&oacute;n</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -63,7 +63,11 @@ try {
                                 <tbody>
                                     <?php foreach ($ObjZona->FnGetAll() as $row): ?>
                                         <tr class="item" data-id="<?php echo $row->id; ?>">
-                                            <td width="30px"><input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-zona-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
+                                            
+                                            <td width="30px">
+                                                <input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-zona-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
+                                            </td>
+                                            
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>
                                                 <a href="admin_zona_editar.php?id=<?php echo $row->id; ?>" class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar">

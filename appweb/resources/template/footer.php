@@ -35,5 +35,6 @@
     <!-- Extras -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootbox.min.js"></script>
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/validator.js"></script>
-  </body>
+ 
+   </body>
 </html>

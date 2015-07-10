@@ -259,6 +259,20 @@ Abstract Class Fn
 							default:break;
 						}
 						break;
+			case 'admin-empresa-premium':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Registro actualizado con éxito.';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al realizar la operación';
+									$obj->class = 'danger';
+									break;
+							default:break;
+						}
+						break;
 			case 'admin-empresa-imagen-editar':
 						switch ($err)
 						{					

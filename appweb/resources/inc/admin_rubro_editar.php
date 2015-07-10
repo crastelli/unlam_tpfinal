@@ -79,7 +79,7 @@ try {
                                         <div class="form-group">
                                             <div class="col-xs-offset-2 col-xs-10">
                                               <div class="pull-right">
-                                                <a href="admin_rubro.php" class="btn btn-default volver">Voler</a>
+                                                <a href="admin_rubro.php" class="btn btn-default volver">Volver</a>
                                                 <button type="submit" <?php echo $edit; ?> class="btn btn-primary guardar">Guardar</button>
                                               </div>
                                             </div>

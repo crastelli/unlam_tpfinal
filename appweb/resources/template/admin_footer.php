@@ -23,5 +23,9 @@
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap-admin-theme-change-size.js"></script>
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/vendors/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/DT_bootstrap.js"></script>
+    
+    <!-- Checkbox Styles -->
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/js/bootstrap-switch.min.js"></script>
+  
   </body>
 </html>
