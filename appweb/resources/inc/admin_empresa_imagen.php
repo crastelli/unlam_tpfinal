@@ -124,7 +124,7 @@ try {
                                             <div class="col-xs-offset-2 col-xs-10">
                                               <div class="pull-right">
                                                 <?php if($es_root): ?>
-                                                    <a href="admin_empresa.php" class="btn btn-default volver">Voler</a>
+                                                    <a href="admin_empresa.php" class="btn btn-default volver">Volver</a>
                                                 <?php endif; ?>
                                                 <button type="submit" class="btn btn-primary guardar">Guardar</button>
                                               </div>

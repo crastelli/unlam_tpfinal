@@ -226,7 +226,7 @@ try {
                                             <div class="form-group">
                                                 <div class="col-xs-offset-2 col-xs-10">
                                                   <div class="pull-right">
-                                                    <a href="admin_empresa.php" class="btn btn-default volver">Voler</a>
+                                                    <a href="admin_empresa.php" class="btn btn-default volver">Volver</a>
                                                     <button type="submit" class="btn btn-primary guardar">Guardar</button>
                                                   </div>
                                                 </div>

@@ -4,12 +4,12 @@
 
 <div class="row" class="contenido-gral ajaxContainer">
 
-	<main id="contenido" class="col-xs-12 col-md-6 contenidoConFormBuscar" role="main">
+	<main id="contenido" class="col-xs-12 contenidoConFormBuscar" role="main">
 		<header class="sr-only">
 			<h1>Inicio</h1>
 		</header>
 		<article>
-			<form action="home.php" id="formBuscar" class="form-inline" method="get">
+			<form action="resultado.php" id="formBuscar" class="form-inline" method="get">
 				<div class="form-group filtro_zona">
 					<select name="ciudad" id="ciudad" class="form-control">
 						<option value="1">Capital Federal / GBA</option>

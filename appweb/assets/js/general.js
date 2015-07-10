@@ -91,7 +91,15 @@ $(function()
         };        
         eModal.ajax(options);
     });
-
+	
+	$('#contenido.formResultado').addClass('contenidoColapsado');/*Queremos que se vean los resultados de la búsqueda con el JavaScript desactivado*/
+	$('#contenedorBtnContraerResultBusqueda button').click(function(){
+		if ($('#contenido.formResultado').hasClass('contenidoColapsado')) {
+			$('#contenido.formResultado').removeClass('contenidoColapsado').addClass('contenidoExpandido');
+		} else {
+			$('#contenido.formResultado').removeClass('contenidoExpandido').addClass('contenidoColapsado');
+		}
+	});
 }); // End jQuery
 
 // Funciones/acciones de los modals
