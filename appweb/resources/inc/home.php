@@ -1,4 +1,14 @@
-<?php require "../../config/ini.php"; ?>
+<?php
+require "../../config/ini.php";
+
+try {
+	$ObjRubro = new Rubro();
+	$ObjZona  = new Zona();
+} catch (Exception $e) {
+    echo $e->getMessage();
+    die;
+}
+?>	
 <?php require ROOT_DIR._DIR_TMP_."header.php"; ?>
 
 
@@ -11,29 +21,21 @@
 		<article>
 			<form action="resultado.php" id="formBuscar" class="form-inline" method="get">
 				<div class="form-group filtro_zona">
-					<select name="ciudad" id="ciudad" class="form-control">
-						<option value="1">Capital Federal / GBA</option>
-						<option value="2">Ramos Mejía</option>
-						<option value="3">Tigre</option>
-						<option value="4">San Justo</option>
-						<option value="5">Lomas de Zamora</option>
-						<option value="6">Quilmes</option>
+					<select name="idzona" id="idzona" class="form-control">
+						<?php foreach($ObjZona->FnGetAll() as $row): ?>
+							<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 				<div class="form-group filtro_rubro">
-					<select name="rubro" id="rubro" multiple>
-					<option value="1">Tiendas</option>
-					<option value="2">Restaurantes</option>
-					<option value="4">Bares</option>
-					<option value="5">Pizzerías</option>
-					<option value="13">Hoteles</option>
-					<option value="14">Cafés</option>
-					<option value="15">Zapaterías</option>
-					<option value="todos">Otros</option>
+					<select name="arr_rubro" id="rubro" multiple>
+						<?php foreach($ObjRubro->FnGetAll() as $row): ?>
+						<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-primary">Buscar</button>
+					<button type="button" class="btn btn-lg btn-primary buscar">Buscar</button>
 				</div>
 			</form>
 		</article>
@@ -41,3 +43,5 @@
 </div>
 
 <?php require ROOT_DIR._DIR_TMP_."footer.php"; ?>
+
+<script>fCargarMapa(null);</script>

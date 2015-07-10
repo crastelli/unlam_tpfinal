@@ -91,6 +91,18 @@ try {
                                                 <?php foreach($data as $row): ?>
 
                                                     <article class="col-xs-12 col-sm-6 col-md-3 contenido-video item" data-id="<?php echo $row->id; ?>">
+                                                        
+                                                        <div style="background:#f9f9f9;border: 1px solid #ddd;padding:8px;box-shadow:0 1px 1px rgba(0,0,0,.05);border-raidus:4px">
+                                                            <table align="center">
+                                                            <tr><td width="70px">
+                                                            <a class="btn btn-xs btn-warning btn-admin-borrar" data-acc="admin-empresa-video-borrar" id="<?php echo $row->id; ?>">Eliminar</a>
+                                                            </td>
+                                                            <td>
+                                                            <input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-empresa-video-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
+                                                            </td></tr>
+                                                            </table>
+                                                        </div>
+                                                        
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <a href="https://www.youtube.com/watch?v=<?php echo $row->codigo; ?>" title="<?php echo $row->titulo; ?>" class="zoom" data-title="<?php echo $row->titulo; ?>" data-footer="<?php echo $row->descripcion; ?>" data-type="youtube" data-toggle="lightbox">
@@ -101,10 +113,6 @@ try {
                                                             <div class="panel-footer">
                                                                 <h5>
                                                                     <?php echo $row->titulo; ?>
-                                                                    <span class="pull-right">
-                                                                        <i class="glyphicon glyphicon-remove text-danger btn-admin-borrar" data-acc="admin-empresa-video-borrar" id="<?php echo $row->id; ?>"></i>
-                                                                        <input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-empresa-video-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
-                                                                    </span>
                                                                 </h5>
                                                             </div>
                                                         </div>

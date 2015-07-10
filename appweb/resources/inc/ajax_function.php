@@ -44,10 +44,10 @@ switch($acc)
 	case 'admin-empresa-editar'           : echo FnAdminEditarEmpresa(); break;
 	case 'admin-empresa-borrar'           : echo FnAdminBorrarEmpresa(); break;
 	case 'admin-empresa-habilitar'        : echo FnAdminHabilitarEmpresa(); break;
+	case 'admin-empresa-premium'          : echo FnAdminEmpresaPremium(); break;
 	case 'admin-empresa-imagen-editar'    : echo FnAdminImagenEmpresa(); break;
 	case 'admin-empresa-imagen-borrar'    : echo FnAdminImagenEmpresaBorrar(); break;
 	case 'admin-empresa-imagen-habilitar' : echo FnAdminHabilitarImagenEmpresa(); break;
-	//EN PROCESO
 	case 'admin-empresa-video-editar'     : echo FnAdminVideoEmpresa(); break;
 	case 'admin-empresa-video-borrar'     : echo FnAdminVideoEmpresaBorrar(); break;
 	case 'admin-empresa-video-habilitar'  : echo FnAdminHabilitarVideoEmpresa(); break;
@@ -549,6 +549,30 @@ function FnAdminHabilitarEmpresa()
 		// <!--
 
 		if($id > 0) $err = $Empresa->FnHabilitar($id, $habilitado);	
+	}
+	$msjJSON  = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
+}
+
+function FnAdminEmpresaPremium()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id         = $_POST["id"];
+		$es_premium = $_POST["es_premium"];
+		$acc        = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnEsPremium($id, $es_premium);	
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 

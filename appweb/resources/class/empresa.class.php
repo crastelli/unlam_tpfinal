@@ -40,7 +40,7 @@ Class Empresa extends Usuario
 	public function FnGetEmpresas()
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
+								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
 					WHERE `estado` = 1", False);
 		return $this->query($qry);
@@ -49,7 +49,7 @@ Class Empresa extends Usuario
 	public function FnGetById($id)
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
+								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
 					WHERE `id` = %d
 					AND `estado` = 1
@@ -60,7 +60,7 @@ Class Empresa extends Usuario
 	public function FnGetByEmail($email)
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`
+								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
 					WHERE `email` = '%s'
 					AND `estado` = 1
@@ -174,6 +174,14 @@ Class Empresa extends Usuario
 		if($update) return -1;
 		else return 1;
 	}	
+
+	public function FnEsPremium($id, $es_premium)
+	{
+		$qry = sprintf("UPDATE `Empresa` SET `es_premium` = %d WHERE `id` = %d", $es_premium, $id);
+		$update = $this->execute($qry, "update");
+		if($update) return -1;
+		else return 1;
+	}
 
 	// Imagen -->
 	public function FnGetImagenes($idempresa)

@@ -55,7 +55,7 @@ try {
                             <table class="table table-striped table-bordered" id="listado">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th>Habilitaci&oacute;n</th>
                                         <th>&Iacute;cono</th>
                                         <th>Descripci&oacute;n</th>
                                         <th>Acciones</th>
@@ -64,7 +64,10 @@ try {
                                 <tbody>
                                     <?php foreach ($ObjRubro->FnGetAll() as $row): ?>
                                         <tr class="item" data-id="<?php echo $row->id; ?>">
-                                            <td width="30px"><input type="checkbox" class="cbx-admin-habilitar" data-acc="admin-rubro-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> ></td>
+                                            <td width="30px">
+                                                <input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-rubro-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
+                                            </td>
+                                            
                                             <td><img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>icono_rubro/<?php echo $row->icono; ?>" width="25px"/></td>
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>

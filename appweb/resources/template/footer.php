@@ -29,11 +29,15 @@
     <!-- Google Maps -->
     <script src="//maps.google.com/maps/api/js?sensor=false&amp;language=es&libraries=places"></script>
 
+    <!-- Redirect -->
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/jquery.redirect.js"></script>
+    
     <!-- JS General -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/general.js"></script>
 
     <!-- Extras -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootbox.min.js"></script>
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/validator.js"></script>
-  </body>
+ 
+   </body>
 </html>

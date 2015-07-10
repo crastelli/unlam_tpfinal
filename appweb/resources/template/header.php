@@ -24,7 +24,7 @@
 
     <!-- General CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/general.css" rel="stylesheet">
-         
+            
   </head>
   
 <body>

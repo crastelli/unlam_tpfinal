@@ -1,5 +1,7 @@
 $(function()
 {
+	$('.checkbox').bootstrapSwitch();
+
 	// GALERIA -->
 	$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
         event.preventDefault();
@@ -239,7 +241,7 @@ $(function()
 				}
 			});
 	});
-	$('.cbx-admin-habilitar').on('change', function(e)
+	$('.cbx-admin-habilitar').on('switchChange.bootstrapSwitch', function(event, state)
 	{
 			var id  = $(this).parents('.item').data('id'),
 			$msg    = $('div.alert-aviso'),
@@ -262,8 +264,14 @@ $(function()
 							var JSON = $.parseJSON(response);
 							if(JSON.status["codErr"] == 1)
 							{
-								if (event.is(':checked') == true) event.prop('checked', false);
-								else event.prop('checked', true);
+								if (event.is(':checked') == true)
+								{
+									event.bootstrapSwitch('state', false,true);
+									event.prop('checked', false);
+								}else{
+									event.bootstrapSwitch('state', true,true);
+									event.prop('checked', true);
+								}
 							}
 							$msg.removeClass();
 							$msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
@@ -272,8 +280,14 @@ $(function()
 
 						})
 					}else{
-						if (event.is(':checked') == true) event.prop('checked', false);
-						else event.prop('checked', true);
+						if (event.is(':checked') == true)
+						{
+							event.bootstrapSwitch('state', false,true);
+							event.prop('checked', false);
+						}else{
+							event.bootstrapSwitch('state', true,true);
+							event.prop('checked', true);
+						}
 					}
 				});
 			};
@@ -285,6 +299,67 @@ $(function()
 				fCambiarCheck(0, id, $(this));
 			}
 
+	});
+	// <!-- Exclusivo para Empresas -->
+	$('.cbx-admin-premium').on('switchChange.bootstrapSwitch', function(event, state)
+	{
+			var id  = $(this).parents('.item').data('id'),
+			$msg    = $('div.alert-aviso'),
+			formAcc = $(this).data('acc');
+			$msg.hide();
+
+			var fCambiarCheck = function(op, id, event)
+			{
+				var msg = '';
+				if(op == 1) msg = "¿Desea activar la cuenta Premium?";
+				else msg = "¿Desea desactivar la cuenta Premium?";
+
+				bootbox.confirm(msg, function(result)
+				{
+					if(result)
+					{
+						$.post('ajax_function.php', { id: id, es_premium: op, acc: formAcc })
+						.done(function( response )
+						{
+							var JSON = $.parseJSON(response);
+							if(JSON.status["codErr"] == 1)
+							{
+								if (event.is(':checked') == true)
+								{
+									event.bootstrapSwitch('state', false,true);
+									event.prop('checked', false);
+								}else{
+									event.bootstrapSwitch('state', true,true);
+									event.prop('checked', true);
+								}
+							}
+							$msg.removeClass();
+							$msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
+							$msg.find('span').text(JSON.status["msg"]);
+							$msg.show();
+
+						})
+					}else{
+
+						if (event.is(':checked') == true)
+						{
+							event.bootstrapSwitch('state', false,true);
+							event.prop('checked', false);
+						}else{
+							event.bootstrapSwitch('state', true,true);
+							event.prop('checked', true);
+						}
+							
+					}
+				});
+			};
+	
+			if( $(this).is(':checked') == true )
+			{
+				fCambiarCheck(1, id, $(this));
+			}else{
+				fCambiarCheck(0, id, $(this));
+			}
 	});
 	// <!--
 

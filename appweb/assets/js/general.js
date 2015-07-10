@@ -17,8 +17,17 @@ function alerta(type, msg)
 }
 //
 
-function fCargarMapaHome() {
-    var popup,
+var idzona, arr_rubro;
+
+function fCargarMapa(json)
+{
+    if(json != null)
+    {
+        console.log("HACER POST");
+    }else{
+        console.log("ES NULO");
+    }
+
 	n = 1,
 	options = {
         zoom: 11,
@@ -35,7 +44,6 @@ $(function()
         allSelectedText : "Todos los rubros",
         numberDisplayed: 7
     });
-    fCargarMapaHome();
 
     // Popup's
     $('.modal-registrar-empresa').on('click', function() {
@@ -100,6 +108,20 @@ $(function()
 			$('#contenido.formResultado').removeClass('contenidoExpandido').addClass('contenidoColapsado');
 		}
 	});
+
+    $('body').on('click', '.buscar', function()
+    {
+        var contenido = $('.contenido-filtro'),
+            idzona        = contenido.find('select[name="idzona"]').val(),
+            arr_rubro     = contenido.find('select[name="arr_rubro"]').val();
+      
+            $.redirect('resultado.php', {
+              'idzona'    : idzona,
+              'arr_rubro' : arr_rubro
+           });
+    });
+    
+
 }); // End jQuery
 
 // Funciones/acciones de los modals
