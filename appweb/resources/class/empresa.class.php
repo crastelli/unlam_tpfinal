@@ -16,7 +16,7 @@ Class Empresa extends Usuario
 
 	public function FnLogin($email, $pw)
 	{
-		$qry = sprintf("SELECT `id`, `nombre`, `email`, `razon_social`, `logo`
+		$qry = sprintf("SELECT `id`, `nombre`, `email`, `razon_social`, `logo`, `es_premium`
 				FROM `Empresa`
 				WHERE `email` = '%s'
 				AND `pw` = '%s'
@@ -66,6 +66,20 @@ Class Empresa extends Usuario
 					AND `estado` = 1
 					LIMIT 1", $email);
 		return $this->queryOne($qry);
+	}
+
+	public function FnGetByResultadoFiltro($idzona, $arr_rubro)
+	{
+		$str_rubro = implode(",", $arr_rubro);
+		
+		$qry = sprintf("SELECT `id`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`,
+								`descripcion`, `lat_long`
+ 					FROM `Empresa`
+					WHERE `idzona` = %d
+					AND `idrubro` IN (%s)
+					AND `estado` = 1
+					AND `habilitado` = 1", $idzona, $str_rubro);
+		return $this->query($qry);
 	}
 
 	public function FnRecuperarPw($email)

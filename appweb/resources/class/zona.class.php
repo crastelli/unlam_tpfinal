@@ -25,6 +25,15 @@ Class Zona extends Database
 		return $this->query($qry);
 	}	
 
+	public function FnGetAllActivos()
+	{
+		$qry = sprintf("SELECT `id`, `descripcion`, `lat_long`, `habilitado`
+				FROM `Zona`
+				WHERE `estado` = 1
+				AND `habilitado` = 1", False);
+		return $this->query($qry);
+	}
+
 	public function FnGuardar( $descripcion, $lat_long)
 	{
 		$err = -1;

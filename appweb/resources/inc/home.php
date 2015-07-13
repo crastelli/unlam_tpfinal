@@ -19,17 +19,17 @@ try {
 			<h1>Inicio</h1>
 		</header>
 		<article>
-			<form action="resultado.php" id="formBuscar" class="form-inline" method="get">
+			<form id="formBuscar" class="form-inline contenido-filtro">
 				<div class="form-group filtro_zona">
 					<select name="idzona" id="idzona" class="form-control">
-						<?php foreach($ObjZona->FnGetAll() as $row): ?>
+						<?php foreach($ObjZona->FnGetAllActivos() as $row): ?>
 							<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>
 				<div class="form-group filtro_rubro">
 					<select name="arr_rubro" id="rubro" multiple>
-						<?php foreach($ObjRubro->FnGetAll() as $row): ?>
+						<?php foreach($ObjRubro->FnGetAllActivos() as $row): ?>
 						<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
 						<?php endforeach; ?>
 					</select>

@@ -2,8 +2,9 @@
 require "../../config/ini.php";
 
 try {
-	$ObjRubro = new Rubro();
-	$ObjZona  = new Zona();
+	$ObjRubro   = new Rubro();
+	$ObjZona    = new Zona();
+	$ObjEmpresa = new Empresa();
 } catch (Exception $e) {
     echo $e->getMessage();
     die;
@@ -12,12 +13,21 @@ try {
 $json = "null";
 if( !empty($_POST) )
 {
-	$json = json_encode(array(
-			"idzona" => (isset($_POST["idzona"]))? $_POST["idzona"] : null,
-			"rubro"  => (isset($_POST["arr_rubro"]))? $_POST["arr_rubro"] : null
-		));
-}
+	$idzona    = ( isset($_POST["idzona"]) && $_POST["idzona"] > 0 )? $_POST["idzona"] : null;
+	$arr_rubro = ( isset($_POST["arr_rubro"]) && count($_POST["arr_rubro"]) > 0 )? $_POST["arr_rubro"] : null;
 
+	if( !is_null($idzona) && !is_null($arr_rubro) )
+	{
+		$zona    = $ObjZona->FnGetById($idzona);
+		$empresa = $ObjEmpresa->FnGetByResultadoFiltro($idzona, $arr_rubro);
+		$json    = array( "zona" => array("lat_long" => $zona->lat_long), "empresas" => array() );
+		foreach ($empresa as $row)
+		{
+			array_push($json["empresas"], $row);
+		}
+		$json = json_encode($json);
+	}
+}
 ?>
 
 <?php require ROOT_DIR._DIR_TMP_."header.php"; ?>
@@ -32,15 +42,15 @@ if( !empty($_POST) )
 			<h1>Resultados de la búsqueda</h1>
 		</header>
 		<article>
-			<p class="clearfix"><button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#opcionesFiltro" aria-expanded="false" aria-controls="opcionesFiltro"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filtrar búsqueda <span class="caret"></span></button></p>
-			<div class="collapse" id="opcionesFiltro">
+			<p class="clearfix"><button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#opcionesFiltro" aria-expanded="true" aria-controls="opcionesFiltro"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filtrar búsqueda <span class="caret"></span></button></p>
+			<div class="collapse in" id="opcionesFiltro">
 				<div class="well">
-					<form action="resultado.php" method="get" id="formBuscar" class="form-horizontal clearfix">
+					<form id="formBuscar" class="form-horizontal clearfix contenido-filtro">
 						<div class="form-group">
 							<label for="ciudad" class="col-sm-2 control-label">Ciudad</label>
 							<div class="col-sm-10">
 								<select name="idzona" id="idzona" class="form-control">
-									<?php foreach($ObjZona->FnGetAll() as $row): ?>
+									<?php foreach($ObjZona->FnGetAllActivos() as $row): ?>
 										<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
 									<?php endforeach; ?>
 								</select>
@@ -50,7 +60,7 @@ if( !empty($_POST) )
 							<label for="rubro" class="col-sm-2 control-label">Rubro</label>
 							<div class="col-sm-10">
 								<select name="arr_rubro" id="rubro" multiple>
-									<?php foreach($ObjRubro->FnGetAll() as $row): ?>
+									<?php foreach($ObjRubro->FnGetAllActivos() as $row): ?>
 									<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
 									<?php endforeach; ?>
 								</select>
@@ -61,19 +71,21 @@ if( !empty($_POST) )
 								<button type="button" class="btn btn-lg btn-primary buscar">Buscar</button>
 							</div>
 						</div>
+					
+						<!-- Hidden -->
+						<input type="hidden" name="is_post" value="<?php echo ( !empty($_POST) )? True: False; ?>">
+						<!--  -->
 					</form>
 				</div>
 			</div>
 			
-			<ul id="listaResultadosFiltros" class="nav nav-pills nav-stacked">
-				<li><a href="#">Av. Libertador 4214 (Bar)</a></li>
-				<li><a href="#">Av. Rivadavia 11224 (Restaurante)</a></li>
-				<li><a href="#">Av. F. Alcorta 4523 (Bar)</a></li>
-				<li><a href="#">Alvares Tomas 534 (Restaurante)</a></li>
-				<li><a href="#">Av. Corrientes 232 (Restaurante)</a></li>
-				<li><a href="#">Gral. Hornos 5022 (Gimnasio)</a></li>
-			</ul>
-			
+			<?php if( !empty($_POST) && !is_null($arr_rubro) ): ?>
+				<ul id="listaResultadosFiltros" class="nav nav-pills nav-stacked">
+					<?php foreach ($empresa as $row): ?>
+						<li><a href="#"><?php echo $row->direccion; ?></a></li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
 			
 			<p><a href="javascript:void(0);" class="modal-empresa-foto-video">FOTOS&VIDEOS(no va aca, solo de prueba)</a></p>
 			

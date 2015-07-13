@@ -17,25 +17,117 @@ function alerta(type, msg)
 }
 //
 
-var idzona, arr_rubro;
+
+
+// <!-- MAPA -->
+var markers = [],
+    map,
+    idzona,
+    arr_rubro,
+    zona_coordenadas,
+    zona_lat,
+    zona_lng,
+    infowindow = null;
 
 function fCargarMapa(json)
 {
     if(json != null)
     {
-        console.log("HACER POST");
+        zona_coordenadas = json.zona.lat_long.split(',');
+        zona_lat         = parseFloat(zona_coordenadas[0]);
+        zona_lng         = parseFloat(zona_coordenadas[1]);
     }else{
-        console.log("ES NULO");
+        zona_lat = "-34.612727";
+        zona_lng = "-58.445734";
     }
 
-	n = 1,
-	options = {
-        zoom: 11,
-        center: new google.maps.LatLng(-34.612727, -58.445734),
-        disableDefaultUI: true
+    n = 1,
+    options = {
+        zoom             : 15,
+        center           : new google.maps.LatLng(zona_lat, zona_lng),
+        disableDefaultUI : true
     };
-    var map = new google.maps.Map(document.getElementById('mapaFondo'), options);
+
+    map = new google.maps.Map(document.getElementById('mapaFondo'), options);
+
+    if(json != null && json.empresas.length > 0)
+    {
+        clearMarkers();
+        // 
+        infowindow = new google.maps.InfoWindow({
+            content: "cargando..."
+        });
+        //
+        for (var i = 0; i < json.empresas.length; i++)
+        {
+            addMarkerWithTimeout(json.empresas[i], i * 200);
+        }
+    }
+
 }
+
+function addMarkerWithTimeout(item, timeout)
+{
+    var marker,
+        coordenadas,
+        lat,
+        lng;
+
+    window.setTimeout(function()
+    {
+        coordenadas = item.lat_long.split(',');
+        lat         = parseFloat(coordenadas[0]);
+        lng         = parseFloat(coordenadas[1]);
+
+        var getHtmlMarker = function(item)
+        {
+            var html = '';
+            html += "<div class='contenido-html-marker'>";
+            html += "<h2 class='nombre'>"+item.nombre+"</h2>";
+            html += item.descripcion;
+            html += "<a href='javascript:void(0);' class='modal-empresa-foto-video'>Más info.</a>"; //TODO: NO FUNCIONA LA APERTURA DEL MODAL DESDE ACA
+            html += "</div>";
+            return html;
+        };
+
+        marker = new google.maps.Marker({
+            position  : new google.maps.LatLng(lat, lng),
+            map       : map,
+            html      : getHtmlMarker(item),
+            animation : google.maps.Animation.DROP
+        });
+
+        markers.push(marker);
+
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(this.html);
+            infowindow.open(map, this);
+        });
+
+    }, timeout);
+}
+
+function addInfoWindowMarker()
+{
+    for (var i = 0; i < markers.length; i++)
+    {
+        var marker = markers[i];
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(this.html);
+            infowindow.open(map, this);
+        });
+    }
+}
+
+function clearMarkers()
+{
+    for (var i = 0; i < markers.length; i++)
+        markers[i].setMap(null);
+    markers = [];
+}
+
+// <!---
+
 
 $(function()
 {
@@ -100,25 +192,32 @@ $(function()
         eModal.ajax(options);
     });
 	
-	$('#contenido.formResultado').addClass('contenidoColapsado');/*Queremos que se vean los resultados de la búsqueda con el JavaScript desactivado*/
-	$('#contenedorBtnContraerResultBusqueda button').click(function(){
-		if ($('#contenido.formResultado').hasClass('contenidoColapsado')) {
-			$('#contenido.formResultado').removeClass('contenidoColapsado').addClass('contenidoExpandido');
-		} else {
-			$('#contenido.formResultado').removeClass('contenidoExpandido').addClass('contenidoColapsado');
-		}
-	});
+	
+    if($('#contenido.formResultado').length > 0)
+    {
+        var form_resultado = $('#contenido.formResultado'),
+            is_post = form_resultado.find("input[name='is_post']").val();
+
+        if(is_post) form_resultado.addClass('contenidoColapsado');/*Queremos que se vean los resultados de la búsqueda con el JavaScript desactivado*/
+    	$('#contenedorBtnContraerResultBusqueda button').click(function(){
+    		if (form_resultado.hasClass('contenidoColapsado')) {
+    			form_resultado.removeClass('contenidoColapsado').addClass('contenidoExpandido');
+    		} else {
+    			form_resultado.removeClass('contenidoExpandido').addClass('contenidoColapsado');
+    		}
+    	});
+    }
 
     $('body').on('click', '.buscar', function()
     {
         var contenido = $('.contenido-filtro'),
             idzona        = contenido.find('select[name="idzona"]').val(),
             arr_rubro     = contenido.find('select[name="arr_rubro"]').val();
-      
+
             $.redirect('resultado.php', {
               'idzona'    : idzona,
               'arr_rubro' : arr_rubro
-           });
+            });
     });
     
 

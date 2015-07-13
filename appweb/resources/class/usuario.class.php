@@ -38,6 +38,7 @@ Class Usuario extends Database
 										"razon_social" => $ObjAcceso->razon_social,
 										"email"        => $ObjAcceso->email,
 										"logo"         => $ObjAcceso->logo,
+										"es_premium"   => $ObjAcceso->es_premium,
 										"root"         => 0
 										);
 		}else $err = 1;

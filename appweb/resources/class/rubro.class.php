@@ -23,8 +23,17 @@ Class Rubro extends Database
 				FROM `Rubro`
 				WHERE `estado` = 1", False);
 		return $this->query($qry);
-	}	
+	}
 	
+	public function FnGetAllActivos()
+	{
+		$qry = sprintf("SELECT `id`, `descripcion`, `icono`, `habilitado`
+				FROM `Rubro`
+				WHERE `estado` = 1
+				AND `habilitado` = 1", False);
+		return $this->query($qry);
+	}
+
 	public function FnGuardar( $descripcion, $icono)
 	{
 		$err = -1;
