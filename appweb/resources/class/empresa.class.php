@@ -71,14 +71,13 @@ Class Empresa extends Usuario
 	public function FnGetByResultadoFiltro($idzona, $arr_rubro)
 	{
 		$str_rubro = implode(",", $arr_rubro);
-		
-		$qry = sprintf("SELECT `id`, `nombre`, `email`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `lat_long`
- 					FROM `Empresa`
-					WHERE `idzona` = %d
-					AND `idrubro` IN (%s)
-					AND `estado` = 1
-					AND `habilitado` = 1", $idzona, $str_rubro);
+		$qry = sprintf("SELECT e.`id`, r.`icono`, e.`lat_long`, e.`direccion`						
+ 					FROM `Empresa` e
+ 					INNER JOIN `Rubro` r ON r.`id` = e.`idrubro`
+					WHERE e.`idzona` = %d
+					AND e.`idrubro` IN (%s)
+					AND e.`estado` = 1
+					AND e.`habilitado` = 1", $idzona, $str_rubro);
 		return $this->query($qry);
 	}
 

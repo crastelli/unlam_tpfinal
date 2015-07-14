@@ -81,8 +81,8 @@ if( !empty($_POST) )
 			
 			<?php if( !empty($_POST) && !is_null($arr_rubro) ): ?>
 				<ul id="listaResultadosFiltros" class="nav nav-pills nav-stacked">
-					<?php foreach ($empresa as $row): ?>
-						<li><a href="#"><?php echo $row->direccion; ?></a></li>
+					<?php foreach ($empresa as $k => $row): ?>
+						<li><a href="javascript: getInfoWindow(markers[<?php echo $k; ?>]);"><i class="text-muted glyphicon glyphicon-map-marker"></i> <?php echo $row->direccion; ?></a></li>
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>

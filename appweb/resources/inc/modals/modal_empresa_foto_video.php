@@ -1,3 +1,6 @@
+<?php echo $_GET["id"]; ?>
+
+
 <div class="modal fade" id="modalFotosVideos" tabindex="-1" role="dialog" aria-labelledby="modalFotosVideosTitulo" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">

@@ -39,5 +39,17 @@
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootbox.min.js"></script>
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/validator.js"></script>
  
+    <!-- Variables globales URL JS -->   
+    <script>
+        var ROOT_DIR = "<?php echo ROOT_DIR; ?>",
+        BASE_URL     = "<?php echo BASE_URL; ?>",
+        _DIR_ASSETS_ = "<?php echo _DIR_ASSETS_; ?>",
+        _DIR_INC_    = "<?php echo _DIR_INC_; ?>",
+        _DIR_CLASS_  = "<?php echo _DIR_CLASS_; ?>",
+        _DIR_TMP_    = "<?php echo _DIR_TMP_; ?>",
+        _DIR_PLG_    = "<?php echo _DIR_PLG_; ?>",
+        _DIR_UPLOAD_ = "<?php echo _DIR_UPLOAD_; ?>";
+    </script>
+    <!-- -->
    </body>
 </html>

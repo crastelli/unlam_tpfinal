@@ -30,6 +30,7 @@ $acc = (isset($_POST["acc"]))? $_POST["acc"] : null;
 */
 switch($acc)
 {
+	// Backend -->
 	case 'admin-login'                    : echo FnAdminLogin(); break;
 	case 'admin-recuperarpw'              : echo FnAdminRecuperarPw(); break;
 	case 'admin-logout'                   : echo FnAdminLogout(); break;
@@ -51,7 +52,9 @@ switch($acc)
 	case 'admin-empresa-video-editar'     : echo FnAdminVideoEmpresa(); break;
 	case 'admin-empresa-video-borrar'     : echo FnAdminVideoEmpresaBorrar(); break;
 	case 'admin-empresa-video-habilitar'  : echo FnAdminHabilitarVideoEmpresa(); break;
-	default: break;
+	// FrontEnd -->
+	case 'info_empresa'                   : echo FnGetInfoEmpresa(); break;
+	default                               : break;
 }
 
 /**
@@ -740,4 +743,19 @@ function FnAdminHabilitarVideoEmpresa()
 
 	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
 	return json_encode($returnJSON);
+}
+
+function FnGetInfoEmpresa()
+{
+	global $Empresa;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		$id = $_POST["id"];
+		// <!--
+		$info = $Empresa->FnGetById($id);	
+		return json_encode($info);
+	}
+	return null;
 }

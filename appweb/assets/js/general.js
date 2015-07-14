@@ -17,8 +17,6 @@ function alerta(type, msg)
 }
 //
 
-
-
 // <!-- MAPA -->
 var markers = [],
     map,
@@ -55,13 +53,18 @@ function fCargarMapa(json)
         clearMarkers();
         // 
         infowindow = new google.maps.InfoWindow({
-            content: "cargando..."
+            content: "Cargando..."
         });
         //
         for (var i = 0; i < json.empresas.length; i++)
         {
             addMarkerWithTimeout(json.empresas[i], i * 200);
         }
+
+        closeInfoWindow = function() {
+            infowindow.close();
+        };
+        google.maps.event.addListener(map, 'click', closeInfoWindow);
     }
 
 }
@@ -79,44 +82,82 @@ function addMarkerWithTimeout(item, timeout)
         lat         = parseFloat(coordenadas[0]);
         lng         = parseFloat(coordenadas[1]);
 
-        var getHtmlMarker = function(item)
-        {
-            var html = '';
-            html += "<div class='contenido-html-marker'>";
-            html += "<h2 class='nombre'>"+item.nombre+"</h2>";
-            html += item.descripcion;
-            html += "<a href='javascript:void(0);' class='modal-empresa-foto-video'>Más info.</a>"; //TODO: NO FUNCIONA LA APERTURA DEL MODAL DESDE ACA
-            html += "</div>";
-            return html;
-        };
-
+        var image = BASE_URL+_DIR_UPLOAD_+'icono_rubro/'+item.icono;
         marker = new google.maps.Marker({
             position  : new google.maps.LatLng(lat, lng),
             map       : map,
-            html      : getHtmlMarker(item),
+            id        : item.id,
+            icon      : image,
             animation : google.maps.Animation.DROP
         });
 
         markers.push(marker);
 
-        google.maps.event.addListener(marker, 'click', function () {
-            infowindow.setContent(this.html);
-            infowindow.open(map, this);
-        });
+        getInfoWindowMarker(marker);
 
-    }, timeout);
+    }, timeout);    
 }
 
-function addInfoWindowMarker()
+function getInfoWindowMarker(marker)
 {
-    for (var i = 0; i < markers.length; i++)
+    google.maps.event.addListener(marker, 'click', function () 
     {
-        var marker = markers[i];
-        google.maps.event.addListener(marker, 'click', function () {
-            infowindow.setContent(this.html);
-            infowindow.open(map, this);
-        });
-    }
+        getInfoWindow(marker);
+    });
+}
+
+function getInfoWindow(marker)
+{
+    infowindow.setContent(getInfoEmpresa(marker.id));
+    infowindow.open(map, marker);
+}
+
+function getInfoEmpresa(id)
+{
+    var html = 'Error al cargar la información.';
+    $.ajax({
+        async   : false,
+        dataType: "JSON",
+        type    : "POST",
+        url     : "ajax_function.php",
+        data    : { id: id, acc: 'info_empresa' },
+        success : function(item)
+                {
+                    // -->
+                    html = '<div class="panel panel-default">'
+                                +'<div class="panel-heading">'
+                                    + '<b>'+item.nombre.toUpperCase()+'</b>';
+                            if(item.es_premium == 1)
+                            {
+                                html    += '<button type="button" class="btn btn-info btn-xs" style="float:right;margin-left: 5px;" onclick="javascript: openModalFotoVideo('+item.id+');">'
+                                            +'<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Más información'
+                                        + '</button>';
+                            }
+                    html +=     '</div>'
+                                +'<div class="panel-body">'
+                                    + '<table>'
+                                        +'<tr>'
+                                            +'<td valign="button" style="padding:0 14px 0 0">'
+                                                +'<img src="'+BASE_URL+_DIR_UPLOAD_+'logo_empresa/'+item.logo+'" width="100px"/>'
+                                            +'</td>'
+                                            +'<td>';
+                                                html += '<i class="text-primary glyphicon glyphicon-info-sign"></i>&nbsp;<label>Descripción:&nbsp;</label>';
+                                                html += (item.descripcion != '')? item.descripcion : ' <em>-Sin Información-</em>';
+                                                html += '<br /><i class="text-primary glyphicon glyphicon-briefcase"></i>&nbsp;<label>Razon Social:&nbsp;</label>';
+                                                html += (item.razon_social != '')? item.razon_social : ' <em>-Sin Información-</em>';
+                                                html += '<br /><i class="text-primary glyphicon glyphicon-map-marker"></i>&nbsp;<label>Dirección:&nbsp;</label>';
+                                                html += (item.direccion != '')? item.direccion : ' <em>-Sin Información-</em>';
+                                                html += '<br /><i class="text-primary glyphicon glyphicon-earphone"></i>&nbsp;<label>Teléfono:&nbsp;</label>';
+                                                html += (item.telefono != '')? item.telefono : ' <em>-Sin Información-</em>';
+                                            html += '</td>'
+                                        +'</tr>'
+                                    + '</table>'
+                                +'</div>'
+                            +'</div>';
+                    // <!--
+                }
+    });
+    return html;
 }
 
 function clearMarkers()
@@ -126,22 +167,34 @@ function clearMarkers()
     markers = [];
 }
 
-// <!---
 
+function openModalFotoVideo(id)
+{
+    var options = {
+            url     : BASE_URL+_DIR_INC_+"modals/modal_empresa_foto_video.php?id="+id,
+            title   :'Información del Comercio',
+            size    : 'lg',
+            buttons : [
+                        {text   : 'Cerrar', style: 'info', close: true}
+                    ]
+        };        
+        eModal.ajax(options);
+}
+
+// <!---
 
 $(function()
 {
     $('form#formBuscar select#rubro').multiselect({
         nonSelectedText : "Seleccioná un rubro",
         allSelectedText : "Todos los rubros",
-        numberDisplayed: 7
+        numberDisplayed : 7
     });
 
     // Popup's
     $('.modal-registrar-empresa').on('click', function() {
         var options = {
-            // TODO: PONER URL DINAMICA PARA JS
-            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_registrar_empresa.php",
+            url     : BASE_URL+_DIR_INC_+"modals/modal_registrar_empresa.php",
             title   :'Registro de empresa',
             size    : 'lg',
             buttons : [
@@ -154,8 +207,7 @@ $(function()
 
     $('.modal-contacto').on('click', function() {
         var options = {
-            // TODO: PONER URL DINAMICA PARA JS
-            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_contacto.php",
+            url     : BASE_URL+_DIR_INC_+"modals/modal_contacto.php",
             title   :'Contacto',
             size    : 'lg',
             buttons : [
@@ -168,8 +220,7 @@ $(function()
 
     $('.modal-terminos').on('click', function() {
         var options = {
-            // TODO: PONER URL DINAMICA PARA JS
-            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_terminos.php",
+            url     : BASE_URL+_DIR_INC_+"modals/modal_terminos.php",
             title   :'Terminos y condiciones',
             size    : 'lg',
             buttons : [
@@ -181,8 +232,7 @@ $(function()
 
     $('.modal-empresa-foto-video').on('click', function() {
         var options = {
-            // TODO: PONER URL DINAMICA PARA JS
-            url     : "http://localhost/milugar/appweb/resources/inc/modals/modal_empresa_foto_video.php",
+            url     : BASE_URL+_DIR_INC_+"modals/modal_empresa_foto_video.php",
             title   :'Información de la empresa',
             size    : 'lg',
             buttons : [
@@ -220,7 +270,6 @@ $(function()
             });
     });
     
-
 }); // End jQuery
 
 // Funciones/acciones de los modals
