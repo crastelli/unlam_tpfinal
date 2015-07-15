@@ -432,5 +432,4 @@ Abstract Class Fn
 		imagedestroy($img_original);
 	}
 
-
 }
