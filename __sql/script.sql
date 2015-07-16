@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 INSERT INTO `Usuario` (`id`, `nombre`, `email`, `pw`, `telefono`, `direccion`, `estado`, `fecha`) VALUES
-(1, 'César Rastelli', 'admin@admin.com', '91f5167c34c400758115c2a6826ec2e3', '1511111111', 'Av. Congreso 1050', 1, '2015-04-25 03:39:29');
+(1, 'César Rastelli', 'admin@admin.com', MD5('admin'), '1511111111', 'Av. Congreso 1050', 1, '2015-04-25 03:39:29');
 
 -- --------------------------------------------------------
 
