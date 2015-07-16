@@ -86,9 +86,7 @@ if( !empty($_POST) )
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
-			
-			<p><a href="javascript:void(0);" class="modal-empresa-foto-video">FOTOS&VIDEOS(no va aca, solo de prueba)</a></p>
-			
+						
 		</article>	
 	</main>
 </div>

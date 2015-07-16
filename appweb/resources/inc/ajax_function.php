@@ -277,7 +277,7 @@ function FnAdminPerfilEmpresa()
 		$acc              = $_POST["acc"];
 		// <!--
 		
-		$upload           = Fn::uploadFile($archivo, "logo_empresa");
+		$upload           = Fn::uploadFile($archivo, "logo_empresa", True);
 		 
 		if($upload["err"] == -1) $logo = $upload["archivo_nombre"];
 		else{
@@ -317,7 +317,7 @@ function FnAdminEditarRubro()
 		$acc         = $_POST["acc"];
 		// <!--
 		
-		$upload = Fn::uploadFile($archivo, "icono_rubro");
+		$upload = Fn::uploadFile($archivo, "icono_rubro", True);
 		 
 		if($upload["err"] == -1) $icono = $upload["archivo_nombre"];
 		else{
@@ -493,7 +493,7 @@ function FnAdminEditarEmpresa()
 		$acc              = $_POST["acc"];
 		// <!--
 		
-		$upload = Fn::uploadFile($archivo, "logo_empresa");
+		$upload = Fn::uploadFile($archivo, "logo_empresa", True);
 		 
 		if($upload["err"] == -1) $logo = $upload["archivo_nombre"];
 		else{
@@ -606,7 +606,7 @@ function FnAdminImagenEmpresa()
 		$acc         = $_POST["acc"];
 		// <!--
 		
-		$upload = Fn::uploadFile($archivo, "galeria_imagen_empresa");
+		$upload = Fn::uploadFile($archivo, "galeria_imagen_empresa", False);
 		 
 		if($upload["err"] == -1) $imagen = $upload["archivo_nombre"];
 		else{

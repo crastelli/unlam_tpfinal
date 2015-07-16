@@ -346,7 +346,7 @@ Abstract Class Fn
 
 
 	// SUBIDA DE ARCHIVOS -->
-	static function uploadFile($archivo, $path)
+	static function uploadFile($archivo, $path, $thumb=False)
 	{
 		$err            = -1;
 		$archivo_nombre = '';
@@ -367,12 +367,15 @@ Abstract Class Fn
 				{
 					$err = 4;
 				}else{
-					// Si la imagen subió la achico a un tamaño general para el logo
-					list($ancho, $alto) = getimagesize(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
-					$archivo_nombre_n = "imagen".$archivo_nombre;
-					Fn::resizeImagen(ROOT_DIR._DIR_UPLOAD_.$path, $archivo_nombre, 250, 250, $archivo_nombre_n, $type);
-				    @unlink(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
-				    $archivo_nombre = $archivo_nombre_n; // asi guardo en la db el nombre que quedo en la img
+					if($thumb)
+					{
+						// Si la imagen subió la achico a un tamaño general para el logo
+						list($ancho, $alto) = getimagesize(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
+						$archivo_nombre_n = "imagen".$archivo_nombre;
+						Fn::resizeImagen(ROOT_DIR._DIR_UPLOAD_.$path, $archivo_nombre, 250, 250, $archivo_nombre_n, $type);
+					    @unlink(ROOT_DIR._DIR_UPLOAD_.$path._DS_.$archivo_nombre);
+				    	$archivo_nombre = $archivo_nombre_n; // asi guardo en la db el nombre que quedo en la img
+					}
 				}
 			}else{
 				$err = 3;
@@ -431,6 +434,5 @@ Abstract Class Fn
 		imagepng($tmp, $ruta._DS_.$foto_n);
 		imagedestroy($img_original);
 	}
-
 
 }
