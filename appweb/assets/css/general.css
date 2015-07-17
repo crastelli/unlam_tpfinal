@@ -133,3 +133,5 @@
 	}
 	div.filtro_rubro ul { top: -150%; }
 }
+
+#eModalFooter.modal-footer{ border: none !important;}

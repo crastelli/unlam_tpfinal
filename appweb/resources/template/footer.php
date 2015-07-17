@@ -32,6 +32,9 @@
     <!-- Redirect -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/jquery.redirect.js"></script>
     
+    <!-- Ranking -->
+    <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/star-rating.min.js"></script>
+
     <!-- JS General -->
     <script src="<?php echo BASE_URL._DIR_ASSETS_; ?>js/general.js"></script>
 

@@ -71,7 +71,7 @@ if( !empty($_POST) )
 								<button type="button" class="btn btn-lg btn-primary buscar">Buscar</button>
 							</div>
 						</div>
-					
+											
 						<!-- Hidden -->
 						<input type="hidden" name="is_post" value="<?php echo ( !empty($_POST) )? True: False; ?>">
 						<!--  -->

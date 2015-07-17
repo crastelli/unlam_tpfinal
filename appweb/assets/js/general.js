@@ -129,7 +129,7 @@ function getInfoEmpresa(id)
                                     + '<b>'+item.nombre.toUpperCase()+'</b>';
                             if(item.es_premium == 1)
                             {
-                                html    += '<button type="button" class="btn btn-info btn-xs" style="float:right;margin-left: 5px;" onclick="javascript: openModalFotoVideo('+item.id+');">'
+                                html    += '<button type="button" class="btn btn-warning btn-xs" style="float:right;margin-left: 5px;" onclick="javascript: openModalFotoVideo('+item.id+');">'
                                             +'<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Más información'
                                         + '</button>';
                             }
@@ -149,6 +149,11 @@ function getInfoEmpresa(id)
                                                 html += (item.direccion != '')? item.direccion : ' <em>-Sin Información-</em>';
                                                 html += '<br /><i class="text-primary glyphicon glyphicon-earphone"></i>&nbsp;<label>Teléfono:&nbsp;</label>';
                                                 html += (item.telefono != '')? item.telefono : ' <em>-Sin Información-</em>';
+                                                                        
+                                                html    +=  '<button type="button" class="btn btn-info btn-xl" style="float:right;margin-left: 5px;" onclick="javascript: openModalFb('+item.id+');">'
+                                                             +'<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comentarios'
+                                                        +  '</button>';
+
                                             html += '</td>'
                                         +'</tr>'
                                     + '</table>'
@@ -157,6 +162,7 @@ function getInfoEmpresa(id)
                     // <!--
                 }
     });
+    
     return html;
 }
 
@@ -173,6 +179,19 @@ function openModalFotoVideo(id)
     var options = {
             url     : BASE_URL+_DIR_INC_+"modals/modal_empresa_foto_video.php?id="+id,
             title   :'Información del Comercio',
+            size    : 'lg',
+            buttons : [
+                        {text   : 'Cerrar', style: 'info', close: true}
+                    ]
+        };        
+        eModal.ajax(options);
+}
+
+function openModalFb(id)
+{
+    var options = {
+            url     : BASE_URL+_DIR_INC_+"modals/modal_empresa_fb.php?id="+id,
+            title   :'Comentarios del Comercio',
             size    : 'lg',
             buttons : [
                         {text   : 'Cerrar', style: 'info', close: true}
