@@ -24,7 +24,10 @@ $data = $Admin->FnGetById(Fn::FnGetDatosAccess()->id);
                             
                 <div class="bootstrap-admin-panel-content">
                     
-                    <div class="alert alert-aviso"><span></span></div>
+                    <div class="alert alert-aviso">
+						<a class="close" data-dismiss="alert" href="#">×</a>
+						<span></span>
+					</div>
                     
                     <form accept-charset="UTF-8" role="form" class="form-horizontal form-perfil-admin" data-toggle="validator">
                         <fieldset>

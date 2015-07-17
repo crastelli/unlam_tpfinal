@@ -61,14 +61,14 @@ try {
                                             <div class="col-xs-8 col-sm-10">
                                                 <input type="file" name="icono" id="icono" class="form-control" <?php echo $edit; ?> onchange="javascript: document.getElementById('icono_txt').value = this.files[0].name;">
                                                 <input type="text" id="icono_txt" class="simular_hidden" value="<?php echo (isset($data->icono))? $data->icono : ''; ?>" data-match-error required>
-                                                <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg
+                                                <i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i> Solo archivos *.jpg/png. Máx. 1mg
                                                 <div class="help-block with-errors"></div>
                                                 <div class="container-img" data-path="<?php echo BASE_URL._DIR_UPLOAD_; ?>icono_rubro/">
                                                     <br />
                                                     <?php if(isset($data->icono)): ?>
                                                         <img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>icono_rubro/<?php echo $data->icono; ?>" width="25px"/>
                                                     <?php else: ?>
-                                                        <i class="glyphicon glyphicon-picture"></i> no hay ningún icono cargado
+                                                        <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> no hay ningún icono cargado
                                                     <?php endif; ?>
                                                 </div>
                                             </div>

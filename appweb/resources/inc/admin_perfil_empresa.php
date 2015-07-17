@@ -27,7 +27,10 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                 
                 <div class="bootstrap-admin-panel-content">
                 
-                    <div class="alert alert-aviso"><span></span></div>
+                    <div class="alert alert-aviso">
+						<a class="close" data-dismiss="alert" href="#">×</a>
+						<span></span>
+					</div>
                 
                     <form accept-charset="UTF-8" role="form" class="form-horizontal form-perfil-empresa" data-toggle="validator">
                         <fieldset>
@@ -80,13 +83,13 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                                         <label for="logo" class="col-xs-4 control-label">Logo</label>
                                         <div class="col-xs-8">
                                             <input type="file" name="logo" id="logo" class="form-control">
-                                            <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg
+                                            <i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i> Solo archivos *.jpg/png. Máx. 1mg
                                             <div class="container-img" data-path="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/">
                                                 <br />
                                                 <?php if(isset($data->logo)): ?>
                                                     <img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/<?php echo $data->logo; ?>" width="100px"/>
                                                 <?php else: ?>
-                                                    <i class="glyphicon glyphicon-picture"></i> no hay ningún logo cargado
+                                                    <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> no hay ningún logo cargado
                                                 <?php endif; ?>
                                             </div>
                                         </div>

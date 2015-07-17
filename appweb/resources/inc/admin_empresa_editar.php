@@ -42,7 +42,10 @@ try {
                         </div>
                         <div class="bootstrap-admin-panel-content">
                         
-                            <div class="alert alert-aviso"><span></span></div>
+                            <div class="alert alert-aviso">
+								<a class="close" data-dismiss="alert" href="#">×</a>
+								<span></span>
+							</div>
                             
                             <form accept-charset="UTF-8" role="form" class="form-horizontal form-editar" data-acc="admin-empresa-editar" data-retorno="admin_empresa.php" data-toggle="validator">
                                 <fieldset>
@@ -96,14 +99,14 @@ try {
                                                 <div class="col-xs-8">
                                                     <input type="file" <?php echo $edit; ?> name="logo" id="logo" class="form-control" onchange="javascript: document.getElementById('icono_txt').value = this.files[0].name;">
                                                     <input type="text" id="icono_txt" class="simular_hidden" value="<?php echo (isset($data->logo))? $data->logo : ''; ?>" data-match-error required>
-                                                    <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg
+                                                    <i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i> Solo archivos *.jpg/png. Máx. 1mg
                                                     <div class="help-block with-errors"></div>
                                                     <div class="container-img" data-path="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/">
                                                         <br />
                                                         <?php if(isset($data->logo)): ?>
                                                             <img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>logo_empresa/<?php echo $data->logo; ?>" width="100px"/>
                                                         <?php else: ?>
-                                                            <i class="glyphicon glyphicon-picture"></i> no hay ningún logo cargado
+                                                            <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> no hay ningún logo cargado
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>

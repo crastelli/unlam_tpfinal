@@ -49,7 +49,9 @@ try {
                         </div>
                         <div class="bootstrap-admin-panel-content">
                         
-                            <div class="alert alert-aviso"><span></span></div>
+                            <div class="alert alert-aviso">
+								<span></span>
+							</div>
                             
                             <form accept-charset="UTF-8" role="form" class="form-horizontal form-editar" data-acc="admin-empresa-imagen-editar" data-retorno="<?php echo ($es_root)? 'admin_empresa_imagen.php?id='.$idempresa : 'admin_empresa_imagen.php'; ?>" data-toggle="validator">
                                 <fieldset>
@@ -80,7 +82,7 @@ try {
                                             <div class="col-xs-8 col-sm-10">
                                                 <input type="file" name="imagen" id="imagen" class="form-control" onchange="javascript: document.getElementById('imagen_txt').value = this.files[0].name;">
                                                 <input type="text" id="imagen_txt" class="simular_hidden" value="<?php echo (isset($data->imagen))? $data->imagen : ''; ?>" data-match-error required>
-                                                <i class="glyphicon glyphicon-warning-sign"></i> Solo archivos *.jpg/png. Máx. 1mg
+                                                <i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i> Solo archivos *.jpg/png. Máx. 1mg
                                                 <div class="help-block with-errors"></div>                                             
                                             </div>
                                         </div>
@@ -92,23 +94,17 @@ try {
                                                 <?php foreach($data as $row): ?>
 
                                                     <article class="col-xs-12 col-sm-6 col-md-3 contenido-imagen item" data-id="<?php echo $row->id; ?>">
-                                                        
-                                                        <div style="background:#f9f9f9;border: 1px solid #ddd;padding:8px;box-shadow:0 1px 1px rgba(0,0,0,.05);border-raidus:4px">
-                                                            <table align="center">
-                                                            <tr><td width="70px">
-                                                            <a class="btn btn-xs btn-warning btn-admin-borrar" data-acc="admin-empresa-imagen-borrar" id="<?php echo $row->id; ?>">Eliminar</a>
-                                                            </td>
-                                                            <td>
-                                                            <input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-empresa-imagen-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
-                                                            </td></tr>
-                                                            </table>
-                                                        </div>
-                                                        
                                                         <div class="panel panel-default">
+                                                            <div class="panel-heading">
+																<p class="panel-title text-center">
+																	<a class="btn btn-xs btn-warning btn-admin-borrar" data-acc="admin-empresa-imagen-borrar" id="<?php echo $row->id; ?>">Eliminar</a>
+																	<input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-empresa-imagen-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
+																</p>
+                                                            </div>
                                                             <div class="panel-body">
                                                                 <a href="<?php echo BASE_URL._DIR_UPLOAD_; ?>galeria_imagen_empresa/<?php echo $row->imagen; ?>" title="<?php echo $row->titulo; ?>" class="zoom" data-title="<?php echo $row->titulo; ?>" data-footer="<?php echo $row->descripcion; ?>" data-type="image" data-toggle="lightbox">
                                                                     <img style="height:200px;/*FIX*/" src="<?php echo BASE_URL._DIR_UPLOAD_; ?>galeria_imagen_empresa/<?php echo $row->imagen; ?>" alt="<?php echo $row->titulo; ?>" />
-                                                                    <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
+                                                                    <span class="overlay"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></span>
                                                                 </a>
                                                             </div>
                                                             <div class="panel-footer">
@@ -121,7 +117,7 @@ try {
 
                                                 <?php endforeach; ?>
                                             <?php else: ?>
-                                                <i class="glyphicon glyphicon-picture"></i> no hay ninguna imagen cargada
+                                                <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> no hay ninguna imagen cargada
                                             <?php endif; ?>    
                                         </div> 
                                     </div>                                   

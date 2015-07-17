@@ -49,7 +49,9 @@ try {
                         </div>
                         <div class="bootstrap-admin-panel-content">
                         
-                            <div class="alert alert-aviso"><span></span></div>
+                            <div class="alert alert-aviso">
+								<span></span>
+							</div>
                             
                             <form accept-charset="UTF-8" role="form" class="form-horizontal form-editar" data-acc="admin-empresa-video-editar" data-retorno="<?php echo ($es_root)? 'admin_empresa_video.php?id='.$idempresa : 'admin_empresa_video.php'; ?>" data-toggle="validator">
                                 <fieldset>
@@ -91,23 +93,17 @@ try {
                                                 <?php foreach($data as $row): ?>
 
                                                     <article class="col-xs-12 col-sm-6 col-md-3 contenido-video item" data-id="<?php echo $row->id; ?>">
-                                                        
-                                                        <div style="background:#f9f9f9;border: 1px solid #ddd;padding:8px;box-shadow:0 1px 1px rgba(0,0,0,.05);border-raidus:4px">
-                                                            <table align="center">
-                                                            <tr><td width="70px">
-                                                            <a class="btn btn-xs btn-warning btn-admin-borrar" data-acc="admin-empresa-video-borrar" id="<?php echo $row->id; ?>">Eliminar</a>
-                                                            </td>
-                                                            <td>
-                                                            <input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-empresa-video-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
-                                                            </td></tr>
-                                                            </table>
-                                                        </div>
-                                                        
                                                         <div class="panel panel-default">
+															<div class="panel-heading">
+																<p class="panel-title text-center">
+																	<a class="btn btn-xs btn-warning btn-admin-borrar" data-acc="admin-empresa-video-borrar" id="<?php echo $row->id; ?>">Eliminar</a>
+																	<input type="checkbox" data-size="mini" data-label-text="Habilitado" class="cbx-admin-habilitar checkbox" data-acc="admin-empresa-video-habilitar" <?php echo ($row->habilitado == 1)? 'checked':''; ?> >
+																</p>
+                                                            </div>
                                                             <div class="panel-body">
                                                                 <a href="https://www.youtube.com/watch?v=<?php echo $row->codigo; ?>" title="<?php echo $row->titulo; ?>" class="zoom" data-title="<?php echo $row->titulo; ?>" data-footer="<?php echo $row->descripcion; ?>" data-type="youtube" data-toggle="lightbox">
                                                                     <img style="height:200px;/*FIX*/" src="//i1.ytimg.com/vi/<?php echo $row->codigo; ?>/mqdefault.jpg" alt="<?php echo $row->titulo; ?>" />
-                                                                    <span class="overlay"><i class="glyphicon glyphicon-fullscreen"></i></span>
+                                                                    <span class="overlay"><i class="glyphicon glyphicon-fullscreen" aria-hiddeh="true"></i></span>
                                                                 </a>
                                                             </div>
                                                             <div class="panel-footer">
@@ -120,7 +116,7 @@ try {
 
                                                 <?php endforeach; ?>
                                             <?php else: ?>
-                                                <i class="glyphicon glyphicon-facetime-video"></i> no hay ningun video cargado
+                                                <i class="glyphicon glyphicon-facetime-video" aria-hiddeh="true"></i> no hay ningun video cargado
                                             <?php endif; ?>    
                                         </div> 
                                     </div>                                   

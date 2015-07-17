@@ -24,13 +24,13 @@
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-admin-theme-change-size.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/DT_bootstrap.css" rel="stylesheet">
+    
+    <!-- Checkbox Styles -->
+    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet" />
            
     <!-- General CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin.css" rel="stylesheet">
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/admin_mapa.css" rel="stylesheet">
-    
-    <!-- Checkbox Styles -->
-    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet" />
 
   </head>
   

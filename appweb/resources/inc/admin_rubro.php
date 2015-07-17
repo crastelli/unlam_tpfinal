@@ -50,7 +50,10 @@ try {
                         </div>
                         <div class="bootstrap-admin-panel-content">
                         
-                            <div class="alert alert-aviso"><span></span></div>
+                            <div class="alert alert-aviso">
+								<a class="close" data-dismiss="alert" href="#">×</a>
+								<span></span>
+							</div>
                             
                             <table class="table table-striped table-bordered" id="listado">
                                 <thead>
@@ -71,16 +74,16 @@ try {
                                             <td><img src="<?php echo BASE_URL._DIR_UPLOAD_; ?>icono_rubro/<?php echo $row->icono; ?>" width="25px"/></td>
                                             <td><?php echo $row->descripcion; ?></td>
                                             <td>
-                                                <a href="admin_rubro_editar.php?id=<?php echo $row->id; ?>" class="btn btn-sm btn-primary btn-editar" alt="Modificar" title="Modificar">
-                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                <a href="admin_rubro_editar.php?id=<?php echo $row->id; ?>" class="btn btn-sm btn-primary btn-editar" title="Modificar">
+                                                    <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i><span class="sr-only"> Modificar</span>
                                                 </a>
                                                 
-                                                <a href="admin_rubro_editar.php?id=<?php echo $row->id; ?>&view" alt="Consultar" title="Consultar" class="btn btn-sm btn-warning btn-editar">
-                                                    <i class="glyphicon glyphicon-bell"></i>
+                                                <a href="admin_rubro_editar.php?id=<?php echo $row->id; ?>&view" title="Consultar" class="btn btn-sm btn-warning btn-editar">
+                                                    <i class="glyphicon glyphicon-bell" aria-hidden="true"></i><span class="sr-only"> Consultar</span>
                                                 </a>
                                                 
-                                                <button class="btn btn-sm btn-danger btn-admin-borrar" data-acc="admin-rubro-borrar" alt="Eliminar" title="Eliminar">
-                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                <button class="btn btn-sm btn-danger btn-admin-borrar" data-acc="admin-rubro-borrar" title="Eliminar">
+                                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i><span class="sr-only"> Eliminar</span>
                                                 </button>
                                             </td>
                                         </tr>
