@@ -26,6 +26,7 @@ try {
 	
 		<div role="tabpanel" class="tab-pane active" id="foto">
 			<!-- -->
+            <br />         
 			<div class="col-xs-12 galeria" class="listado"> 
                 <div class="form-group">
                     <?php if(!empty($listFoto)): ?>
@@ -60,7 +61,8 @@ try {
 		
         
 		<div role="tabpanel" class="tab-pane" id="video">
-            <!-- -->          
+            <!-- -->
+            <br />          
             <div class="col-xs-12 galeria" class="listado"> 
                 <div class="form-group">
                     <?php if(!empty($listVideo)): ?>
