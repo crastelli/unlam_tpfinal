@@ -22,6 +22,7 @@ try {
 			<form id="formBuscar" class="form-inline contenido-filtro">
 				<div class="form-group filtro_zona">
 					<select name="idzona" id="idzona" class="form-control">
+						<option value="-1">Seleccion&aacute; una zona</option>
 						<?php foreach($ObjZona->FnGetAllActivos() as $row): ?>
 							<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
 						<?php endforeach; ?>

@@ -86,7 +86,7 @@ try {
                                             <td><?php echo $row->nombre; ?></td>
                                             <td><?php echo $row->razon_social; ?></td>
                                             <td><?php echo $row->direccion; ?></td>
-                                            <td>
+                                            <td width="215px">
                                                 <a href="admin_empresa_editar.php?id=<?php echo $row->id; ?>" class="btn btn-sm btn-primary btn-editar" title="Modificar">
                                                     <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i><span class="sr-only">Modificar</span>
                                                 </a>

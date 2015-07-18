@@ -50,6 +50,7 @@ if( !empty($_POST) )
 							<label for="ciudad" class="col-sm-2 control-label">Ciudad</label>
 							<div class="col-sm-10">
 								<select name="idzona" id="idzona" class="form-control">
+									<option value="-1">Seleccion&aacute; una zona</option>
 									<?php foreach($ObjZona->FnGetAllActivos() as $row): ?>
 										<option value="<?php echo $row->id; ?>"><?php echo $row->descripcion; ?></option>
 									<?php endforeach; ?>
