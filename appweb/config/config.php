@@ -4,8 +4,8 @@ date_default_timezone_set("America/Argentina/Buenos_Aires");
 // --->
 define('_DS_', DIRECTORY_SEPARATOR);
 // Defines
-// define('ROOT_DIR', '/var/www/html/milugar/');//linux
-define('ROOT_DIR', 'C:/Apache24/htdocs/milugar/');//windows
+define('ROOT_DIR', '/var/www/html/milugar/');//linux
+// define('ROOT_DIR', 'C:/Apache24/htdocs/milugar/');//windows
 define('BASE_URL', 'http://localhost/milugar/');
 // -->
 /*define('_DIR_ASSETS_', 'appweb'._DS_.'assets'._DS_);

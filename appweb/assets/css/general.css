@@ -131,7 +131,7 @@
 		opacity: 1;
 		transition: opacity 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out, overflow 1s ease-in-out;
 	}
-	div.filtro_rubro ul { top: -150%; }
+	/*div.filtro_rubro ul { top: -87.5%; }*/
 }
 
 #eModalFooter.modal-footer{ border: none !important;}
