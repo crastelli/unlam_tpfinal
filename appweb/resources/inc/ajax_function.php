@@ -54,6 +54,7 @@ switch($acc)
 	case 'admin-empresa-video-habilitar'  : echo FnAdminHabilitarVideoEmpresa(); break;
 	// FrontEnd -->
 	case 'info_empresa'                   : echo FnGetInfoEmpresa(); break;
+	case 'calificacion_empresa'           : echo FnSetCalificacionEmpresa(); break;
 	default                               : break;
 }
 
@@ -752,10 +753,41 @@ function FnGetInfoEmpresa()
 	if(isset($_POST["id"]))
 	{
 		// POST -->
-		$id = $_POST["id"];
+		$id                    = $_POST["id"];
 		// <!--
-		$info = $Empresa->FnGetById($id);	
+		$info                  = $Empresa->FnGetById($id);
+		$calificacion_positiva = $Empresa->FnTotCalificacionPositiva($id);	
+		$calificacion_negativa = $Empresa->FnTotCalificacionNegativa($id);
+		
+		$info->calificacion_positiva = $calificacion_positiva;	
+		$info->calificacion_negativa = $calificacion_negativa;
+
 		return json_encode($info);
 	}
 	return null;
+}
+
+function FnSetCalificacionEmpresa()
+{
+	global $Empresa;
+	$returnJSON = $msjJSON = null;
+	$err = 1;
+
+	$returnJSON = null;
+
+	if(isset($_POST["id"]))
+	{
+		// POST -->
+		/**
+			ENVIAR EL FACEBOOK ID
+		*/
+		$id          = $_POST["id"];
+		$estado      = $_POST["estado"];
+		$idusuariofb = 18; //$_POST["idusuariofb"];
+		$acc         = $_POST["acc"];
+		// <!--
+
+		if($id > 0) $err = $Empresa->FnSetCalificacionEmpresa($id, $estado, $idusuariofb);	
+	}
+	return $err;
 }

@@ -31,7 +31,7 @@
     #banner img, #contenido, #nav { background-color: rgba(255, 255, 255, .80); }
 	#listaResultadosFiltros {
 		background-color: #FFF;
-		height: 300px;
+		/* height: 300px; */
 		overflow: auto;
 	}
 	#listaResultadosFiltros li{
@@ -75,6 +75,13 @@
 	#contenedorBtnContraerResultBusqueda p {
 		margin: 0;
 	}
+	#contenedorBtnContraerResultBusqueda .btn-buscar{
+		width: 100px;
+		margin-left: -20px;
+		text-align: right;
+		padding-right: 10px;
+	}
+	
 	.contenidoColapsado {
 		width: 1px !important;
 		height: 1px !important;

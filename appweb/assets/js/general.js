@@ -127,6 +127,12 @@ function getInfoEmpresa(id)
                     html = '<div class="panel panel-default">'
                                 +'<div class="panel-heading">'
                                     + '<b>'+item.nombre.toUpperCase()+'</b>';
+
+                    html +=          '&nbsp;&nbsp;&nbsp;'
+                                        +'<button type="button" class="btn btn-default btn-xs" onclick="javascript: calificarEmpresa('+item.id+', 1);"><span class="text-success glyphicon glyphicon-thumbs-up ps"><b>'+item.calificacion_positiva+'</b></span></button>'
+                                        +'&nbsp;&nbsp;'
+                                        +'<button type="button" class="btn btn-default btn-xs" onclick="javascript: calificarEmpresa('+item.id+', 0);"><span class="text-danger glyphicon glyphicon-thumbs-down ng"><b>'+item.calificacion_negativa+'</b></span></button>';
+
                             if(item.es_premium == 1)
                             {
                                 html    += '<button type="button" class="btn btn-warning btn-xs" style="float:right;margin-left: 5px;" onclick="javascript: openModalFotoVideo('+item.id+');">'
@@ -151,7 +157,7 @@ function getInfoEmpresa(id)
                                                 html += (item.telefono != '')? item.telefono : ' <em>-Sin Información-</em>';
                                                                         
                                                 html    +=  '<button type="button" class="btn btn-info btn-xl" style="float:right;margin-left: 5px;" onclick="javascript: openModalFb('+item.id+');">'
-                                                             +'<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comentarios'
+                                                             +'<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Ver Comentarios'
                                                         +  '</button>';
 
                                             html += '</td>'
@@ -173,6 +179,26 @@ function clearMarkers()
     markers = [];
 }
 
+function calificarEmpresa(id, estado)
+{
+    $.post( "ajax_function.php", { id: id, acc: 'calificacion_empresa', estado: estado })
+    .done(function(err)
+    {
+        if(err < 0)
+        {
+            if(estado == 1)
+            {
+                var valor = parseInt($("span.ps").text());
+                $("span.ps > b").text(valor+1);
+            }else{
+                var valor = parseInt($("span.ng").text());
+                $("span.ng > b").text(valor+1);
+            }
+        }else{
+            alerta("info", "Usted por hoy ya agotó todos los votos hacia éste comercio. Gracias!");
+        }
+    });
+}
 
 function openModalFotoVideo(id)
 {
@@ -268,7 +294,8 @@ $(function()
             is_post = form_resultado.find("input[name='is_post']").val();
 
         if(is_post) form_resultado.addClass('contenidoColapsado');/*Queremos que se vean los resultados de la búsqueda con el JavaScript desactivado*/
-    	$('#contenedorBtnContraerResultBusqueda button').click(function(){
+    	$('#contenedorBtnContraerResultBusqueda button').click(function()
+        {
     		if (form_resultado.hasClass('contenidoColapsado')) {
     			form_resultado.removeClass('contenidoColapsado').addClass('contenidoExpandido');
     		} else {

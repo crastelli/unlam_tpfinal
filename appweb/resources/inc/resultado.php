@@ -35,7 +35,7 @@ if( !empty($_POST) )
 
 <div class="row contenido-gral ajaxContainer">
 	<div id="contenedorBtnContraerResultBusqueda" class="col-xs-12">
-		<button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span class="sr-only">Ver resultados de la búsqueda</span></button>
+		<button class="btn btn-primary btn-buscar" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span class="sr-only">Ver resultados de la búsqueda</span></button>
 	</div>
 	<main id="contenido" class="col-xs-12 formResultado" role="main">
 		<header class="sr-only">

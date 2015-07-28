@@ -1,8 +1,10 @@
 <?php
-$Empresa = new Empresa;
-$Rubro   = new Rubro;
-$Zona   = new Zona;
-$data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
+$Empresa               = new Empresa;
+$Rubro                 = new Rubro;
+$Zona                  = new Zona;
+$data                  = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
+$calificacion_positiva = $Empresa->FnTotCalificacionPositiva(Fn::FnGetDatosAccess()->id);
+$calificacion_negativa = $Empresa->FnTotCalificacionNegativa(Fn::FnGetDatosAccess()->id);
 ?>
 
 <div class="row">
@@ -36,6 +38,15 @@ $data = $Empresa->FnGetById(Fn::FnGetDatosAccess()->id);
                         <fieldset>
                             <div class="row">
 
+                                <div class="col-xs-12 text-right"> <legend>Mi ranking</legend> </div>
+                                
+                                <div class="col-xs-12 col-sm-12 text-right">                           
+                                    <div class="a">
+                                        <span class="text-success glyphicon glyphicon-thumbs-up ps btn-lg"><b><?php echo (isset($calificacion_positiva))? $calificacion_positiva : 0; ?></b></span>
+                                        <span class="text-danger glyphicon glyphicon-thumbs-down ng btn-lg"><b><?php echo (isset($calificacion_negativa))? $calificacion_negativa : 0; ?></b></span>
+                                    </div> 
+                                </div>
+                                
                                 <div class="col-xs-12"> <legend>Datos referente</legend> </div>
                                 
                                 <div class="col-xs-12 col-sm-6">                           

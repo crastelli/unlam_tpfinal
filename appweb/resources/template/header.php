@@ -21,9 +21,6 @@
     
     <!-- Alertify -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/alertify.bootstrap.min.css" rel="stylesheet">
-
-    <!-- Ranking -->
-    <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/bootstrap/css/star-rating.min.css" rel="stylesheet">
     
     <!-- General CSS -->
     <link href="<?php echo BASE_URL._DIR_ASSETS_; ?>css/general.css" rel="stylesheet">

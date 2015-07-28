@@ -1,6 +1,9 @@
+<?php require "../../../config/ini.php"; ?>
 <!-- <div class="fb-comments" data-href="http://milugar.esy.es/#<?php echo $_GET['id'];?>" data-colorscheme="light" data-numposts="3" data-width="400"></div> -->
-<div class="fb-comments" data-href="<?php echo BASE_URL._DIR_INC_; ?>#?<?php echo $_GET['id'];?>" data-colorscheme="light" data-numposts="3" data-width="400"></div>
+<!-- <div class="fb-comments" data-href="<?php echo BASE_URL._DIR_INC_; ?>#?<?php echo $_GET['id'];?>" data-colorscheme="light" data-numposts="3" data-width="400"></div> -->
 
+
+<!--
 <script>
 window.fbAsyncInit = function() {
 FB.init({
@@ -9,7 +12,6 @@ FB.init({
   version    : 'v2.4'
 });
 };
-
 (function(d, s, id){
  var js, fjs = d.getElementsByTagName(s)[0];
  if (d.getElementById(id)) {return;}
@@ -18,3 +20,17 @@ FB.init({
  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+-->
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.4&appId=1027003033991093";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-href="http://milugar.esy.es/#<?php echo $_GET['id'];?>" data-numposts="5"></div>

@@ -57,6 +57,32 @@ Class Empresa extends Usuario
 		return $this->queryOne($qry);
 	}
 
+	public function FnTotCalificacionPositiva($id)
+	{
+		$qry = sprintf("SELECT COUNT(1) calificacion_positiva
+ 					FROM `Calificacion_rel_empresa`
+					WHERE `idempresa` = %d
+					AND `estado` = 1
+					AND `calificacion` > 0
+					LIMIT 1", $id);
+		$r = $this->queryOne($qry);
+		if(!empty($r) && $r->calificacion_positiva > 0)return $r->calificacion_positiva;
+		else return 0;
+	}
+
+	public function FnTotCalificacionNegativa($id)
+	{
+		$qry = sprintf("SELECT COUNT(1) calificacion_negativa
+ 					FROM `Calificacion_rel_empresa`
+					WHERE `idempresa` = %d
+					AND `estado` = 1
+					AND `calificacion` < 0
+					LIMIT 1", $id);
+		$r = $this->queryOne($qry);
+		if(!empty($r) && $r->calificacion_negativa > 0)return $r->calificacion_negativa;
+		else return 0;
+	}
+
 	public function FnGetByEmail($email)
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
@@ -281,5 +307,36 @@ Class Empresa extends Usuario
 		if($update) return -1;
 		else return 1;
 	}	
+
+	public function FnSetCalificacionEmpresa($id, $estado, $idusuariofb)
+	{
+		$err = 1;
+
+		if($estado == 1) $calificacion = 1;
+		else $calificacion = -1;
+
+		$puede_calificar = $this->FnHabilitarCalificacion($id, $idusuariofb);
+		if($puede_calificar->cantidad_votos < 2)
+		{
+			$qry = sprintf("INSERT INTO `Calificacion_rel_empresa`
+							(`idempresa`, `idusuariofb`, `calificacion`)
+							VALUES (%d, %d, %d)",
+							$id, $idusuariofb, $calificacion);
+			$insert = $this->execute($qry, "insert");
+			if($insert > 0) $err = -1;
+		}
+		return $err;
+	}
+
+	private function FnHabilitarCalificacion($id,$idusuariofb)
+	{
+		$qry = sprintf("SELECT COUNT(1) cantidad_votos
+						FROM `Calificacion_rel_empresa`
+						WHERE `idusuariofb` = %d 
+						AND `idempresa` = %d
+						AND `fecha`
+							BETWEEN DATE_FORMAT(NOW(), '%%Y-%%m-%%d 00:00:00') AND DATE_FORMAT(NOW(), '%%Y-%%m-%%d 23:59:59' );", $idusuariofb, $id);
+		return $this->queryOne($qry);
+	}
 	// -->	
 }
