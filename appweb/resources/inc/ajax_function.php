@@ -53,8 +53,9 @@ switch($acc)
 	case 'admin-empresa-video-borrar'     : echo FnAdminVideoEmpresaBorrar(); break;
 	case 'admin-empresa-video-habilitar'  : echo FnAdminHabilitarVideoEmpresa(); break;
 	// FrontEnd -->
-	case 'info_empresa'                   : echo FnGetInfoEmpresa(); break;
-	case 'calificacion_empresa'           : echo FnSetCalificacionEmpresa(); break;
+	case 'info-empresa'                   : echo FnGetInfoEmpresa(); break;
+	case 'calificacion-empresa'           : echo FnSetCalificacionEmpresa(); break;
+	case 'enviar-solicitud'           	  : echo FnEnviarSolicitud(); break;
 	default                               : break;
 }
 
@@ -780,6 +781,28 @@ function FnSetCalificacionEmpresa()
 		// POST -->
 		/**
 			ENVIAR EL FACEBOOK ID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		*/
 		$id          = $_POST["id"];
 		$estado      = $_POST["estado"];
@@ -790,4 +813,38 @@ function FnSetCalificacionEmpresa()
 		if($id > 0) $err = $Empresa->FnSetCalificacionEmpresa($id, $estado, $idusuariofb);	
 	}
 	return $err;
+}
+
+function FnEnviarSolicitud()
+{
+	global $Correo;
+
+	$returnJSON = $msjJSON = null;
+	$acc = '';
+	$err = 1;
+
+	if(isset($_POST["email"]))
+	{
+		// POST -->
+		$email   = trim(strtolower($_POST["email"]));
+		$nombre  = $_POST["nombre"];
+		$mensaje = $_POST["mensaje"];
+		$acc     = $_POST["acc"];
+		// <!--
+
+		//Envio email
+		$subject = 'Formulario de contacto - Milugar.com';
+		$body   = "<b>Nombre</b>: ".$nombre;
+		$body   .= "<br /><b>Email</b>: ".$email;
+		$body   .= "<br /><b>Mensaje</b>:<br />&nbsp;-&nbsp;".$mensaje;
+		$body   .= "<br /><br />";
+		$address = $email;
+		$error = $Correo->MiEnviar($subject, $address, $body);
+		if($error == '') $err = -1;
+	}
+	
+	$msjJSON = Fn::FnGetMsg($acc, $err);
+
+	$returnJSON = [ "status" => $msjJSON, "data_extra" => null ];
+	return json_encode($returnJSON);
 }

@@ -337,6 +337,23 @@ Abstract Class Fn
 							default:break;
 						}
 						break;
+			case 'enviar-solicitud':
+						switch ($err)
+						{
+							case -1:
+									$obj->msg   = 'AVISO: Datos enviados con éxito';
+									$obj->class = 'success';
+									break;							
+							case 1:
+									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
+									$obj->class = 'danger';
+									break;
+							default:
+									$obj->msg   = 'Ingrese los datos por favor.';
+									$obj->class = 'info';
+									break;
+						}
+						break;
 			default:
 				break;
 		}

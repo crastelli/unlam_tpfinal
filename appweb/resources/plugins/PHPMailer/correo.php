@@ -18,7 +18,7 @@ class Correo extends PHPMailer {
      //vacio
 	}
 
-	public function Enviar($subjet, $address, $body)
+	public function Enviar($subject, $address, $body)
    	{
 
 		$cuerpo= '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title></title><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta name="viewport" content="width=320, target-densitydpi=device-dpi"><!--[if gte mso 9]><style _tmplitem="70" >.article-content ol, .article-content ul{margin: 0 0 0 24px;padding: 0;list-style-position: inside;}</style><![endif]--></head><body style="background-color: #ececec;margin: 0;padding: 0;font-family: HelveticaNeue, sans-serif;width: 100% !important;"><table width="100%" cellpadding="0" cellspacing="0" border="0" id="background-table" style="background-color: #ececec;"><tbody><tr style="border-collapse: collapse;"><td align="center" bgcolor="#ececec" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"><table class="w640" style="margin:0 10px;" width="90%" cellpadding="0" cellspacing="0" border="0"><tbody><tr style="border-collapse: collapse;"><td class="w640" width="90%" height="20" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td></tr><tr style="border-collapse: collapse;"><td class="w640" width="90%" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"><table id="top-bar" class="w640" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#004A99" style="border-radius: 6px 6px 0px 0px;-moz-border-radius: 6px 6px 0px 0px;-webkit-border-radius: 6px 6px 0px 0px;-webkit-font-smoothing: antialiased;background-color: #004A99;color: #004A99;"><tbody><tr style="border-collapse: collapse;"><td class="w15" width="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td><td class="w255" width="auto" height="16" valign="middle" align="right" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;">
@@ -40,7 +40,7 @@ class Correo extends PHPMailer {
 		</td><td class="w580 h0" width="auto" height="15" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td><td class="w30" width="30" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td></tr></tbody>
 		</table></td></tr><tr style="border-collapse: collapse;"><td class="w640" width="100%" height="60" style="font-family: HelveticaNeue, sans-serif;border-collapse: collapse;"></td></tr></tbody></table></td></tr></tbody></table></body></html>';
 
-		$this->Subject = utf8_decode($subjet);
+		$this->Subject = utf8_decode($subject);
 
 		$this->Body = $cuerpo;
 

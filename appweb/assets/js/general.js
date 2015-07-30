@@ -120,7 +120,7 @@ function getInfoEmpresa(id)
         dataType: "JSON",
         type    : "POST",
         url     : "ajax_function.php",
-        data    : { id: id, acc: 'info_empresa' },
+        data    : { id: id, acc: 'info-empresa' },
         success : function(item)
                 {
                     // -->
@@ -181,7 +181,7 @@ function clearMarkers()
 
 function calificarEmpresa(id, estado)
 {
-    $.post( "ajax_function.php", { id: id, acc: 'calificacion_empresa', estado: estado })
+    $.post( "ajax_function.php", { id: id, acc: 'calificacion-empresa', estado: estado })
     .done(function(err)
     {
         if(err < 0)
@@ -243,21 +243,21 @@ $(function()
             title   :'Registro de empresa',
             size    : 'lg',
             buttons : [
-                        {text: 'Cancelar', style: 'danger', close: true, click: fCancelarRegistroEmpresa },
-                        {text: 'Enviar', style: 'success', close: true, click: fGuardarRegistroEmpresa }
+                        {text: 'Cancelar', style: 'danger', close: true },
+                        {text: 'Enviar', style: 'success', close: true, click: fRegistrarEmpresa }
                     ]
         };        
         eModal.ajax(options);
     });
 
-    $('.modal-contacto').on('click', function() {
+    $('.modal-contacto').on('click', function(e) {
         var options = {
             url     : BASE_URL+_DIR_INC_+"modals/modal_contacto.php",
             title   :'Contacto',
             size    : 'lg',
             buttons : [
-                        {text: 'Cancelar', style: 'danger', close: true, click: fCancelarContacto },
-                        {text: 'Enviar', style: 'success', close: true, click: fGuardarContacto }
+                        {text: 'Cancelar', style: 'danger', close: true },
+                        {text: 'Enviar', style: 'success', click: fEnviarSolicitud }
                     ]
         };        
         eModal.ajax(options);
@@ -319,22 +319,58 @@ $(function()
 }); // End jQuery
 
 // Funciones/acciones de los modals
-function fCancelarRegistroEmpresa()
+function fRegistrarEmpresa()
 {
-    console.log("fCancelarRegistroEmpresa");
-}
-function fGuardarRegistroEmpresa()
-{
-    console.log("fGuardarRegistroEmpresa");
+    console.log("fRegistrarEmpresa");
 }
 
-function fCancelarContacto()
-{
-    console.log("fCancelarContacto");
-}
+function fEnviarSolicitud()
+{    
+    /*
+    var $form    = $('#formContacto'),
+        formData = new FormData( $form[0] );
 
-function fGuardarContacto()
-{
-    console.log("fGuardarContacto");
+    formData.append("acc", "enviar-solicitud");
+    */
+
+    var $form = $('#formContacto'),
+        nombre    = $form.find('input[name="nombre"]').val(),
+        email     = $form.find('input[name="email"]').val(),
+        mensaje   = $form.find('textarea[name="mensaje"]').val();
+
+    var $msg = $('div.alert-aviso');
+    $msg.hide();
+
+    $.ajax({
+        url         : BASE_URL+_DIR_INC_+"ajax_function.php",
+        type        : 'POST',
+        data        : { acc: 'enviar-solicitud', nombre: nombre, email: email, mensaje: mensaje },
+        beforeSend  : function(){
+                        $form.find('input').prop('disabled', true);
+                        $form.find('textarea').prop('disabled', true);
+                        $('.modal').find('button').prop('disabled', true);
+                        $msg.removeClass();
+                        $msg.addClass('alert alert-aviso alert-info');
+                        $msg.find('span').text("Enviando solicitud, espere por favor...");
+                        $msg.show();
+                    },
+        success     : function( response )
+                    {
+                        $msg.hide();
+                        
+                        var JSON = $.parseJSON(response);
+                        $msg.removeClass();
+                        $msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
+                        $msg.find('span').text(JSON.status["msg"]);
+                        $msg.show();
+                        $form.find('input').val('');
+                        $form.find('textarea').val('');
+
+                        $form.find('input').prop('disabled', false);
+                        $form.find('textarea').prop('disabled', false);
+                        $('.modal').find('button').prop('disabled', false);
+                    }
+    });
+    
 }
 // <!--
