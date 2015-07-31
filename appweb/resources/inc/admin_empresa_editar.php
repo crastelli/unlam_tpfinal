@@ -177,7 +177,7 @@ try {
                                                 <label for="idzona" class="col-xs-4 control-label">Zona <abbr title="Campo requerido">*</abbr></label>
                                                 <div class="col-xs-8">
                                                     <select name="idzona" <?php echo $edit; ?> id="idzona" class="form-control">
-                                                        <?php foreach($ObjZona->FnGetAll() as $row): ?>
+                                                        <?php foreach($ObjZona->FnGetAllActivos() as $row): ?>
                                                             <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idzona) && $data->idzona == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
@@ -189,7 +189,7 @@ try {
                                                 <label for="idrubro" class="col-xs-4 control-label">Rubro <abbr title="Campo requerido">*</abbr></label>
                                                 <div class="col-xs-8">
                                                     <select name="idrubro" <?php echo $edit; ?> id="idrubro" class="form-control">
-                                                       <?php foreach($ObjRubro->FnGetAll() as $row): ?>
+                                                       <?php foreach($ObjRubro->FnGetAllActivos() as $row): ?>
                                                             <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idrubro) && $data->idrubro == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>

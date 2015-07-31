@@ -21,7 +21,8 @@ Class Zona extends Database
 	{
 		$qry = sprintf("SELECT `id`, `descripcion`, `lat_long`, `habilitado`
 				FROM `Zona`
-				WHERE `estado` = 1", False);
+				WHERE `estado` = 1
+				ORDER BY `id` DESC", False);
 		return $this->query($qry);
 	}	
 
@@ -30,7 +31,8 @@ Class Zona extends Database
 		$qry = sprintf("SELECT `id`, `descripcion`, `lat_long`, `habilitado`
 				FROM `Zona`
 				WHERE `estado` = 1
-				AND `habilitado` = 1", False);
+				AND `habilitado` = 1
+				ORDER BY `descripcion` ASC", False);
 		return $this->query($qry);
 	}
 

@@ -474,7 +474,9 @@ function FnAdminEditarEmpresa()
 
 	$returnJSON = null;
 
-	if(isset($_POST["id"]))
+	$acc = $_POST["acc"];
+
+	if( isset($_POST["id"]) && isset($_POST["email"]) && $_POST["email"] != '' )
 	{
 		// POST -->
 		$id               = $_POST["id"];
@@ -491,8 +493,7 @@ function FnAdminEditarEmpresa()
 		$archivo          = $_FILES["logo"];
 		$email            = trim(strtolower($_POST["email"]));
 		$pw               = ($_POST["pw"] != '********')? $_POST["pw"] : '';
-		$logo             = null;
-		$acc              = $_POST["acc"];
+		$logo             = null;;
 		// <!--
 		
 		$upload = Fn::uploadFile($archivo, "logo_empresa", True);
@@ -823,13 +824,17 @@ function FnEnviarSolicitud()
 	$acc = '';
 	$err = 1;
 
-	if(isset($_POST["email"]))
+	$acc = $_POST["acc"];
+	if(
+		isset($_POST["email"]) && $_POST["email"] != ''
+		&& isset($_POST["email"]) && $_POST["email"] != ''
+		&& isset($_POST["mensaje"]) && $_POST["mensaje"] != ''
+		)
 	{
 		// POST -->
 		$email   = trim(strtolower($_POST["email"]));
 		$nombre  = $_POST["nombre"];
 		$mensaje = $_POST["mensaje"];
-		$acc     = $_POST["acc"];
 		// <!--
 
 		//Envio email

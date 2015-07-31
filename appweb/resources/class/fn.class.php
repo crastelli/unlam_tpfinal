@@ -212,6 +212,10 @@ Abstract Class Fn
 			case 'admin-empresa-editar':
 						switch ($err)
 						{											
+							case -1: 
+									$obj->msg   = 'Comercio registrado con éxito. Gracias';
+									$obj->class = 'success';
+									break;
 							case 1:
 									$obj->msg   = 'ERROR: Hubo un problema al ingresar los datos.';
 									$obj->class = 'danger';

@@ -321,22 +321,11 @@ $(function()
 // Funciones/acciones de los modals
 function fRegistrarEmpresa()
 {
-    console.log("fRegistrarEmpresa");
-}
-
-function fEnviarSolicitud()
-{    
-    /*
-    var $form    = $('#formContacto'),
+    var $form = $('#formRegistroEmpresa'),
         formData = new FormData( $form[0] );
 
-    formData.append("acc", "enviar-solicitud");
-    */
-
-    var $form = $('#formContacto'),
-        nombre    = $form.find('input[name="nombre"]').val(),
-        email     = $form.find('input[name="email"]').val(),
-        mensaje   = $form.find('textarea[name="mensaje"]').val();
+    formData.append("acc", "admin-empresa-editar");
+    formData.append("id", 0);
 
     var $msg = $('div.alert-aviso');
     $msg.hide();
@@ -344,7 +333,56 @@ function fEnviarSolicitud()
     $.ajax({
         url         : BASE_URL+_DIR_INC_+"ajax_function.php",
         type        : 'POST',
-        data        : { acc: 'enviar-solicitud', nombre: nombre, email: email, mensaje: mensaje },
+        data        : formData,
+        cache       : false,
+        contentType : false,
+        processData : false,
+        beforeSend  : function(){
+                        $form.find('input').prop('disabled', true);
+                        $form.find('textarea').prop('disabled', true);
+                        $form.find('select').prop('disabled', true);
+                        $('.modal').find('button').prop('disabled', true);
+                        $msg.hide();
+                    },
+        success     : function( response )
+                    {
+
+                        console.log(response);
+
+                        var JSON = $.parseJSON(response);
+                        $msg.removeClass();
+                        $msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
+                        $msg.find('span').text(JSON.status["msg"]);
+                        $msg.show();
+
+                        $form.find('input[name!="lat_long"]').val('');
+                        $form.find('textarea').val('');
+
+                        $form.find('input').prop('disabled', false);
+                        $form.find('textarea').prop('disabled', false);
+                        $form.find('select').prop('disabled', false);
+                        $('.modal').find('button').prop('disabled', false);
+                    }
+    });
+}
+
+function fEnviarSolicitud()
+{     
+    var $form = $('#formContacto'),
+        formData = new FormData( $form[0] );
+
+    formData.append("acc", "enviar-solicitud");
+
+    var $msg = $('div.alert-aviso');
+    $msg.hide();
+
+    $.ajax({
+        url         : BASE_URL+_DIR_INC_+"ajax_function.php",
+        type        : 'POST',
+        data        : formData,
+        cache       : false,
+        contentType : false,
+        processData : false,
         beforeSend  : function(){
                         $form.find('input').prop('disabled', true);
                         $form.find('textarea').prop('disabled', true);
@@ -357,7 +395,6 @@ function fEnviarSolicitud()
         success     : function( response )
                     {
                         $msg.hide();
-                        
                         var JSON = $.parseJSON(response);
                         $msg.removeClass();
                         $msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
@@ -371,6 +408,5 @@ function fEnviarSolicitud()
                         $('.modal').find('button').prop('disabled', false);
                     }
     });
-    
 }
 // <!--

@@ -42,7 +42,8 @@ Class Empresa extends Usuario
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
 								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
-					WHERE `estado` = 1", False);
+					WHERE `estado` = 1
+					ORDER BY `id` DESC", False);
 		return $this->query($qry);
 	}
 

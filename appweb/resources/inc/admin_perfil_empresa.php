@@ -171,7 +171,7 @@ $calificacion_negativa = $Empresa->FnTotCalificacionNegativa(Fn::FnGetDatosAcces
                                         <label for="idzona" class="col-xs-4 control-label">Zona <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <select name="idzona" id="idzona" class="form-control">
-                                                <?php foreach($Zona->FnGetAll() as $row): ?>
+                                                <?php foreach($Zona->FnGetAllActivos() as $row): ?>
                                                     <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idzona) && $data->idzona == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -183,7 +183,7 @@ $calificacion_negativa = $Empresa->FnTotCalificacionNegativa(Fn::FnGetDatosAcces
                                         <label for="idrubro" class="col-xs-4 control-label">Rubro <abbr title="Campo requerido">*</abbr></label>
                                         <div class="col-xs-8">
                                             <select name="idrubro" id="idrubro" class="form-control">
-                                               <?php foreach($Rubro->FnGetAll() as $row): ?>
+                                               <?php foreach($Rubro->FnGetAllActivos() as $row): ?>
                                                     <option value="<?php echo $row->id; ?>" <?php echo (isset($data->idrubro) && $data->idrubro == $row->id)? 'selected' : ''; ?> ><?php echo $row->descripcion; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
