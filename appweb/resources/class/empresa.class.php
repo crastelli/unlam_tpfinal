@@ -321,7 +321,7 @@ Class Empresa extends Usuario
 		{
 			$qry = sprintf("INSERT INTO `Calificacion_rel_empresa`
 							(`idempresa`, `idusuariofb`, `calificacion`)
-							VALUES (%d, %d, %d)",
+							VALUES (%d, '%s', %d)",
 							$id, $idusuariofb, $calificacion);
 			$insert = $this->execute($qry, "insert");
 			if($insert > 0) $err = -1;
@@ -333,7 +333,7 @@ Class Empresa extends Usuario
 	{
 		$qry = sprintf("SELECT COUNT(1) cantidad_votos
 						FROM `Calificacion_rel_empresa`
-						WHERE `idusuariofb` = %d 
+						WHERE `idusuariofb` = '%s' 
 						AND `idempresa` = %d
 						AND `fecha`
 							BETWEEN DATE_FORMAT(NOW(), '%%Y-%%m-%%d 00:00:00') AND DATE_FORMAT(NOW(), '%%Y-%%m-%%d 23:59:59' );", $idusuariofb, $id);

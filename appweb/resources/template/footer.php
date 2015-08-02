@@ -10,6 +10,29 @@
     </div> <!-- Fin #contenedor -->
     
 	<div id="mapaFondo"></div>
+    <div id="fb-root"></div>
+
+    <!-- Config FB -->
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/es_LA/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        window.fbAsyncInit = function()
+        {
+            FB.init({
+                appId   : '1027003033991093',
+                version : 'v2.4',
+                xfbml   : true,
+                status  : true,
+                cookie  : true,
+                oauth   : true
+            });
+        }        
+    </script>
 
 	<!-- jQuery  -->
 	<script src="<?php echo BASE_URL._DIR_ASSETS_; ?>lib/jquery.min.js"></script>

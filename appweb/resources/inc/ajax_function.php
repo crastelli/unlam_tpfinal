@@ -780,34 +780,9 @@ function FnSetCalificacionEmpresa()
 	if(isset($_POST["id"]))
 	{
 		// POST -->
-		/**
-			ENVIAR EL FACEBOOK ID
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		*/
 		$id          = $_POST["id"];
 		$estado      = $_POST["estado"];
-		$idusuariofb = 18; //$_POST["idusuariofb"];
+		$idusuariofb = $_POST["idusuariofb"];
 		$acc         = $_POST["acc"];
 		// <!--
 

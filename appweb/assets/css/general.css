@@ -144,3 +144,14 @@
 #eModalFooter.modal-footer{ border: none !important;}
 
 .alert-aviso{ display: none}
+
+.modal-comentario .loading{
+	position: absolute;
+	top: 0;
+	left: 39%;
+}
+.modal-comentario .loading img{ height: 120px; }
+.modal-comentario .fb-comments{
+	margin: 0 auto;
+	width: 100%;
+}

@@ -1,36 +1,16 @@
 <?php require "../../../config/ini.php"; ?>
-<!-- <div class="fb-comments" data-href="http://milugar.esy.es/#<?php echo $_GET['id'];?>" data-colorscheme="light" data-numposts="3" data-width="400"></div> -->
-<!-- <div class="fb-comments" data-href="<?php echo BASE_URL._DIR_INC_; ?>#?<?php echo $_GET['id'];?>" data-colorscheme="light" data-numposts="3" data-width="400"></div> -->
 
-
-<!--
+<div class="row modal-comentario">
+	<div class="col-xs-12">
+		<div class="fb-comments" data-colorscheme="light" data-href="http://milugar.esy.es/#<?php echo $_GET['id'];?>" data-numposts="5"></div>
+		<div class="loading"><img src="<?php echo BASE_URL._DIR_ASSETS_;?>images/loading_gde.gif"/></div>
+	</div>
+</div>
 <script>
-window.fbAsyncInit = function() {
-FB.init({
-  appId      : '1027003033991093',
-  xfbml      : true,
-  version    : 'v2.4'
-});
-};
-(function(d, s, id){
- var js, fjs = d.getElementsByTagName(s)[0];
- if (d.getElementById(id)) {return;}
- js = d.createElement(s); js.id = id;
- js.src = "//connect.facebook.net/en_US/sdk.js#status=0";
- fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+FB.XFBML.parse();
+FB.Event.subscribe('xfbml.render',
+	function (response) {
+		$('.loading').hide();
+	}
+);
 </script>
--->
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.4&appId=1027003033991093";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<div class="fb-comments" data-href="http://milugar.esy.es/#<?php echo $_GET['id'];?>" data-numposts="5"></div>

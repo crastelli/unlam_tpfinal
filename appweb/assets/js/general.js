@@ -129,9 +129,9 @@ function getInfoEmpresa(id)
                                     + '<b>'+item.nombre.toUpperCase()+'</b>';
 
                     html +=          '&nbsp;&nbsp;&nbsp;'
-                                        +'<button type="button" class="btn btn-default btn-xs" onclick="javascript: calificarEmpresa('+item.id+', 1);"><span class="text-success glyphicon glyphicon-thumbs-up ps"><b>'+item.calificacion_positiva+'</b></span></button>'
+                                        +'<button type="button" class="btn btn-default btn-xs btn-calificacion" onclick="javascript: calificarEmpresa('+item.id+', 1);"><span class="text-success glyphicon glyphicon-thumbs-up ps"><b>'+item.calificacion_positiva+'</b></span></button>'
                                         +'&nbsp;&nbsp;'
-                                        +'<button type="button" class="btn btn-default btn-xs" onclick="javascript: calificarEmpresa('+item.id+', 0);"><span class="text-danger glyphicon glyphicon-thumbs-down ng"><b>'+item.calificacion_negativa+'</b></span></button>';
+                                        +'<button type="button" class="btn btn-default btn-xs btn-calificacion" onclick="javascript: calificarEmpresa('+item.id+', 0);"><span class="text-danger glyphicon glyphicon-thumbs-down ng"><b>'+item.calificacion_negativa+'</b></span></button>';
 
                             if(item.es_premium == 1)
                             {
@@ -179,25 +179,64 @@ function clearMarkers()
     markers = [];
 }
 
-function calificarEmpresa(id, estado)
+function calificarEmpresa(idempresa, estado_calificacion)
 {
-    $.post( "ajax_function.php", { id: id, acc: 'calificacion-empresa', estado: estado })
-    .done(function(err)
+    var fbid;
+    var fbname;
+
+    var fCalificar = function(fbid, fbname, idempresa, estado_calificacion)
     {
-        if(err < 0)
+        $.post( "ajax_function.php", { idusuariofb: fbid, id: idempresa, estado: estado_calificacion, acc: 'calificacion-empresa' })
+        .done(function(err)
         {
-            if(estado == 1)
+            if(err < 0)
             {
-                var valor = parseInt($("span.ps").text());
-                $("span.ps > b").text(valor+1);
+                if(estado_calificacion == 1)
+                {
+                    var valor = parseInt($("span.ps").text());
+                    $("span.ps > b").text(valor+1);
+                }else{
+                    var valor = parseInt($("span.ng").text());
+                    $("span.ng > b").text(valor+1);
+                }
+                alerta("success", fbname+" gracias por compartir tu calificación!");
             }else{
-                var valor = parseInt($("span.ng").text());
-                $("span.ng > b").text(valor+1);
+                alerta("info", fbname+", usted por hoy ya agotó todos los votos hacia éste comercio. Gracias!");
             }
-        }else{
-            alerta("info", "Usted por hoy ya agotó todos los votos hacia éste comercio. Gracias!");
+            $(".btn-calificacion").prop("disabled", false);
+        });
+    };
+
+    var getCurrentUserInfo = function(response, idempresa, estado_calificacion)
+    {
+        FB.api('/me', function(userInfo)
+        {
+            fbid   = userInfo.id;
+            fbname = userInfo.name;
+            $(".btn-calificacion").prop("disabled", true);
+            fCalificar(fbid, fbname, idempresa, estado_calificacion);
+        });
+    };
+
+    FB.getLoginStatus(function(response)
+    {
+        if (response.status == 'connected') 
+        {
+            getCurrentUserInfo(response, idempresa, estado_calificacion)
+        } else {
+            FB.login(function(response)
+            {
+              if (response.authResponse)
+              {
+                getCurrentUserInfo(response, idempresa, estado_calificacion)
+              } else {
+                alerta("danger", "Autentificacion fallida.");
+              }
+            }, { scope: 'email' });
         }
-    });
+    }, {idempresa: idempresa, estado_calificacion: estado_calificacion});
+
+
 }
 
 function openModalFotoVideo(id)
@@ -218,7 +257,7 @@ function openModalFb(id)
     var options = {
             url     : BASE_URL+_DIR_INC_+"modals/modal_empresa_fb.php?id="+id,
             title   :'Comentarios del Comercio',
-            size    : 'lg',
+            size    : 'md',
             buttons : [
                         {text   : 'Cerrar', style: 'info', close: true}
                     ]
