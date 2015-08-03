@@ -5,8 +5,8 @@ try {
     $ObjEmpresa = new Empresa();
     if( isset($_GET["id"]) && $_GET["id"] > 0 )
     {
-        $listFoto  = $ObjEmpresa->FnGetImagenes($_GET["id"]);
-        $listVideo = $ObjEmpresa->FnGetVideos($_GET["id"]);
+        $listFoto  = $ObjEmpresa->FnGetImagenesActivas($_GET["id"]);
+        $listVideo = $ObjEmpresa->FnGetVideosActivos($_GET["id"]);
     }
 } catch (Exception $e) {
     echo $e->getMessage();

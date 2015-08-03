@@ -155,6 +155,8 @@ function getInfoEmpresa(id)
                                                 html += (item.direccion != '')? item.direccion : ' <em>-Sin Información-</em>';
                                                 html += '<br /><i class="text-primary glyphicon glyphicon-earphone"></i>&nbsp;<label>Teléfono:&nbsp;</label>';
                                                 html += (item.telefono != '')? item.telefono : ' <em>-Sin Información-</em>';
+                                                html += '<br /><i class="text-primary glyphicon glyphicon-link"></i>&nbsp;<label>Web(link):&nbsp;</label>';
+                                                html += (item.web != '')? '<a href="'+item.web+'" target="_blank">'+item.web+'</a>' : ' <em>-Sin Información-</em>';
                                                                         
                                                 html    +=  '<button type="button" class="btn btn-info btn-xl" style="float:right;margin-left: 5px;" onclick="javascript: openModalFb('+item.id+');">'
                                                              +'<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Ver Comentarios'
@@ -269,6 +271,18 @@ function openModalFb(id)
 
 $(function()
 {
+
+    $('.btn-actualizar-filtro-resultado').on('click', function()
+    {
+        bootbox.confirm("¿Al actualizar los filtros se borrará la búsqueda actual, esta de acuerdo?", function(result)
+        {
+            if(result)
+            {
+                window.location.href=window.location.href;
+            }
+        });
+    });
+
     $('form#formBuscar select#rubro').multiselect({
         nonSelectedText : "Seleccioná un rubro",
         allSelectedText : "Todos los rubros",
@@ -386,8 +400,6 @@ function fRegistrarEmpresa()
         success     : function( response )
                     {
 
-                        console.log(response);
-
                         var JSON = $.parseJSON(response);
                         $msg.removeClass();
                         $msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);
@@ -434,6 +446,9 @@ function fEnviarSolicitud()
         success     : function( response )
                     {
                         $msg.hide();
+                        
+                        console.log(response);
+
                         var JSON = $.parseJSON(response);
                         $msg.removeClass();
                         $msg.addClass('alert alert-aviso alert-'+JSON.status["class"]);

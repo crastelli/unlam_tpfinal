@@ -130,6 +130,15 @@ try {
                                             </div>
                                         </div>
                                 
+                                        <div class="col-xs-12"> 
+                                            <div class="form-group">
+                                                <label for="web" class="col-xs-4 col-sm-2 control-label">Web (link)</label>
+                                                <div class="col-xs-8 col-sm-10">
+                                                    <input type="url" <?php echo $edit; ?> placeholder="Ingrese la Url de su página Web" class="form-control" name="web" id="web" value="<?php echo (isset($data->web))? $data->web : ''; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                        
                                        <div class="col-xs-12"> 
                                             <div class="form-group">
                                                 <label for="email" class="col-xs-4 col-sm-2 control-label">Email (usuario) <abbr title="Campo requerido">*</abbr></label>

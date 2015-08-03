@@ -42,7 +42,16 @@ if( !empty($_POST) )
 			<h1>Resultados de la búsqueda</h1>
 		</header>
 		<article>
-			<p class="clearfix"><button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#opcionesFiltro" aria-expanded="true" aria-controls="opcionesFiltro"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filtrar búsqueda <span class="caret"></span></button></p>
+		
+			<?php if( !empty($_POST) && !is_null($arr_rubro) ): ?>
+				<p class="clearfix">
+					<button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#opcionesFiltro" aria-expanded="true" aria-controls="opcionesFiltro"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filtrar búsqueda <span class="caret"></span></button>
+					<button class="btn btn-default pull-right btn-actualizar-filtro-resultado" style="margin-right:10px" type="button" aria-expanded="true"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+				</p>
+			<?php else: ?>
+				<p class="clearfix"><button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#opcionesFiltro" aria-expanded="true" aria-controls="opcionesFiltro"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filtrar búsqueda <span class="caret"></span></button></p>
+			<?php endif; ?>
+			
 			<div class="collapse in" id="opcionesFiltro">
 				<div class="well">
 					<form id="formBuscar" class="form-horizontal clearfix contenido-filtro">
@@ -86,6 +95,21 @@ if( !empty($_POST) )
 						<li><a href="javascript: getInfoWindow(markers[<?php echo $k; ?>]);"><i class="text-muted glyphicon glyphicon-map-marker"></i> <?php echo $row->direccion; ?></a></li>
 					<?php endforeach; ?>
 				</ul>
+			<?php else: ?>
+				
+				<div class="alert alert-info alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<strong>Realiza tu búsqueda!</strong> 
+					Ingrese la ciudad en la cual desea encontrar su comercio y especifique los rubros del mismo.
+				</div>
+				
+				<div class="alert alert-warning alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<strong>Comentá y Calificá un comercio!</strong> 
+					Puedes dejar tus comentarios y calificaciones del comercio que desees para que otros usuarios vean
+					tu opinión y puedan compartir ideas y tener una referencia del lugar.
+				</div>
+				
 			<?php endif; ?>
 						
 		</article>	

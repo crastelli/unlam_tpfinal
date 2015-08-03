@@ -11,6 +11,7 @@ Class Empresa extends Usuario
 	private $latitud;
 	private $longitud;
 	private $descripcion;
+	private $web;
 	private $habilitado;
 	private $es_premium;
 
@@ -40,7 +41,7 @@ Class Empresa extends Usuario
 	public function FnGetEmpresas()
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
+								`descripcion`, `web`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
 					WHERE `estado` = 1
 					ORDER BY `id` DESC", False);
@@ -50,7 +51,7 @@ Class Empresa extends Usuario
 	public function FnGetById($id)
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
+								`descripcion`, `web`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
 					WHERE `id` = %d
 					AND `estado` = 1
@@ -87,7 +88,7 @@ Class Empresa extends Usuario
 	public function FnGetByEmail($email)
 	{
 		$qry = sprintf("SELECT `id`, `nombre_referente`, `dni_referente`, `nombre`, `email`, `pw`, `razon_social`, `logo`, `telefono`, `direccion`,
-								`descripcion`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
+								`descripcion`, `web`, `habilitado`, `idzona`, `idrubro`, `lat_long`, `es_premium`
  					FROM `Empresa`
 					WHERE `email` = '%s'
 					AND `estado` = 1
@@ -128,7 +129,7 @@ Class Empresa extends Usuario
 		return $err;
 	}
 
-	public function FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
+	public function FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $web, $email, $pw)
 	{
 		$err = -1;
 		$logo_ant = '';
@@ -153,6 +154,7 @@ Class Empresa extends Usuario
 								`telefono`             = '%s',
 								`direccion`            = '%s',
 								`descripcion`          = '%s',
+								`web`          	       = '%s',
 								`email`                = '%s',
 								`idzona`               = %d,
 								`idrubro`              = %d, 
@@ -160,7 +162,7 @@ Class Empresa extends Usuario
 								{$update_pw}
 								{$update_logo}
 							WHERE `id` = %d", 
-							$nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $email, $idzona, $idrubro, $lat_long, $id);
+							$nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $web, $email, $idzona, $idrubro, $lat_long, $id);
 			$update = $this->execute($qry, "update");
 			if(!$update) $err = 1;
 			else{
@@ -171,17 +173,17 @@ Class Empresa extends Usuario
 		return $err;		
 	}
 
-	public function FnGuardar($idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw)
+	public function FnGuardar($idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $web, $email, $pw)
 	{
 		$err = -1;
 		if(!$this->FnExistente(null, $email))
 		{
 			$qry = sprintf("INSERT INTO `Empresa`
 							(`idzona`, `idrubro`, `lat_long`, `nombre_referente`, `dni_referente`, 
-							`nombre`, `razon_social`, `telefono`, `direccion`, `descripcion`, 
+							`nombre`, `razon_social`, `telefono`, `direccion`, `descripcion`, `web`,
 							`email`, `pw`, `logo`)
-							VALUES (%d, %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-							$idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $email, md5($pw), $logo);
+							VALUES (%d, %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+							$idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $telefono, $direccion, $descripcion, $web, $email, md5($pw), $logo);
 			$insert = $this->execute($qry, "insert");
 			if($insert <= 0) $err = 1;
 		}else $err = 2;
@@ -232,6 +234,15 @@ Class Empresa extends Usuario
 					AND `estado` = 1", $idempresa);
 		return $this->query($qry);	
 	}
+	public function FnGetImagenesActivas($idempresa)
+	{
+		$qry = sprintf("SELECT `id`, `idempresa`, `titulo`, `descripcion`, `link_imagen` imagen, `estado`, `habilitado`, `fecha`
+					FROM `Imagen_rel_empresa`
+					WHERE `idempresa` = %d
+					AND `estado` = 1
+					AND `habilitado` = 1", $idempresa);
+		return $this->query($qry);	
+	}
 	public function FnGuardarImagen($idempresa, $titulo, $descripcion, $imagen)
 	{
 		$err = -1;
@@ -269,6 +280,15 @@ Class Empresa extends Usuario
 					FROM `Video_rel_empresa`
 					WHERE `idempresa` = %d
 					AND `estado` = 1", $idempresa);
+		return $this->query($qry);	
+	}
+	public function FnGetVideosActivos($idempresa)
+	{
+		$qry = sprintf("SELECT `id`, `idempresa`, `titulo`, `descripcion`, `codigo`, `estado`, `habilitado`, `fecha`
+					FROM `Video_rel_empresa`
+					WHERE `idempresa` = %d
+					AND `estado` = 1
+					AND `habilitado` = 1", $idempresa);
 		return $this->query($qry);	
 	}
 	public function FnGuardarVideo($idempresa, $titulo, $descripcion, $link)

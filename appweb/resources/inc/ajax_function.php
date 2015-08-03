@@ -272,6 +272,7 @@ function FnAdminPerfilEmpresa()
 		$idzona           = $_POST["idzona"];
 		$idrubro          = $_POST["idrubro"];
 		$descripcion      = $_POST["descripcion"];
+		$web      		  = $_POST["web"];
 		$archivo          = $_FILES["logo"];
 		$email            = trim(strtolower($_POST["email"]));
 		$pw               = ($_POST["pw"] != '********')? $_POST["pw"] : '';
@@ -288,7 +289,7 @@ function FnAdminPerfilEmpresa()
 			return json_encode($returnJSON);
 		}
 
-		$err = $Empresa->FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+		$err = $Empresa->FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $web, $email, $pw);
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
 
@@ -490,6 +491,7 @@ function FnAdminEditarEmpresa()
 		$idzona           = $_POST["idzona"];
 		$idrubro          = $_POST["idrubro"];
 		$descripcion      = $_POST["descripcion"];
+		$web      		  = $_POST["web"];
 		$archivo          = $_FILES["logo"];
 		$email            = trim(strtolower($_POST["email"]));
 		$pw               = ($_POST["pw"] != '********')? $_POST["pw"] : '';
@@ -505,8 +507,8 @@ function FnAdminEditarEmpresa()
 			return json_encode($returnJSON);
 		}
 
-		if($id > 0) $err = $Empresa->FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
-		else $err = $Empresa->FnGuardar($idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $email, $pw);
+		if($id > 0) $err = $Empresa->FnEditar($id, $idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $web, $email, $pw);
+		else $err = $Empresa->FnGuardar($idzona, $idrubro, $lat_long, $nombre_referente, $dni_referente, $nombre, $razon_social, $logo, $telefono, $direccion, $descripcion, $web, $email, $pw);
 
 	}
 	$msjJSON  = Fn::FnGetMsg($acc, $err);
